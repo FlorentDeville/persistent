@@ -1,0 +1,15 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Sequence\Sequence_DialogPart.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Sequence\Sequence_AudioPlayer.cs" Line="33" Column="6" />
+      <File FileName="Assets\Scripts\Helper\Damper.cs" Line="61" Column="1" />
+      <File FileName="Assets\Scripts\Graphics\RendererController.cs" Line="74" Column="1" />
+      <File FileName="Assets\Scripts\Sequence\Sequence_DialogPart.cs" Line="51" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

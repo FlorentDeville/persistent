@@ -1,0 +1,46 @@
+<Dialog>
+	<Title>King Intro Dialog</Title>
+	<Text>
+		<Part ActorName="SideKick">It doesn't sound good. They are loosing the battle.
+    You don't look worried about it though.</Part>
+		
+		<Part ActorName="Player">There is not much I can do here.</Part>
+		
+		<Part ActorName="SideKick">Hey! What's going on?</Part>
+		
+		<Part ActorName="Soldier">Ennemies found a way to the prison and killed the General.</Part>
+		
+		<Part ActorName="SideKick">So what? Why don't you stay and fight?</Part>
+		
+		<Part ActorName="Soldier">You don't understand. He was the last General. This army
+    has no commander anymore. It's over.</Part>
+		
+		<Part ActorName="SideKick">Wait! Don't leave us here. Open the cell.</Part>
+
+    <Part ActorName="SideKick">Let's go!</Part>
+
+    <Part ActorName="Player">No wait! That's no the way out.</Part>
+
+    <Part ActorName="Player">We can't stay here.</Part>
+
+    <Part ActorName="SideKick">Wait a second. Jitou was about to find a way to win this battle.</Part>
+
+    <Part ActorName="Player">If we are found here, we gonna get killed.</Part>
+
+    <Part ActorName="SideKick">See. Here! That's the map of their armies. Their organisations, 
+    positions, tactics. Everything is here.</Part>
+
+    <Part ActorName="Player">Yeah very interesting. Can we go now?</Part>
+
+    <Part ActorName="SideKick">We have to bring this to the king.</Part>
+
+    <Part ActorName="Player">What? Are you insane? He's the one who put us in here in the first
+    place. We don't owe him anything.</Part>
+
+    <Part ActorName="SideKick">This is our chance. Our chance to do something that matters.</Part>
+
+    <Part ActorName="Player">I don't want to do something that matters.</Part>
+
+    <Part ActorName="SideKick">Well, know we have no choice.</Part>
+	</Text>
+</Dialog>

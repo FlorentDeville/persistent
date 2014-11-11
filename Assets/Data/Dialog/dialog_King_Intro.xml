@@ -1,0 +1,21 @@
+<Dialog>
+	<Title>King Intro Dialog</Title>
+	<Text>
+		<Part ActorName="Knight">My King!!! My King you have to run. The castle will fall.</Part>
+		
+		<Part ActorName="King">Not yet. We can still win.</Part>
+		
+		<Part ActorName="Knight">The last Knights are holding the front door but they won't last long.</Part>
+		
+		<Part ActorName="King">What about the rest of the army?</Part>
+		
+		<Part ActorName="Knight">We only have two divisions left. They are all splitted to hold the wall. All 
+the Generals are dead My King. The army is completely disorganized. 
+The only one left is General Jitou. He set his HQ inside the prison.</Part>
+		
+		<Part ActorName="King">Tell him to come back here. He has to command what's left of the army. 
+Go now!</Part>
+		
+		<Part ActorName="Knight">Yes My King.</Part>
+	</Text>
+</Dialog>

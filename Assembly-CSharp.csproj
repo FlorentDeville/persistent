@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{CA1F9313-32F5-5005-AD03-06D910734626}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_5_5;UNITY_4_5;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Animation\BlendAnimationEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Animation\CrossFadeAnimationEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Animation\PlayAnimationEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Animation\RewindAnimationEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Animation\SampleAnimationEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Animation\StopAnimationEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Animator\CrossFadeAnimatorEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Animator\LookAtTarget.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Animator\PlayAnimatorEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Animator\SetBoolAnimatorEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Animator\SetFloatAnimatorEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Animator\SetIKPositionAnimatorEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Animator\SetIKPositionWeightAnimatorEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Animator\SetIKRotationAnimatorEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Animator\SetIKRotationWeightAnimatorEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Animator\SetIntegerAnimatorEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Animator\SetLayerWeightAnimatorEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Animator\SetLookAtPositionAnimatorEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Animator\SetLookAtWeightAnimatorEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Animator\SetTargetAnimatorEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Animator\SetTriggerAnimatorEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\AudioSource\PauseAudioEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\AudioSource\PlayAudioEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\AudioSource\PlayOneShotAudioEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\AudioSource\StopAudioEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\GameObject\DisableBehaviour.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\GameObject\DisableGameObject.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\GameObject\EnableBehaviour.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\GameObject\EnableGameObject.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\GameObject\SendMessageGameObject.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Light\SetColorLight.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Light\SetIntensityLight.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Navigation\SetDestinationEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Rigidbody\ApplyForceEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Rigidbody\ApplyTorqueEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Rigidbody\RigidbodySleepEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Rigidbody\RigidbodyWakeUpEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Rigidbody\SetMassEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Rigidbody\ToggleGravityEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Transform\AttachChildrenEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Transform\DetachChildrenEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Transform\SetParent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Actor Items\Transform\SetPositionEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Core\CinemaAudio.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Core\CinemaShot.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Global Items\AudioSource\PlayClipAtPointAudioEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Global Items\Cutscene\PauseCutscene.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Global Items\Cutscene\PlayCutscene.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Global Items\Cutscene\StopCutscene.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Global Items\Debug\DebugLogErrorEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Global Items\Debug\DebugLogMessageEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Global Items\Debug\DebugLogWarningEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Global Items\GUITexture\FadeTexture.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Global Items\GameObject\DisableGameObjectGlobal.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Global Items\GameObject\EnableGameObjectGlobal.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Global Items\Time\SetTimeScaleEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Global Items\Time\TimeScaleCurveAction.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Global Items\Transitions\ColorTransition.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Global Items\Transitions\FadeFromBlack.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Global Items\Transitions\FadeFromWhite.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Global Items\Transitions\FadeToBlack.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Global Items\Transitions\FadeToWhite.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Global Items\Utility\LoadLevelEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Global Items\Utility\MassDisabler.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\Cutscene Items\Global Items\Utility\StoryboardEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\Cutscene.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\Helpers\CutsceneItemAttribute.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\Helpers\CutsceneQueue.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\Helpers\CutsceneTrigger.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\Helpers\MemberClipCurveData.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\Helpers\PropertyTypeInfo.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\Helpers\ScreenshotCapture.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TimelineItems\Base\CinemaClipCurve.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TimelineItems\Base\CinemaTween.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TimelineItems\Base\TimelineAction.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TimelineItems\Base\TimelineActionFixed.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TimelineItems\Base\TimelineItem.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TimelineItems\CinemaActorAction.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TimelineItems\CinemaActorClipCurve.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TimelineItems\CinemaActorEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TimelineItems\CinemaGlobalAction.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TimelineItems\CinemaGlobalEvent.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TimelineItems\CinemaMultiActorCurveClip.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TimelineTracks\ActorItemTrack.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TimelineTracks\AudioTrack.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TimelineTracks\CurveTrack.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TimelineTracks\GlobalItemTrack.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TimelineTracks\MultiCurveTrack.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TimelineTracks\ParentTracks\ActorTrack.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TimelineTracks\ParentTracks\GlobalTrack.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TimelineTracks\ParentTracks\TimelineTrack.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TimelineTracks\ShotTrack.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TrackGroups\ActorTrackGroup.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TrackGroups\DirectorGroup.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TrackGroups\MultiActorTrackGroup.cs" />
+     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TrackGroups\TrackGroup.cs" />
+     <Compile Include="Assets\Scripts\Assets\Core_Dialog.cs" />
+     <Compile Include="Assets\Scripts\Assets\Core_DialogActor.cs" />
+     <Compile Include="Assets\Scripts\Assets\Core_XmlDialog.cs" />
+     <Compile Include="Assets\Scripts\Camera\CameraBehavior.cs" />
+     <Compile Include="Assets\Scripts\Camera\CameraState.cs" />
+     <Compile Include="Assets\Scripts\Camera\CameraStateFixed.cs" />
+     <Compile Include="Assets\Scripts\Camera\CameraStateFollowing.cs" />
+     <Compile Include="Assets\Scripts\Camera\CameraStateTravelling.cs" />
+     <Compile Include="Assets\Scripts\Component\StickToGround.cs" />
+     <Compile Include="Assets\Scripts\Debug\Dialog.cs" />
+     <Compile Include="Assets\Scripts\FSM\FSMRunner.cs" />
+     <Compile Include="Assets\Scripts\FSM\IFSMState.cs" />
+     <Compile Include="Assets\Scripts\Global\GameObjectHelper.cs" />
+     <Compile Include="Assets\Scripts\Graphics\HUD\RendererDialog.cs" />
+     <Compile Include="Assets\Scripts\Graphics\RendererController.cs" />
+     <Compile Include="Assets\Scripts\Helper\Damper.cs" />
+     <Compile Include="Assets\Scripts\Input\InputHelper.cs" />
+     <Compile Include="Assets\Scripts\Interaction\Interaction.cs" />
+     <Compile Include="Assets\Scripts\Interaction\InteractionDialog.cs" />
+     <Compile Include="Assets\Scripts\Interaction\Trigger\Trigger_PressButton.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerBehavior.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerState.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerStateWorld.cs" />
+     <Compile Include="Assets\Scripts\Sequence\Sequence_AudioPlayer.cs" />
+     <Compile Include="Assets\Scripts\Sequence\Sequence_DialogPart.cs" />
+     <Compile Include="Assets\Scripts\Warehouse.cs" />
+     <None Include="Assets\Data\Dialog\dialog_Prison_Intro.xml" />
+     <None Include="Assets\Cinema Suite\Cinema Director\Example Scenes\Shaders\Additive.shader" />
+     <None Include="Assets\Cinema Suite\Cinema Director\ReadMe.txt" />
+     <None Include="Assets\Data\Dialog\dialog_King_Intro.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>
