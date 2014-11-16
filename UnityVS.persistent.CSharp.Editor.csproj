@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{448541C7-2AEC-0DD0-4AD7-7AF16503F1B7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace></RootNamespace>
+    <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectType>Editor:5</UnityProjectType>
+    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
+    <UnityVersion>4.5.5f1</UnityVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>DEBUG;TRACE;UNITY_4_5_5;UNITY_4_5;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>TRACE;UNITY_4_5_5;UNITY_4_5;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="Boo.Lang" />
+    <Reference Include="UnityScript.Lang" />
+    <Reference Include="UnityEngine">
+      <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="DirectorEditor">
+      <HintPath>Assets\Cinema Suite\Cinema Director\System\Editor\DirectorControl\DirectorEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
+      <HintPath>Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+    </Reference>
+    <Reference Include="SyntaxTree.VisualStudio.Unity.Messaging">
+      <HintPath>Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Messaging.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityVS.VersionSpecific">
+      <HintPath>Assets\UnityVS\Editor\UnityVS.VersionSpecific.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="UnityVS.persistent.CSharp.csproj">
+      <Project>{82C52EEB-7874-BD41-595D-AABCA0FA91F6}</Project>
+      <Name>UnityVS.persistent.CSharp</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Cinema Suite\About\Editor\AboutCinemaSuiteWindow.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\Controls\TrackControls\ActorCurveTrackControl.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\Controls\TrackControls\ActorItemTrackControl.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\Controls\TrackControls\AudioTrackControl.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\Controls\TrackControls\GlobalItemTrackControl.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\Controls\TrackControls\MultiActorCurveTrackControl.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\Controls\TrackControls\ShotTrackControl.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\Controls\TrackGroupControls\ActorTrackGroupControl.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\Controls\TrackGroupControls\DirectorGroupControl.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\Controls\TrackGroupControls\MultiActorTrackGroupControl.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\Controls\TrackItemControls\CinemaActionControl.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\Controls\TrackItemControls\CinemaActorCurveControl.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\Controls\TrackItemControls\CinemaAudioControl.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\Controls\TrackItemControls\CinemaCurveControl.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\Controls\TrackItemControls\CinemaItemControl.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\Controls\TrackItemControls\CinemaMultiActorCurveControl.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\Controls\TrackItemControls\CinemaShotControl.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\CustomInspectors\CutsceneInspector.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\CustomInspectors\CutsceneItemInspectors\ActorClipCurveInspector.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\CustomInspectors\CutsceneItemInspectors\DisableBehaviourInspector.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\CustomInspectors\CutsceneItemInspectors\EnableBehaviourInspector.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\CustomInspectors\CutsceneItemInspectors\MemberClipCurveInspector.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\CustomInspectors\CutsceneItemInspectors\MultiActorClipCurveInspector.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\CustomInspectors\CutsceneTriggerInspector.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\CustomInspectors\GroupInspectors\ActorTrackGroupInspector.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\CustomInspectors\GroupInspectors\DirectorGroupInspector.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\CustomInspectors\GroupInspectors\GroupInspector.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\CustomInspectors\GroupInspectors\MultiActorTrackGroupInspector.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\CustomInspectors\TrackInspectors\ActorItemTrackInspector.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\CustomInspectors\TrackInspectors\AudioTrackInspector.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\CustomInspectors\TrackInspectors\CurveTrackInspector.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\CustomInspectors\TrackInspectors\GlobalItemTrackInspector.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\CustomInspectors\TrackInspectors\MultiCurveTrackInspector.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\CustomInspectors\TrackInspectors\ShotTrackInspector.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\CutsceneCreatorWindow.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\DirectorHelpWindow.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\DirectorWindow.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\Utility\CutsceneItemFactory.cs" />
+    <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\Utility\DirectorHelper.cs" />
+    <Compile Include="Assets\Editor\CreateAsset_Dialog.cs" />
+    <Compile Include="Assets\Editor\CreateAsset_DialogActor.cs" />
+    <Compile Include="Assets\Editor\Utilities\Helper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Cinema Suite\Cinema Director\Example Scenes\Shaders\Additive.shader" />
+    <None Include="Assets\Cinema Suite\Cinema Director\ReadMe.txt" />
+    <None Include="Assets\Data\Dialog\dialog_King_Intro.xml" />
+    <None Include="Assets\Data\Dialog\dialog_Prison_Intro.xml" />
+    <None Include="Assets\Data\Silouhette_Outlined.shader" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
+</Project>

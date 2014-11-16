@@ -49,7 +49,7 @@ namespace AssemblyCSharp
             m_GameObject.transform.LookAt(targetTransform.position);
 
             //Apply transparency to obstacles
-            ApplyAlpha(pos, targetTransform.position);
+            //ApplyAlpha(pos, targetTransform.position);
 
 			base.OnExecute ();
 		}

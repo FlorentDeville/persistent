@@ -1,8 +1,9 @@
 <Dialog>
 	<Title>King Intro Dialog</Title>
 	<Text>
-		<Part ActorName="SideKick">It doesn't sound good. They are loosing the battle.
-    You don't look worried about it though.</Part>
+		<Part ActorName="SideKick">It doesn't sound good. They are loosing the battle.</Part>
+
+    <Part ActorName="SideKick">You don't look worried about it though.</Part>
 		
 		<Part ActorName="Player">There is not much I can do here.</Part>
 		
@@ -38,8 +39,6 @@
     place. We don't owe him anything.</Part>
 
     <Part ActorName="SideKick">This is our chance. Our chance to do something that matters.</Part>
-
-    <Part ActorName="Player">I don't want to do something that matters.</Part>
 
     <Part ActorName="SideKick">Well, know we have no choice.</Part>
 	</Text>

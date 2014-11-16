@@ -152,6 +152,7 @@
      <Compile Include="Assets\Scripts\Camera\CameraStateTravelling.cs" />
      <Compile Include="Assets\Scripts\Component\StickToGround.cs" />
      <Compile Include="Assets\Scripts\Debug\Dialog.cs" />
+     <Compile Include="Assets\Scripts\DialogManager.cs" />
      <Compile Include="Assets\Scripts\FSM\FSMRunner.cs" />
      <Compile Include="Assets\Scripts\FSM\IFSMState.cs" />
      <Compile Include="Assets\Scripts\Global\GameObjectHelper.cs" />
@@ -166,11 +167,12 @@
      <Compile Include="Assets\Scripts\Player\PlayerState.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerStateWorld.cs" />
      <Compile Include="Assets\Scripts\Sequence\Sequence_AudioPlayer.cs" />
-     <Compile Include="Assets\Scripts\Sequence\Sequence_DialogPart.cs" />
+     <Compile Include="Assets\Scripts\Sequence\Sequence_DialogPlayer.cs" />
      <Compile Include="Assets\Scripts\Warehouse.cs" />
      <None Include="Assets\Data\Dialog\dialog_Prison_Intro.xml" />
      <None Include="Assets\Cinema Suite\Cinema Director\Example Scenes\Shaders\Additive.shader" />
      <None Include="Assets\Cinema Suite\Cinema Director\ReadMe.txt" />
+     <None Include="Assets\Data\Silouhette_Outlined.shader" />
      <None Include="Assets\Data\Dialog\dialog_King_Intro.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -11,9 +11,13 @@ Platform assembly: C:\src\persistent\Gym_WorldMap_Data\Managed\UnityEngine.dll (
 Loading C:\src\persistent\Gym_WorldMap_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: C:\src\persistent\Gym_WorldMap_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading C:\src\persistent\Gym_WorldMap_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.050 seconds
+- Completed reload, in  0.037 seconds
 desktop: 1440x900 60Hz; virtual: 1440x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 Platform assembly: C:\src\persistent\Gym_WorldMap_Data\Managed\System.Xml.dll (this message is harmless)
 Platform assembly: C:\src\persistent\Gym_WorldMap_Data\Managed\System.dll (this message is harmless)
+Stop!32.51807
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+

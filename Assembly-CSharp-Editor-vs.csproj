@@ -91,9 +91,19 @@
      <None Include="Assets\Data\Dialog\dialog_Prison_Intro.xml" />
      <None Include="Assets\Cinema Suite\Cinema Director\Example Scenes\Shaders\Additive.shader" />
      <None Include="Assets\Cinema Suite\Cinema Director\ReadMe.txt" />
+     <None Include="Assets\Data\Silouhette_Outlined.shader" />
      <None Include="Assets\Data\Dialog\dialog_King_Intro.xml" />
  <Reference Include="DirectorEditor">
  <HintPath>C:/src/persistent/Assets/Cinema Suite/Cinema Director/System/Editor/DirectorControl/DirectorEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
+ <HintPath>C:/src/persistent/Assets/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+ </Reference>
+ <Reference Include="SyntaxTree.VisualStudio.Unity.Messaging">
+ <HintPath>C:/src/persistent/Assets/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Messaging.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityVS.VersionSpecific">
+ <HintPath>C:/src/persistent/Assets/UnityVS/Editor/UnityVS.VersionSpecific.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>

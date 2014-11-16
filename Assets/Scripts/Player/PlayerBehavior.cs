@@ -9,6 +9,9 @@ namespace Persistent
 	{
 		public float m_SlowSpeed;
 		public float m_NormalSpeed;
+
+        public Material m_DefaultMaterial;
+        public Material m_OutlinedMaterial;
 		
 		private FSMRunner m_Runner;
 		

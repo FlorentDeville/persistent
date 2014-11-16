@@ -6,7 +6,7 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 
-public class Sequence_DialogPart : MonoBehaviour 
+public class Sequence_DialogPlayer : MonoBehaviour 
 {
     public GameObject m_Sequence;
 
@@ -20,9 +20,6 @@ public class Sequence_DialogPart : MonoBehaviour
 
     void OnEnable()
     {
-        //Cutscene cutscene = m_Sequence.GetComponent<Cutscene>();
-        //cutscene.Pause();
-
         System.Xml.XmlReader reader = XmlReader.Create(new StringReader(m_AssetDialog.text));
         System.Xml.Serialization.XmlSerializer ser = new System.Xml.Serialization.XmlSerializer(typeof(Core_XmlDialog));
         m_innerDialog = (Core_XmlDialog)ser.Deserialize(reader);
