@@ -67,6 +67,7 @@ namespace Persistent
 
             Debug.DrawLine(m_GameObject.transform.position, _camera.transform.position);
             float sphereCastRadius = 0.1f;
+
             if (Physics.SphereCast(rayPlayerToCamera, sphereCastRadius, rayDirection.magnitude))
                 m_GameObject.renderer.material = m_Behavior.m_OutlinedMaterial;
             else
