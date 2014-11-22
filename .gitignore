@@ -4,6 +4,7 @@ ehthumbs.db
 /obj
 /Temp
 /Test_Data
+/Library/ScriptAssemblies
 *.exe
 
 # Folder config file
@@ -47,4 +48,4 @@ Temporary Items
 .apdisk
 
 *.suo
-*.suo
+*.dll

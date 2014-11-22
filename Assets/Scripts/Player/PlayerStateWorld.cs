@@ -57,7 +57,8 @@ namespace Persistent
 				+ camera.transform.right * input.normalized.x * speed 
                 - Vector3.up * GRAVITY;
 
-            ApplyShader(camera);
+            if(m_Behavior.m_OutlinedMaterialEnabled)
+                ApplyShader(camera);
 
             CharacterController ctrl = m_GameObject.GetComponent<CharacterController>();
             ctrl.Move(displacement);
