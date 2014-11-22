@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class Sidekick_Behavior : MonoBehaviour 
 {
-    public float m_MinDistance;
-
     private NavMeshAgent m_agent;
 
 	// Use this for initialization
@@ -17,12 +15,6 @@ public class Sidekick_Behavior : MonoBehaviour
 	void Update () 
     {
         Vector3 playerToMe = gameObject.transform.position - GameObjectHelper.getPlayer().transform.position;
-
-        //if (playerToMe.magnitude > m_MinDistance)
-       // {
-            m_agent.SetDestination(GameObjectHelper.getPlayer().transform.position);
-       // }
-        //else
-        //    m_agent.Stop();
+        m_agent.SetDestination(GameObjectHelper.getPlayer().transform.position);
 	}
 }
