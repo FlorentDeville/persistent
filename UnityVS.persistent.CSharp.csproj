@@ -167,6 +167,7 @@
     <Compile Include="Assets\Scripts\Component\StickToGround.cs" />
     <Compile Include="Assets\Scripts\Debug\Dialog.cs" />
     <Compile Include="Assets\Scripts\DialogManager.cs" />
+    <Compile Include="Assets\Scripts\Entity\Sidekick_Entity\Sidekick_Behavior.cs" />
     <Compile Include="Assets\Scripts\FSM\FSMRunner.cs" />
     <Compile Include="Assets\Scripts\FSM\IFSMState.cs" />
     <Compile Include="Assets\Scripts\FogBehavior.cs" />

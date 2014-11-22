@@ -16,8 +16,6 @@ public class Trigger_PressButton : MonoBehaviour
 
     public Vector3 m_FeedbackPosition;
 	
-	private GameObject m_player;
-	
 	private bool m_showFeedback;
 	
 	private Texture2D m_texFeedback;
@@ -28,7 +26,6 @@ public class Trigger_PressButton : MonoBehaviour
 	void Start () 
 	{
 		m_waitForInteractionEnd = false;
-		m_player = GameObjectHelper.getPlayer();
 		m_showFeedback = false;
 		
 		m_texFeedback = InputHelper.GetButtonTexture(m_button);
@@ -126,9 +123,9 @@ public class Trigger_PressButton : MonoBehaviour
 			
 	}
 
-    void OnDrawGizmosSelected()
-    {
-        Vector3 pos = transform.TransformPoint(m_FeedbackPosition);
-        Handles.PositionHandle(pos, Quaternion.identity);
-    }
+    //void OnDrawGizmosSelected()
+    //{
+    //    Vector3 pos = transform.TransformPoint(m_FeedbackPosition);
+    //    Handles.PositionHandle(pos, Quaternion.identity);
+    //}
 }

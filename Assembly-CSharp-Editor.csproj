@@ -87,6 +87,7 @@
      <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\Utility\DirectorHelper.cs" />
      <Compile Include="Assets\Editor\CreateAsset_Dialog.cs" />
      <Compile Include="Assets\Editor\CreateAsset_DialogActor.cs" />
+     <Compile Include="Assets\Editor\Trigger_PressButton_Editor.cs" />
      <Compile Include="Assets\Editor\Utilities\Helper.cs" />
      <None Include="Assets\Data\Dialog\dialog_Prison_Intro.xml" />
      <None Include="Assets\Cinema Suite\Cinema Director\Example Scenes\Shaders\Additive.shader" />
