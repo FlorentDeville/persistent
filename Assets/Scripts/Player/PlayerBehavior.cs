@@ -10,6 +10,8 @@ namespace Persistent
 		public float m_SlowSpeed;
 		public float m_NormalSpeed;
 
+        public bool m_InputEnabled;
+
         public Material m_DefaultMaterial;
         public Material m_OutlinedMaterial;
 		

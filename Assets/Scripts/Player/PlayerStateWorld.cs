@@ -25,9 +25,14 @@ namespace Persistent
 		public override void OnExecute ()
 		{
 			//Get the joystick inputs
-			float amountV = Input.GetAxis("Vertical");
-			float amountH = Input.GetAxis("Horizontal");
-			
+            float amountV = 0;
+            float amountH = 0;
+            if (m_Behavior.m_InputEnabled)
+            {
+                amountV = Input.GetAxis("Vertical");
+                amountH = Input.GetAxis("Horizontal");
+            }
+
 			Vector3 input = new Vector3(amountH, 0, amountV);
 			
 			float speed = 0;

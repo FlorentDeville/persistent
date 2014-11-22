@@ -4,11 +4,21 @@ using System.Collections;
 
 public class FogBehavior : MonoBehaviour 
 {
+    private Texture2D m_texture;
 
 	// Use this for initialization
 	void Start () 
     {
-	
+        m_texture = new Texture2D(1024, 1024, TextureFormat.ARGB32, true, true);
+        for(int i = 0; i < 1024; ++i)
+        {
+            for(int j = 0; j < 1024; ++j)
+                m_texture.SetPixel(j, i, Color.black);
+        }
+        m_texture.Apply();
+
+        renderer.material.mainTexture = m_texture;
+        renderer.material.color = Color.white;
 	}
 	
 	// Update is called once per frame

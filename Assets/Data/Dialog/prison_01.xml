@@ -1,0 +1,16 @@
+<Dialog>
+	<Title>prison_sidequest_01</Title>
+	<Text>
+		<Part ActorName="Prisonner">Please... Help me...</Part>
+
+    <Part ActorName="Player">He is as good as dead. Nothing we can do for him.</Part>
+		
+		<Part ActorName="SideKick">Wait. What can we do for you?</Part>
+		
+		<Part ActorName="Prisonner">My son... They keep him in the left wing. Help him. Free him.</Part>
+		
+		<Part ActorName="Prisonner">...</Part>
+		
+		<Part ActorName="Player">He's dead. Let's go.</Part>
+	</Text>
+</Dialog>

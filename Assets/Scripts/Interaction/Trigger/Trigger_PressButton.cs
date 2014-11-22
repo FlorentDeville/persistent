@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using System.Collections;
 
@@ -12,6 +13,8 @@ public class Trigger_PressButton : MonoBehaviour
 	public InputButton m_button;
 	
 	public bool m_autoReset;
+
+    public Vector3 m_FeedbackPosition;
 	
 	private GameObject m_player;
 	
@@ -99,8 +102,8 @@ public class Trigger_PressButton : MonoBehaviour
 	
 	void showFeedback()
 	{
-		Bounds aabb = transform.renderer.bounds;
-		Vector3 worldPos = aabb.center + Vector3.up * aabb.extents.y;
+		//Bounds aabb = transform.renderer.bounds;
+        Vector3 worldPos = transform.TransformPoint(m_FeedbackPosition);//aabb.center + Vector3.up * aabb.extents.y;
 		
 		Camera camera = GameObjectHelper.getCamera();
 		Vector3 screenPos = camera.WorldToScreenPoint(worldPos);
@@ -122,4 +125,10 @@ public class Trigger_PressButton : MonoBehaviour
 		m_waitForInteractionEnd = false;
 			
 	}
+
+    void OnDrawGizmosSelected()
+    {
+        Vector3 pos = transform.TransformPoint(m_FeedbackPosition);
+        Handles.PositionHandle(pos, Quaternion.identity);
+    }
 }

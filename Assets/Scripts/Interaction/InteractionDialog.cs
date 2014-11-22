@@ -2,6 +2,7 @@ using AssemblyCSharp;
 using System.Collections;
 using System.Xml;
 using System.IO;
+using Persistent;
 using UnityEngine;
 
 public class InteractionDialog : Interaction 
@@ -24,6 +25,8 @@ public class InteractionDialog : Interaction
 	public override void ExecuteOnEnable()
 	{
 		m_currentPartId = 0;
+        PlayerBehavior player = GameObjectHelper.getPlayer().GetComponent<PlayerBehavior>();
+        player.m_InputEnabled = false;
 	}
 	
 	public override void ExecuteUpdate()
@@ -33,7 +36,11 @@ public class InteractionDialog : Interaction
 			++m_currentPartId;
 
         if (m_currentPartId >= m_innerDialog.m_Text.Parts.Count)
-			enabled = false;
+        {
+            PlayerBehavior player = GameObjectHelper.getPlayer().GetComponent<PlayerBehavior>();
+            player.m_InputEnabled = true;
+            enabled = false;
+        }
 	}
 	
 	public override void ExecuteEnd(){}
