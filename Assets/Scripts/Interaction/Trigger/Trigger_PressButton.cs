@@ -123,9 +123,9 @@ public class Trigger_PressButton : MonoBehaviour
 			
 	}
 
-    //void OnDrawGizmosSelected()
-    //{
-    //    Vector3 pos = transform.TransformPoint(m_FeedbackPosition);
-    //    Handles.PositionHandle(pos, Quaternion.identity);
-    //}
+    void OnDrawGizmosSelected()
+    {
+        Vector3 worldPosition = transform.TransformPoint(m_FeedbackPosition);
+        Gizmos.DrawIcon(worldPosition, "Xbox360_Button_" + InputHelper.GetButtonName(m_button));
+    }
 }

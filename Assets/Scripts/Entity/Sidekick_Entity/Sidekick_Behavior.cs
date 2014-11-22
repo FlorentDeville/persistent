@@ -14,7 +14,6 @@ public class Sidekick_Behavior : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
-        Vector3 playerToMe = gameObject.transform.position - GameObjectHelper.getPlayer().transform.position;
         m_agent.SetDestination(GameObjectHelper.getPlayer().transform.position);
 	}
 }
