@@ -3,11 +3,9 @@ using UnityEngine;
 
 namespace AssemblyCSharp
 {
-	public class CameraStateFixed : IFSMState
+	public class CameraStateFixed : IFSMState<CameraBehavior>
 	{
-		public CameraStateFixed ()
-		{
-		}
+        public override int State { get { return (int)CameraState.eFixed; } }
 	}
 }
 

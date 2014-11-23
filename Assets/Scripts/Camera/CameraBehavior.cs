@@ -34,15 +34,11 @@ public class CameraBehavior : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		m_Runner = new FSMRunner();
+		m_Runner = new FSMRunner(gameObject);
 		
-		CameraStateFollowing StateFollowing = new CameraStateFollowing(m_Runner, this.gameObject);
-		m_StateTravelling = new CameraStateTravelling(m_Runner, this.gameObject);
-		CameraStateFixed StateFixed = new CameraStateFixed();
-		
-		m_Runner.AddState((int)CameraState.eFollowing, StateFollowing);
-		m_Runner.AddState((int)CameraState.eTravelling, m_StateTravelling);
-		m_Runner.AddState((int)CameraState.eFixed, StateFixed);
+        m_Runner.RegisterState<CameraStateFollowing>();
+        m_StateTravelling = m_Runner.RegisterState<CameraStateTravelling>();
+        m_Runner.RegisterState<CameraStateFixed>();
 		
 		m_Runner.SetCurrentState((int)CameraState.eFollowing, "set initial state");
 	}

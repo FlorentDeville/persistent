@@ -10,13 +10,9 @@ namespace Persistent.WorldEntity
 {
     public partial class BaseEnemy_Behavior : MonoBehaviour
     {
-        public class BaseEnemy_State_Birth : IFSMState
+        public class BaseEnemy_State_Birth : IFSMState<BaseEnemy_Behavior>
         {
-            public BaseEnemy_State_Birth(FSMRunner _Runner, GameObject _gameObject)
-            {
-                m_Runner = _Runner;
-                m_GameObject = _gameObject;
-            }
+            public override int State { get { return (int)EnemyState.Birth; } }
 
             public override void OnEnter()
             {
@@ -24,21 +20,18 @@ namespace Persistent.WorldEntity
             }
         }
 
-        public class BaseEnemy_State_Life : IFSMState
+        public class BaseEnemy_State_Life : IFSMState<BaseEnemy_Behavior>
         {
-            private BaseEnemy_Behavior m_Behavior;
-
             private int m_nextWaypointId;
 
             private Spawner_Behavior m_Spawner;
 
             private NavMeshAgent m_Agent;
 
-            public BaseEnemy_State_Life(FSMRunner _Runner, GameObject _gameObject)
+            public override int State { get { return (int)EnemyState.Life; } }
+
+            public override void Initialize()
             {
-                m_Runner = _Runner;
-                m_GameObject = _gameObject;
-                m_Behavior = m_GameObject.GetComponent<BaseEnemy_Behavior>();
                 m_Agent = m_Behavior.GetComponent<NavMeshAgent>();
                 m_Spawner = m_Behavior.m_Spawner;
             }
@@ -64,20 +57,13 @@ namespace Persistent.WorldEntity
             }
         }
 
-        public class BaseEnemy_State_Death : IFSMState
+        public class BaseEnemy_State_Death : IFSMState<BaseEnemy_Behavior>
         {
-            private BaseEnemy_Behavior m_Behavior;
-
             private float m_StartTimeState;
 
             private GameObject m_deathEffect;
 
-            public BaseEnemy_State_Death(FSMRunner _Runner, GameObject _GameObject)
-            {
-                m_Runner = _Runner;
-                m_GameObject = _GameObject;
-                m_Behavior = m_GameObject.GetComponent<BaseEnemy_Behavior>();
-            }
+            public override int State { get { return (int)EnemyState.Death; } }
 
             public override void OnEnter()
             {

@@ -3,10 +3,8 @@ using UnityEngine;
 
 namespace AssemblyCSharp
 {
-	public class CameraStateTravelling : IFSMState
+	public class CameraStateTravelling : IFSMState<CameraBehavior>
 	{
-		private CameraBehavior m_Behavior;
-		
 		private bool m_TravelOver;
 		
 		private float m_StartTime;
@@ -20,14 +18,8 @@ namespace AssemblyCSharp
 			get {return m_TravelOver;}
 			set { m_TravelOver = value;}
 		}
-		
-		public CameraStateTravelling (FSMRunner _Runner, GameObject _obj)
-		{
-			m_Runner = _Runner;
-			m_GameObject = _obj;
-			m_State = (int)CameraState.eTravelling;
-			m_Behavior = m_GameObject.GetComponent<CameraBehavior>();
-		}
+
+        public override int State { get { return (int)CameraState.eTravelling; } }
 		
 		public override void OnEnter ()
 		{

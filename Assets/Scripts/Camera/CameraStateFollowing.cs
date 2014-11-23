@@ -4,23 +4,19 @@ using UnityEngine;
 
 namespace AssemblyCSharp
 {
-	public class CameraStateFollowing : IFSMState
+	public class CameraStateFollowing : IFSMState<CameraBehavior>
 	{
-		CameraBehavior m_Behavior;
-		
 		float m_angleY;
 
         DamperVector3 m_PositionDamper;
-		
-		public CameraStateFollowing (FSMRunner _Runner, GameObject _obj)
-		{
-			m_Runner = _Runner;
-			m_GameObject = _obj;
-			m_State = (int)CameraState.eFollowing;
-			m_Behavior = m_GameObject.GetComponent<CameraBehavior>();
-			m_angleY = 0;
-			m_PositionDamper = new DamperVector3(m_Behavior.m_DampingSpeed);
-		}
+
+        public override int State { get { return (int)CameraState.eFollowing; } }
+
+        public override void Initialize()
+        {
+            m_angleY = 0;
+            m_PositionDamper = new DamperVector3(m_Behavior.m_DampingSpeed);
+        }
 		
 		public override void OnEnter ()
 		{

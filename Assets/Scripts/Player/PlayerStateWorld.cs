@@ -5,18 +5,10 @@ using AssemblyCSharp;
 
 namespace Persistent
 {
-	public class PlayerStateWorld : IFSMState 
+	public class PlayerStateWorld : IFSMState<PlayerBehavior>
 	{
-		PlayerBehavior m_Behavior;
-		
-		public PlayerStateWorld (FSMRunner _Runner, GameObject _obj)
-		{
-			m_Runner = _Runner;
-			m_GameObject = _obj;
-			m_State = (int)PlayerState.eWorld;
-			m_Behavior = m_GameObject.GetComponent<PlayerBehavior>();
-		}
-		
+        public override int State { get { return (int)PlayerState.eWorld; } }
+
 		public override void OnEnter ()
 		{
 			

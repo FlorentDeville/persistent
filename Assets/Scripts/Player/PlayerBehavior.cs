@@ -21,11 +21,8 @@ namespace Persistent
 		// Use this for initialization
 		void Start () 
 		{
-			m_Runner = new FSMRunner();
-			
-			PlayerStateWorld StateWorld = new PlayerStateWorld(m_Runner, this.gameObject);
-			
-			m_Runner.AddState((int)PlayerState.eWorld, StateWorld);
+			m_Runner = new FSMRunner(gameObject);
+            m_Runner.RegisterState<PlayerStateWorld>();
 			
 			m_Runner.SetCurrentState((int)PlayerState.eWorld, "set initial state");
 		}

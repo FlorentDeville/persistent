@@ -9,7 +9,7 @@ namespace AssemblyCSharp
 	{
 		#region Variables
 		
-		private Dictionary<int, IFSMState> m_StatesList;
+		private Dictionary<int, IState> m_StatesList;
 		
 		/// <summary>
 		/// The state the machine is executing
@@ -69,12 +69,15 @@ namespace AssemblyCSharp
 		{
 			get{return m_StateParameter;}
 		}
+
+        private GameObject m_GameObject;
 		
 		#endregion
 		
-		public FSMRunner ()
+		public FSMRunner (GameObject _gameObject)
 		{
-			m_StatesList = new Dictionary<int, IFSMState>(); 
+            m_GameObject = _gameObject;
+			m_StatesList = new Dictionary<int, IState>(); 
 			m_CurrentState = 0;
 			m_PreviousState = 0;
 			m_DefferedCurrentState = 0; 
@@ -87,10 +90,20 @@ namespace AssemblyCSharp
 			m_NextStateLocked = false;
 		}
 		
-		public void AddState(int _State, IFSMState _NewState)
+		public void AddState(int _State, IState _NewState)
 		{
 			m_StatesList.Add(_State, _NewState);
 		}
+
+        public StateType RegisterState<StateType>()
+            where StateType : IState, new()
+        {
+            StateType newState = new StateType();
+            newState.Internal_Initialize(this, m_GameObject);
+            newState.Initialize();
+            AddState(newState.State, newState);
+            return newState;
+        }
 		
 		public void SetCurrentState(int _NewState, string _Reason)
 		{

@@ -22,15 +22,10 @@ namespace Persistent.WorldEntity
         {
             m_Agent = GetComponent<NavMeshAgent>();
 
-            m_Runner = new FSMRunner();
-
-            BaseEnemy_State_Birth stateBirth = new BaseEnemy_State_Birth(m_Runner, gameObject);
-            BaseEnemy_State_Life stateLife = new BaseEnemy_State_Life(m_Runner, gameObject);
-            BaseEnemy_State_Death stateDeath = new BaseEnemy_State_Death(m_Runner, gameObject);
-
-            m_Runner.AddState((int)EnemyState.Birth, stateBirth);
-            m_Runner.AddState((int)EnemyState.Life, stateLife);
-            m_Runner.AddState((int)EnemyState.Death, stateDeath);
+            m_Runner = new FSMRunner(gameObject);
+            m_Runner.RegisterState<BaseEnemy_State_Birth>();
+            m_Runner.RegisterState<BaseEnemy_State_Life>();
+            m_Runner.RegisterState<BaseEnemy_State_Death>();
 
             m_Runner.SetImmediateCurrentState((int)EnemyState.Birth);
         }
