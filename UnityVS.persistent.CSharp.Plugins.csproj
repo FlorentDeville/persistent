@@ -52,9 +52,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
-    <Compile Include="Assets\Standard Assets\Scripts\General Scripts\ActivateTrigger.cs" />
-    <Compile Include="Assets\Standard Assets\Scripts\Utility Scripts\CombineChildren.cs" />
-    <Compile Include="Assets\Standard Assets\Scripts\Utility Scripts\MeshCombineUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Cinema Suite\Cinema Director\Example Scenes\Shaders\Additive.shader" />
