@@ -82,8 +82,8 @@ namespace Persistent.WorldEntity
 
         void Spawn(int id)
         {
-            m_enemies[id].GetComponent<BaseEnemy_Behavior>().OnSpawn();
             m_enemies[id].SetActive(true);
+            m_enemies[id].GetComponent<BaseEnemy_Behavior>().OnSpawn();
             m_enemies[id].transform.position = transform.TransformPoint(m_portals[id]);
         }
 

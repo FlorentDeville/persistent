@@ -12,11 +12,36 @@ namespace Persistent.WorldEntity
     {
         public class BaseEnemy_State_Birth : IFSMState<BaseEnemy_Behavior>
         {
+            private float m_BirstStateStartTime;
+
             public override int State { get { return (int)EnemyState.Birth; } }
 
             public override void OnEnter()
             {
-                m_Runner.SetCurrentState((int)EnemyState.Life, "Birth over");
+                m_BirstStateStartTime = Time.fixedTime;
+                
+                Component[] components = m_Behavior.m_BirthEffectInstance.GetComponentsInChildren(typeof(ParticleEmitter));
+
+                foreach (ParticleEmitter emitter in components)
+                    emitter.emit = true;
+            }
+
+            public override void OnExecute()
+            {
+                if (Time.fixedTime >= m_BirstStateStartTime + m_Behavior.m_BirthEffectDuration)
+                {
+                    Component[] components = m_Behavior.m_BirthEffectInstance.GetComponentsInChildren(typeof(ParticleEmitter));
+
+                    foreach (ParticleEmitter emitter in components)
+                        emitter.emit = false;
+
+                    m_Runner.SetCurrentState((int)EnemyState.Life, "Birth over");
+                }
+            }
+
+            public override void OnExit()
+            {
+                m_Behavior.EnabledMeshRenderer(true);
             }
         }
 

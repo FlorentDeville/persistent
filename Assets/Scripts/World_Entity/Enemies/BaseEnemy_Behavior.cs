@@ -7,6 +7,10 @@ namespace Persistent.WorldEntity
     {
         public float m_WaypointRadius;
 
+        public Transform m_BirthEffect;
+
+        public float m_BirthEffectDuration;
+
         public Transform m_DeathEffect;
 
         public float m_DeathEffectDuration;
@@ -16,6 +20,8 @@ namespace Persistent.WorldEntity
         private NavMeshAgent m_Agent;
 
         private FSMRunner m_Runner;
+
+        private GameObject m_BirthEffectInstance;
 
         // Use this for initialization
         void Start()
@@ -28,6 +34,10 @@ namespace Persistent.WorldEntity
             m_Runner.RegisterState<BaseEnemy_State_Death>();
 
             m_Runner.SetImmediateCurrentState((int)EnemyState.Birth);
+
+            Transform instance = (Transform)Instantiate(m_BirthEffect, transform.position, Quaternion.identity);
+            instance.parent = transform;
+            m_BirthEffectInstance = instance.gameObject;
         }
 
         // Update is called once per frame
@@ -40,11 +50,20 @@ namespace Persistent.WorldEntity
         {
             if(m_Runner != null)
                 m_Runner.StartState((int)EnemyState.Birth, "Spawn");
+
+            EnabledMeshRenderer(false);
         }
         
         public void SetSpawner(Spawner_Behavior _spawner)
         {
             m_Spawner = _spawner;
+        }
+
+        private void EnabledMeshRenderer(bool _enabled)
+        {
+            MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer renderer in renderers)
+                renderer.enabled = _enabled;
         }
 
         void OnTriggerEnter(Collider _col)
