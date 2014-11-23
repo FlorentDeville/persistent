@@ -87,6 +87,7 @@
      <Compile Include="Assets\Cinema Suite\Cinema Director\System\Editor\Utility\DirectorHelper.cs" />
      <Compile Include="Assets\Editor\CreateAsset_Dialog.cs" />
      <Compile Include="Assets\Editor\CreateAsset_DialogActor.cs" />
+     <Compile Include="Assets\Editor\Spawner_Behavior_Editor.cs" />
      <Compile Include="Assets\Editor\Trigger_PressButton_Editor.cs" />
      <Compile Include="Assets\Editor\Utilities\Helper.cs" />
      <None Include="Assets\Data\Dialog\dialog_Prison_Intro.xml" />
@@ -95,6 +96,7 @@
      <None Include="Assets\Materials\builtin_shaders-4.1.3\DefaultResources\Alpha-VertexLit.shader" />
      <None Include="Assets\Data\Shaders\Silouhette_Outlined.shader" />
      <None Include="Assets\Data\Dialog\prison_01.xml" />
+     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Data\Dialog\dialog_King_Intro.xml" />
      <None Include="Assets\Data\Shaders\Fog.shader" />
  <Reference Include="DirectorEditor">

@@ -133,6 +133,12 @@ namespace AssemblyCSharp
 			m_DefferedCurrentState = _NewState;
 			m_CurrentState = _NewState;
 		}
+
+        public void StartState(int _NewState, string _Reason)
+        {
+            m_EnteredState = false;
+            SetImmediateCurrentState(_NewState);
+        }
 		
 		public int GetCurrentState()
 		{
