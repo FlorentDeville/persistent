@@ -13,10 +13,6 @@ namespace Persistent.WorldEntity
 
         public Transform m_enemyPrefab;
 
-        public Transform m_SpawnEffect;
-
-        public float m_SpawnEffectDuration;
-
         public float m_DelayBeforeSpawn;
 
         private GameObject[] m_enemies;

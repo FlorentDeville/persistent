@@ -190,6 +190,7 @@
     <Compile Include="Assets\Scripts\World_Entity\Enemies\BaseEnemy_State.cs" />
     <Compile Include="Assets\Scripts\World_Entity\Sidekick_Entity\Sidekick_Behavior.cs" />
     <Compile Include="Assets\Scripts\World_Entity\Spawner\Spawner_Behavior.cs" />
+    <Compile Include="Assets\Scripts\World_Entity\StartScreen_GUI_Behavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Cinema Suite\Cinema Director\Example Scenes\Shaders\Additive.shader" />
