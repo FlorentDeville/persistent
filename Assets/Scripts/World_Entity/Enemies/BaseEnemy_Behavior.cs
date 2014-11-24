@@ -17,27 +17,32 @@ namespace Persistent.WorldEntity
 
         private Spawner_Behavior m_Spawner;
 
-        private NavMeshAgent m_Agent;
-
         private FSMRunner m_Runner;
 
         private GameObject m_BirthEffectInstance;
 
+        private GameObject m_DeathEffectInstance;
+
         // Use this for initialization
         void Start()
         {
-            m_Agent = GetComponent<NavMeshAgent>();
-
             m_Runner = new FSMRunner(gameObject);
             m_Runner.RegisterState<BaseEnemy_State_Birth>();
             m_Runner.RegisterState<BaseEnemy_State_Life>();
             m_Runner.RegisterState<BaseEnemy_State_Death>();
+            m_Runner.RegisterState<BaseEnemy_State_EndOfDeath>();
 
             m_Runner.SetImmediateCurrentState((int)EnemyState.Birth);
 
             Transform instance = (Transform)Instantiate(m_BirthEffect, transform.position, Quaternion.identity);
             instance.parent = transform;
             m_BirthEffectInstance = instance.gameObject;
+            m_BirthEffectInstance.SetActive(false);
+
+            instance = (Transform)Instantiate(m_DeathEffect, transform.position, Quaternion.identity);
+            instance.parent = transform;
+            m_DeathEffectInstance = instance.gameObject;
+            m_DeathEffectInstance.SetActive(false);
         }
 
         // Update is called once per frame
@@ -71,7 +76,9 @@ namespace Persistent.WorldEntity
             PlayerBehavior behavior = _col.GetComponent<PlayerBehavior>();
             if(behavior != null)
             {
-                m_Runner.SetCurrentState((int)EnemyState.Death, "Collision with player");
+                if(m_Runner.GetCurrentState() != (int)EnemyState.DeathEffect
+                    && m_Runner.GetCurrentState() != (int)EnemyState.WaitForEndOfDeathEffect)
+                    m_Runner.SetCurrentState((int)EnemyState.DeathEffect, "Collision with player");
             }
         }
     }
@@ -81,7 +88,8 @@ namespace Persistent.WorldEntity
         Undefined,
         Birth,
         Life,
-        Death,
+        DeathEffect,
+        WaitForEndOfDeathEffect,
         Count
     }
 }

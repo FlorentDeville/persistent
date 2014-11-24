@@ -19,9 +19,9 @@ namespace Persistent.WorldEntity
             public override void OnEnter()
             {
                 m_BirstStateStartTime = Time.fixedTime;
-                
-                Component[] components = m_Behavior.m_BirthEffectInstance.GetComponentsInChildren(typeof(ParticleEmitter));
 
+                m_Behavior.m_BirthEffectInstance.SetActive(true);
+                Component[] components = m_Behavior.m_BirthEffectInstance.GetComponentsInChildren(typeof(ParticleEmitter));
                 foreach (ParticleEmitter emitter in components)
                     emitter.emit = true;
             }
@@ -86,25 +86,56 @@ namespace Persistent.WorldEntity
         {
             private float m_StartTimeState;
 
-            private GameObject m_deathEffect;
-
-            public override int State { get { return (int)EnemyState.Death; } }
+            public override int State { get { return (int)EnemyState.DeathEffect; } }
 
             public override void OnEnter()
             {
                 m_StartTimeState = Time.fixedTime;
-                Transform instance = (Transform)Instantiate(m_Behavior.m_DeathEffect, m_GameObject.transform.position, Quaternion.identity);
-                m_deathEffect = instance.gameObject;
+                m_Behavior.m_DeathEffectInstance.SetActive(true);
+                Component[] components = m_Behavior.m_DeathEffectInstance.GetComponentsInChildren(typeof(ParticleEmitter));
+                foreach (ParticleEmitter emitter in components)
+                    emitter.emit = true;
             }
 
             public override void OnExecute()
             {
                 if(Time.fixedTime >= m_StartTimeState + m_Behavior.m_DeathEffectDuration)
                 {
+                    Component[] components = m_Behavior.m_DeathEffectInstance.GetComponentsInChildren(typeof(ParticleEmitter));
+                    foreach (ParticleEmitter emitter in components)
+                        emitter.emit = false;
+
+                    m_Behavior.EnabledMeshRenderer(false);
+                    m_Runner.SetCurrentState((int)EnemyState.WaitForEndOfDeathEffect, "timpe elapsed");
+                }
+            }
+        }
+
+        public class BaseEnemy_State_EndOfDeath : IFSMState<BaseEnemy_Behavior>
+        {
+            public override int State { get { return (int)EnemyState.WaitForEndOfDeathEffect; } }
+
+            public override void OnExecute()
+            {
+                bool effectOver = true;
+
+                Component[] components = m_Behavior.m_DeathEffectInstance.GetComponentsInChildren(typeof(ParticleEmitter));
+                foreach (ParticleEmitter emitter in components)
+                {
+                    if(emitter.particleCount != 0)
+                    {
+                        effectOver = false;
+                        break;
+                    }
+                }
+
+                if(effectOver)
+                {
                     m_Behavior.m_Spawner.OnEntityDies(m_GameObject);
-                    UnityEngine.Object.Destroy(m_deathEffect);
+                    m_Behavior.m_DeathEffectInstance.SetActive(false);
                     m_GameObject.SetActive(false);
                 }
+                    
             }
         }
     }

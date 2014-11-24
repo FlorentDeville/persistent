@@ -87,6 +87,7 @@ namespace Persistent.WorldEntity
         {
             Vector3 worldPos = transform.TransformPoint(_portal);
             Transform instance = (Transform)Instantiate(m_enemyPrefab, worldPos, Quaternion.identity);
+            instance.parent = transform;
             BaseEnemy_Behavior enemy = instance.gameObject.GetComponent<BaseEnemy_Behavior>();
             enemy.SetSpawner(this);
 
