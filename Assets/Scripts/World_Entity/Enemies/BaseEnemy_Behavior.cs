@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using AssemblyCSharp;
 
+using Assets.Scripts.Manager;
+
 namespace Persistent.WorldEntity
 {
     public partial class BaseEnemy_Behavior : MonoBehaviour
@@ -78,7 +80,10 @@ namespace Persistent.WorldEntity
             {
                 if(m_Runner.GetCurrentState() != (int)EnemyState.DeathEffect
                     && m_Runner.GetCurrentState() != (int)EnemyState.WaitForEndOfDeathEffect)
-                    m_Runner.SetCurrentState((int)EnemyState.DeathEffect, "Collision with player");
+                {
+                    m_Runner.SetCurrentState((int)EnemyState.DeathEffect, "collision with player");
+                    GameSceneManager.GetInstance().LoadCombatScene("Level_01_Combat_01");
+                }
             }
         }
     }

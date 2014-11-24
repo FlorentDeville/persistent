@@ -34,7 +34,7 @@ namespace Persistent
 				speed = m_Behavior.m_SlowSpeed;
 			
 			//Get the camera frame
-			GameObject camera = GameObject.Find("Main Camera");
+            GameObject camera = GameObject.Find("Main Camera");
 			if(camera == null)
 			{
 				Debug.LogError("Can't find game object called Main Camera");

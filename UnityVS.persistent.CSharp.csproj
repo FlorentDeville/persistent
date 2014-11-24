@@ -166,7 +166,6 @@
     <Compile Include="Assets\Scripts\Camera\CameraStateTravelling.cs" />
     <Compile Include="Assets\Scripts\Component\StickToGround.cs" />
     <Compile Include="Assets\Scripts\Debug\Dialog.cs" />
-    <Compile Include="Assets\Scripts\DialogManager.cs" />
     <Compile Include="Assets\Scripts\Extension\GizmosExtension.cs" />
     <Compile Include="Assets\Scripts\FSM\FSMRunner.cs" />
     <Compile Include="Assets\Scripts\FSM\IFSMState.cs" />
@@ -180,6 +179,8 @@
     <Compile Include="Assets\Scripts\Interaction\InteractionAnimationTrigger.cs" />
     <Compile Include="Assets\Scripts\Interaction\InteractionDialog.cs" />
     <Compile Include="Assets\Scripts\Interaction\Trigger\Trigger_PressButton.cs" />
+    <Compile Include="Assets\Scripts\Manager\DialogManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\GameSceneManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerBehavior.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerState.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStateWorld.cs" />
@@ -188,6 +189,8 @@
     <Compile Include="Assets\Scripts\Warehouse.cs" />
     <Compile Include="Assets\Scripts\World_Entity\Enemies\BaseEnemy_Behavior.cs" />
     <Compile Include="Assets\Scripts\World_Entity\Enemies\BaseEnemy_State.cs" />
+    <Compile Include="Assets\Scripts\World_Entity\Level_01_Combat_01_GUI_Behavior.cs" />
+    <Compile Include="Assets\Scripts\World_Entity\SceneRoot_Behavior.cs" />
     <Compile Include="Assets\Scripts\World_Entity\Sidekick_Entity\Sidekick_Behavior.cs" />
     <Compile Include="Assets\Scripts\World_Entity\Spawner\Spawner_Behavior.cs" />
     <Compile Include="Assets\Scripts\World_Entity\StartScreen_GUI_Behavior.cs" />
