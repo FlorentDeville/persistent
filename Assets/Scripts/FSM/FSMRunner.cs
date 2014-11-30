@@ -147,7 +147,7 @@ namespace AssemblyCSharp
 			m_CurrentState = _NewState;
 		}
 
-        public void StartState(int _NewState, string _Reason)
+        public void StartState(int _NewState)
         {
             m_EnteredState = false;
             SetImmediateCurrentState(_NewState);

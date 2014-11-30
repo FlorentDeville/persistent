@@ -27,7 +27,6 @@ namespace Persistent.WorldEntity
             for (int i = 0; i < m_portals.Length; ++i)
             {
                 m_enemies[i] = Instantiate(m_portals[i]);
-                Spawn(i);
                 m_DelayTimeStart[i] = -1;
             }
         }

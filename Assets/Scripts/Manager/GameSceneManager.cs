@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Scripts.Manager.Parameter;
+
+using System.Collections.Generic;
 
 using UnityEngine;
 
@@ -9,6 +11,8 @@ namespace Assets.Scripts.Manager
         private static GameSceneManager m_Instance = null;
 
         private Stack<GameObject> m_RootStack;
+
+        private ISceneParameter m_SceneParameter;
 
         private GameSceneManager()
         {

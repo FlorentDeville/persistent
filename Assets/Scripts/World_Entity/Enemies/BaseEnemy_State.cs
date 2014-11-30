@@ -28,7 +28,7 @@ namespace Persistent.WorldEntity
 
             public override void OnExecute()
             {
-                if (Time.fixedTime >= m_BirstStateStartTime + m_Behavior.m_BirthEffectDuration)
+                if (Time.fixedTime >= m_BirstStateStartTime + m_Behavior.m_WorldSettings.m_BirthEffectDuration)
                 {
                     Component[] components = m_Behavior.m_BirthEffectInstance.GetComponentsInChildren(typeof(ParticleEmitter));
 
@@ -41,7 +41,7 @@ namespace Persistent.WorldEntity
 
             public override void OnExit()
             {
-                m_Behavior.EnabledMeshRenderer(true);
+                m_Behavior.EnabledWorldMeshRenderer(true);
             }
         }
 
@@ -72,7 +72,7 @@ namespace Persistent.WorldEntity
                 m_Agent.SetDestination(worldPos);
 
                 Vector3 direction = worldPos - m_GameObject.transform.position;
-                if (direction.magnitude <= m_Behavior.m_WaypointRadius)
+                if (direction.magnitude <= m_Behavior.m_WorldSettings.m_WaypointRadius)
                     m_nextWaypointId = m_Spawner.GetNextWaypoint(m_nextWaypointId);
             }
 
@@ -99,13 +99,13 @@ namespace Persistent.WorldEntity
 
             public override void OnExecute()
             {
-                if(Time.fixedTime >= m_StartTimeState + m_Behavior.m_DeathEffectDuration)
+                if(Time.fixedTime >= m_StartTimeState + m_Behavior.m_WorldSettings.m_DeathEffectDuration)
                 {
                     Component[] components = m_Behavior.m_DeathEffectInstance.GetComponentsInChildren(typeof(ParticleEmitter));
                     foreach (ParticleEmitter emitter in components)
                         emitter.emit = false;
 
-                    m_Behavior.EnabledMeshRenderer(false);
+                    m_Behavior.EnabledWorldMeshRenderer(false);
                     m_Runner.SetCurrentState((int)EnemyState.WaitForEndOfDeathEffect, "timpe elapsed");
                 }
             }

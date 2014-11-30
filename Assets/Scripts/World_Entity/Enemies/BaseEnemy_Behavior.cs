@@ -5,17 +5,13 @@ using Assets.Scripts.Manager;
 
 namespace Persistent.WorldEntity
 {
+    [RequireComponent(typeof(BaseEnemy_WorldSettings))]
+    [RequireComponent(typeof(BaseEnemy_CombatSettings))]
     public partial class BaseEnemy_Behavior : MonoBehaviour
     {
-        public float m_WaypointRadius;
+        private BaseEnemy_WorldSettings m_WorldSettings;
 
-        public Transform m_BirthEffect;
-
-        public float m_BirthEffectDuration;
-
-        public Transform m_DeathEffect;
-
-        public float m_DeathEffectDuration;
+        private BaseEnemy_CombatSettings m_CombatSettings;
 
         private Spawner_Behavior m_Spawner;
 
@@ -28,23 +24,29 @@ namespace Persistent.WorldEntity
         // Use this for initialization
         void Start()
         {
+            m_WorldSettings = GetComponent<BaseEnemy_WorldSettings>();
+            m_CombatSettings = GetComponent<BaseEnemy_CombatSettings>();
+
             m_Runner = new FSMRunner(gameObject);
             m_Runner.RegisterState<BaseEnemy_State_Birth>();
             m_Runner.RegisterState<BaseEnemy_State_Life>();
             m_Runner.RegisterState<BaseEnemy_State_Death>();
             m_Runner.RegisterState<BaseEnemy_State_EndOfDeath>();
 
-            m_Runner.SetImmediateCurrentState((int)EnemyState.Birth);
-
-            Transform instance = (Transform)Instantiate(m_BirthEffect, transform.position, Quaternion.identity);
+            Transform instance = (Transform)Instantiate(m_WorldSettings.m_BirthEffect, transform.position, Quaternion.identity);
             instance.parent = transform;
             m_BirthEffectInstance = instance.gameObject;
             m_BirthEffectInstance.SetActive(false);
 
-            instance = (Transform)Instantiate(m_DeathEffect, transform.position, Quaternion.identity);
+            instance = (Transform)Instantiate(m_WorldSettings.m_DeathEffect, transform.position, Quaternion.identity);
             instance.parent = transform;
             m_DeathEffectInstance = instance.gameObject;
             m_DeathEffectInstance.SetActive(false);
+
+            m_Runner.StartState((int)EnemyState.Birth);
+
+            EnabledWorldMeshRenderer(false);
+            EnableCombatMeshRenderer(false);
         }
 
         // Update is called once per frame
@@ -56,9 +58,9 @@ namespace Persistent.WorldEntity
         public void OnSpawn()
         {
             if(m_Runner != null)
-                m_Runner.StartState((int)EnemyState.Birth, "Spawn");
+                m_Runner.StartState((int)EnemyState.Birth);
 
-            EnabledMeshRenderer(false);
+            EnabledWorldMeshRenderer(false);
         }
         
         public void SetSpawner(Spawner_Behavior _spawner)
@@ -66,11 +68,14 @@ namespace Persistent.WorldEntity
             m_Spawner = _spawner;
         }
 
-        private void EnabledMeshRenderer(bool _enabled)
+        private void EnabledWorldMeshRenderer(bool _enabled)
         {
-            MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
-            foreach (MeshRenderer renderer in renderers)
-                renderer.enabled = _enabled;
+            m_WorldSettings.m_Gfx.SetActive(_enabled);
+        }
+
+        private void EnableCombatMeshRenderer(bool _enabled)
+        {
+            m_CombatSettings.m_Gfx.SetActive(_enabled);
         }
 
         void OnTriggerEnter(Collider _col)
