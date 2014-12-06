@@ -161,6 +161,7 @@
     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TrackGroups\DirectorGroup.cs" />
     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TrackGroups\MultiActorTrackGroup.cs" />
     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TrackGroups\TrackGroup.cs" />
+    <Compile Include="Assets\Scripts\Entities\Combat\GameMaster.cs" />
     <Compile Include="Assets\Scripts\Assets\Core_Dialog.cs" />
     <Compile Include="Assets\Scripts\Assets\Core_DialogActor.cs" />
     <Compile Include="Assets\Scripts\Assets\Core_XmlDialog.cs" />
@@ -195,15 +196,15 @@
     <Compile Include="Assets\Scripts\Sequence\Sequence_AudioPlayer.cs" />
     <Compile Include="Assets\Scripts\Sequence\Sequence_DialogPlayer.cs" />
     <Compile Include="Assets\Scripts\Warehouse.cs" />
-    <Compile Include="Assets\Scripts\World_Entity\Enemies\BaseEnemy_Behavior.cs" />
-    <Compile Include="Assets\Scripts\World_Entity\Enemies\BaseEnemy_CombatSettings.cs" />
-    <Compile Include="Assets\Scripts\World_Entity\Enemies\BaseEnemy_State.cs" />
-    <Compile Include="Assets\Scripts\World_Entity\Enemies\BaseEnemy_WorldSettings.cs" />
-    <Compile Include="Assets\Scripts\World_Entity\Level_01_Combat_01_GUI_Behavior.cs" />
-    <Compile Include="Assets\Scripts\World_Entity\SceneRoot_Behavior.cs" />
-    <Compile Include="Assets\Scripts\World_Entity\Sidekick_Entity\Sidekick_Behavior.cs" />
-    <Compile Include="Assets\Scripts\World_Entity\Spawner\Spawner_Behavior.cs" />
-    <Compile Include="Assets\Scripts\World_Entity\StartScreen_GUI_Behavior.cs" />
+    <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_Behavior.cs" />
+    <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_CombatSettings.cs" />
+    <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_State.cs" />
+    <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_WorldSettings.cs" />
+    <Compile Include="Assets\Scripts\Entities\World\Level_01_Combat_01_GUI_Behavior.cs" />
+    <Compile Include="Assets\Scripts\Entities\World\SceneRoot_Behavior.cs" />
+    <Compile Include="Assets\Scripts\Entities\World\Sidekick_Entity\Sidekick_Behavior.cs" />
+    <Compile Include="Assets\Scripts\Entities\World\Spawner\Spawner_Behavior.cs" />
+    <Compile Include="Assets\Scripts\Entities\World\StartScreen_GUI_Behavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Cinema Suite\Cinema Director\Example Scenes\Shaders\Additive.shader" />
@@ -216,5 +217,6 @@
     <None Include="Assets\Materials\builtin_shaders-4.1.3\DefaultResources\Alpha-VertexLit.shader" />
     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

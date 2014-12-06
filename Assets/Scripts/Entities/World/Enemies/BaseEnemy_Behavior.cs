@@ -2,6 +2,7 @@
 using AssemblyCSharp;
 
 using Assets.Scripts.Manager;
+using Assets.Scripts.Manager.Parameter;
 
 namespace Persistent.WorldEntity
 {
@@ -87,7 +88,16 @@ namespace Persistent.WorldEntity
                     && m_Runner.GetCurrentState() != (int)EnemyState.WaitForEndOfDeathEffect)
                 {
                     m_Runner.SetCurrentState((int)EnemyState.DeathEffect, "collision with player");
-                    GameSceneManager.GetInstance().LoadCombatScene("Level_01_Combat_01");
+
+                    CombatSceneParameter param = new CombatSceneParameter();
+                    param.m_EnemiesPawns.AddRange(m_CombatSettings.m_PawnsPrefab);
+
+                    Transform prefabPawnPlayer = Resources.Load<Transform>("Prefabs/Pawns/Pawn_Player");
+                    Transform prefabPawnSidekick = Resources.Load<Transform>("Prefabs/Pawns/Pawn_Sidekick");
+                    param.m_PlayerPawns.Add(prefabPawnPlayer);
+                    param.m_PlayerPawns.Add(prefabPawnSidekick);
+
+                    GameSceneManager.GetInstance().LoadCombatScene("Level_01_Combat_01", param);
                 }
             }
         }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Manager.Parameter
 {
-    public class CombatSceneParameter
+    public class CombatSceneParameter : ISceneParameter
     {
         public List<Transform> m_PlayerPawns;
 

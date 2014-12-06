@@ -12,11 +12,12 @@ namespace Assets.Scripts.Manager
 
         private Stack<GameObject> m_RootStack;
 
-        private ISceneParameter m_SceneParameter;
+        private Stack<ISceneParameter> m_ParameterStack;
 
         private GameSceneManager()
         {
-            m_RootStack = new Stack<GameObject>(); 
+            m_RootStack = new Stack<GameObject>();
+            m_ParameterStack = new Stack<ISceneParameter>();
         }
         
         public static GameSceneManager GetInstance()
@@ -34,10 +35,12 @@ namespace Assets.Scripts.Manager
             m_Instance = null;
         }
 
-        public void LoadCombatScene(string _sceneName)
+        public void LoadCombatScene(string _sceneName, ISceneParameter _parameter)
         {
             m_RootStack.Peek().SetActive(false);
             Application.LoadLevelAdditive(_sceneName);
+
+            m_ParameterStack.Push(_parameter);
         }
 
         public void PushCurrentRoot()
@@ -48,6 +51,8 @@ namespace Assets.Scripts.Manager
 
         public GameObject Pop(bool _destroy)
         {
+            m_ParameterStack.Pop();
+
             GameObject top = m_RootStack.Pop();
             top.SetActive(false);
             m_RootStack.Peek().SetActive(true);
@@ -60,6 +65,12 @@ namespace Assets.Scripts.Manager
 
             return top;
             
+        }
+
+        public T GetParameter<T>()
+            where T : ISceneParameter
+        {
+            return (T)m_ParameterStack.Peek();
         }
 
     }

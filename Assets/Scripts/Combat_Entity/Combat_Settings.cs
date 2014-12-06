@@ -16,7 +16,7 @@ public class Combat_Settings : MonoBehaviour
 	// Use this for initialization
 	void Start () 
     {
-	
+	    
 	}
 	
 	// Update is called once per frame
@@ -48,5 +48,27 @@ public class Combat_Settings : MonoBehaviour
             }
 
         }
+    }
+
+    public Vector3 ComputePawnEnemyGlobalPosition(int id)
+    {
+        return gameObject.transform.TransformPoint(m_PawnsEnemyPosition[id].m_Position);
+    }
+
+    public Quaternion ComputePawnEnemyGlobalOrientation(int id)
+    {
+        Quaternion localRotation = Quaternion.Euler(m_PawnsEnemyPosition[id].m_Rotation);
+        return gameObject.transform.localRotation * localRotation;
+    }
+
+    public Vector3 ComputePawnPlayerGlobalPosition(int id)
+    {
+        return gameObject.transform.TransformPoint(m_PawnsPlayerPosition[id].m_Position);
+    }
+
+    public Quaternion ComputePawnPlayerGlobalOrientation(int id)
+    {
+        Quaternion localRotation = Quaternion.Euler(m_PawnsPlayerPosition[id].m_Rotation);
+        return gameObject.transform.localRotation * localRotation;
     }
 }
