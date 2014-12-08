@@ -154,6 +154,7 @@
      <Compile Include="Assets\Scripts\Component\StickToGround.cs" />
      <Compile Include="Assets\Scripts\Debug\Dialog.cs" />
      <Compile Include="Assets\Scripts\Entities\Combat\GameMaster.cs" />
+     <Compile Include="Assets\Scripts\Entities\Combat\PawnStatistics.cs" />
      <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_Behavior.cs" />
      <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_CombatSettings.cs" />
      <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_State.cs" />

@@ -7,16 +7,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{82C52EEB-7874-BD41-595D-AABCA0FA91F6}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>4.6.0f3</UnityVersion>
@@ -161,7 +159,6 @@
     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TrackGroups\DirectorGroup.cs" />
     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TrackGroups\MultiActorTrackGroup.cs" />
     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TrackGroups\TrackGroup.cs" />
-    <Compile Include="Assets\Scripts\Entities\Combat\GameMaster.cs" />
     <Compile Include="Assets\Scripts\Assets\Core_Dialog.cs" />
     <Compile Include="Assets\Scripts\Assets\Core_DialogActor.cs" />
     <Compile Include="Assets\Scripts\Assets\Core_XmlDialog.cs" />
@@ -173,6 +170,17 @@
     <Compile Include="Assets\Scripts\Combat_Entity\Combat_Settings.cs" />
     <Compile Include="Assets\Scripts\Component\StickToGround.cs" />
     <Compile Include="Assets\Scripts\Debug\Dialog.cs" />
+    <Compile Include="Assets\Scripts\Entities\Combat\GameMaster.cs" />
+    <Compile Include="Assets\Scripts\Entities\Combat\PawnStatistics.cs" />
+    <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_Behavior.cs" />
+    <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_CombatSettings.cs" />
+    <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_State.cs" />
+    <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_WorldSettings.cs" />
+    <Compile Include="Assets\Scripts\Entities\World\Level_01_Combat_01_GUI_Behavior.cs" />
+    <Compile Include="Assets\Scripts\Entities\World\SceneRoot_Behavior.cs" />
+    <Compile Include="Assets\Scripts\Entities\World\Sidekick_Entity\Sidekick_Behavior.cs" />
+    <Compile Include="Assets\Scripts\Entities\World\Spawner\Spawner_Behavior.cs" />
+    <Compile Include="Assets\Scripts\Entities\World\StartScreen_GUI_Behavior.cs" />
     <Compile Include="Assets\Scripts\Extension\GizmosExtension.cs" />
     <Compile Include="Assets\Scripts\FSM\FSMRunner.cs" />
     <Compile Include="Assets\Scripts\FSM\IFSMState.cs" />
@@ -196,15 +204,6 @@
     <Compile Include="Assets\Scripts\Sequence\Sequence_AudioPlayer.cs" />
     <Compile Include="Assets\Scripts\Sequence\Sequence_DialogPlayer.cs" />
     <Compile Include="Assets\Scripts\Warehouse.cs" />
-    <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_Behavior.cs" />
-    <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_CombatSettings.cs" />
-    <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_State.cs" />
-    <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_WorldSettings.cs" />
-    <Compile Include="Assets\Scripts\Entities\World\Level_01_Combat_01_GUI_Behavior.cs" />
-    <Compile Include="Assets\Scripts\Entities\World\SceneRoot_Behavior.cs" />
-    <Compile Include="Assets\Scripts\Entities\World\Sidekick_Entity\Sidekick_Behavior.cs" />
-    <Compile Include="Assets\Scripts\Entities\World\Spawner\Spawner_Behavior.cs" />
-    <Compile Include="Assets\Scripts\Entities\World\StartScreen_GUI_Behavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Cinema Suite\Cinema Director\Example Scenes\Shaders\Additive.shader" />
@@ -217,6 +216,5 @@
     <None Include="Assets\Materials\builtin_shaders-4.1.3\DefaultResources\Alpha-VertexLit.shader" />
     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>
