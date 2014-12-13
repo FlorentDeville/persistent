@@ -36,6 +36,11 @@ public class PawnStatistics : MonoBehaviour
 
     public float m_WepMGDefCritic { get; set; }
 
+    public float m_Priority;
+
+    public float m_PriorityIncrease;
+
+    public bool m_IsControlledByPlayer;
 
 	// Use this for initialization
 	void Start () 

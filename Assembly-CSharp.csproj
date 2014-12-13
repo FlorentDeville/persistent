@@ -154,6 +154,9 @@
      <Compile Include="Assets\Scripts\Component\StickToGround.cs" />
      <Compile Include="Assets\Scripts\Debug\Dialog.cs" />
      <Compile Include="Assets\Scripts\Entities\Combat\GameMaster.cs" />
+     <Compile Include="Assets\Scripts\Entities\Combat\GameMaster_State\GameMaster_State_Init.cs" />
+     <Compile Include="Assets\Scripts\Entities\Combat\GameTurn.cs" />
+     <Compile Include="Assets\Scripts\Entities\Combat\GameTurnManager.cs" />
      <Compile Include="Assets\Scripts\Entities\Combat\PawnStatistics.cs" />
      <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_Behavior.cs" />
      <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_CombatSettings.cs" />
