@@ -10,6 +10,8 @@ using AssemblyCSharp;
 [RequireComponent(typeof(Combat_Settings))]
 public partial class GameMaster : MonoBehaviour 
 {
+    public CombatUI m_CombatUI;
+
     public enum GameMasterState
     {
         Init,
@@ -36,6 +38,11 @@ public partial class GameMaster : MonoBehaviour
     {
         m_Runner = new FSMRunner(gameObject);
         m_Runner.RegisterState<GameMaster_State_Init>();
+        m_Runner.RegisterState<GameMaster_State_RunSingleTurn>();
+        m_Runner.RegisterState<GameMaster_State_CheckGoal>();
+        m_Runner.RegisterState<GameMaster_State_GameOver>();
+        m_Runner.RegisterState<GameMaster_State_Victory>();
+        m_Runner.RegisterState<GameMaster_State_Terminate>();
         m_Runner.RegisterState<GameMaster_State_DummyLoop>();
         m_Runner.StartState((int)GameMasterState.Init);
 

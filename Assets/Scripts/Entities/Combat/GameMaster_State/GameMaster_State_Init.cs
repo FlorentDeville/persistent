@@ -10,6 +10,7 @@ public partial class GameMaster : MonoBehaviour
         public override void OnEnter()
         {
             m_Behavior.m_TurnManager.Init();
+            m_Behavior.m_CombatUI.UpdateTurnHistory(m_Behavior.m_TurnManager);
         }
     }
 
