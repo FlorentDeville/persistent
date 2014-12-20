@@ -13,8 +13,8 @@ namespace Assets.Scripts.Entities.Combat
         public int m_TurnPredictionCount;
         
         private List<GameObject> m_Pawns;
-        private List<GameObject> m_PlayerPawns;
-        private List<GameObject> m_EnemiesPawns;
+        public List<GameObject> m_PlayerPawns;
+        public List<GameObject> m_EnemiesPawns;
         private List<GameObject> m_OrderedPawns;
 
         public GameTurnManager(List<GameObject> _pawns)
@@ -67,6 +67,28 @@ namespace Assets.Scripts.Entities.Combat
             }
 
             ComputePredictionTurns();
+        }
+
+        public GameObject GetCurrentPawn()
+        {
+            return m_currentTurn.m_Pawns[m_PlayingPawnIdInCurrentTurn];
+        }
+
+        public PawnStatistics GetCurrentPawnStatistics()
+        {
+            GameObject obj = GetCurrentPawn();
+
+            return obj.GetComponent<PawnStatistics>();
+        }
+
+        public bool IsLastPawnInCurrentTurn()
+        {
+            return m_currentTurn.m_Pawns.Count - 1 == m_PlayingPawnIdInCurrentTurn;
+        }
+
+        public void MoveToNextPawnTurn()
+        {
+            ++m_PlayingPawnIdInCurrentTurn;
         }
 
         private void ComputePredictionTurns()

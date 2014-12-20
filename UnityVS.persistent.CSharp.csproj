@@ -186,9 +186,11 @@
     <Compile Include="Assets\Scripts\Entities\Combat\GameMaster_State\RunSingleTurn_State\RunSingleTurn_State_RunAction.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\GameTurn.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\GameTurnManager.cs" />
+    <Compile Include="Assets\Scripts\Entities\Combat\PawnMagicInventory.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\PawnStatistics.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\PawnUI.cs" />
-    <Compile Include="Assets\Scripts\Entities\UI\CombatUI.cs" />
+    <Compile Include="Assets\Scripts\Entities\UI\CombatUI_TurnHistory.cs" />
+    <Compile Include="Assets\Scripts\Entities\UI\CombatUI_PawnState.cs" />
     <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_Behavior.cs" />
     <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_CombatSettings.cs" />
     <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_State.cs" />
@@ -220,6 +222,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerStateWorld.cs" />
     <Compile Include="Assets\Scripts\Sequence\Sequence_AudioPlayer.cs" />
     <Compile Include="Assets\Scripts\Sequence\Sequence_DialogPlayer.cs" />
+    <Compile Include="Assets\Scripts\UI\CancelButton.cs" />
     <Compile Include="Assets\Scripts\Warehouse.cs" />
   </ItemGroup>
   <ItemGroup>

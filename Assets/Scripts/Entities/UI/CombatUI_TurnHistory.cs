@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CombatUI : MonoBehaviour
+public class CombatUI_TurnHistory : MonoBehaviour
 {
     public GameObject[] m_HistoryTurnImages;
 
@@ -25,7 +25,7 @@ public class CombatUI : MonoBehaviour
         //Set the prediction turn
         foreach(GameTurn turnPrediction in _manager.m_TurnPredictions)
         {
-            foreach (GameObject pawnGameObject in currentTurn.m_Pawns)
+            foreach (GameObject pawnGameObject in turnPrediction.m_Pawns)
             {
                 if (currentTurnId >= historyCount)
                     return;

@@ -7,14 +7,16 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{448541C7-2AEC-0DD0-4AD7-7AF16503F1B7}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>4.6.1p1</UnityVersion>
@@ -127,6 +129,7 @@
     <Compile Include="Assets\Editor\Combat_Settings_Editor.cs" />
     <Compile Include="Assets\Editor\CreateAsset_Dialog.cs" />
     <Compile Include="Assets\Editor\CreateAsset_DialogActor.cs" />
+    <Compile Include="Assets\Editor\Inspector\CancelButtonInspector.cs" />
     <Compile Include="Assets\Editor\Spawner_Behavior_Editor.cs" />
     <Compile Include="Assets\Editor\Trigger_PressButton_Editor.cs" />
     <Compile Include="Assets\Editor\Utilities\Helper.cs" />

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 using Assets.Scripts.Manager.Parameter;
@@ -6,11 +7,22 @@ using Assets.Scripts.Manager;
 using Assets.Scripts.Entities.Combat;
 
 using AssemblyCSharp;
+using Assets.Scripts.Entities.UI;
 
 [RequireComponent(typeof(Combat_Settings))]
 public partial class GameMaster : MonoBehaviour 
 {
-    public CombatUI m_CombatUI;
+    public UnityEngine.EventSystems.EventSystem m_EventSystem;
+
+    public CombatUI_TurnHistory m_UITurnHistory;
+
+    public CombatUI_PawnState[] m_UIPawnState;
+
+    public Button m_AttackButton;
+
+    public CancelButton[] m_UIAttackEnemyButtons;
+
+    public GameObject m_Cursor;
 
     public enum GameMasterState
     {
@@ -97,6 +109,8 @@ public partial class GameMaster : MonoBehaviour
         }
 
         m_TurnManager = new GameTurnManager(m_Pawns);
+
+        HideAllAttackEnemiesButtons();
 	}
 	
 	// Update is called once per frame
@@ -104,4 +118,52 @@ public partial class GameMaster : MonoBehaviour
     {
         m_Runner.Update();
 	}
+
+    void OnAttackClicked()
+    {
+        int enemyCount = m_TurnManager.m_EnemiesPawns.Count;
+        for(int i = 0; i < enemyCount; ++i)
+        {
+            GameObject obj = m_TurnManager.m_EnemiesPawns[i];
+
+            CancelButton btn = m_UIAttackEnemyButtons[i];
+            btn.gameObject.SetActive(true);
+            Text txt = btn.transform.GetComponentInChildren<Text>();
+            txt.text = m_TurnManager.m_EnemiesPawns[i].name;
+            btn.onClick.AddListener(() =>
+                {
+                    Debug.Log(string.Format("select enemy {0}", txt.text));
+                });
+
+            btn.onCancel.AddListener(() =>
+                {
+                    HideAllAttackEnemiesButtons();
+                    m_AttackButton.Select();
+                    //m_EventSystem.SetSelectedGameObject(m_AttackButton.gameObject);
+                    m_Cursor.SetActive(false);
+                });
+
+            btn.onSelect.AddListener(() =>
+                {
+                    Vector3 camPosition = Camera.main.WorldToScreenPoint(obj.transform.position);
+                    m_Cursor.transform.position = camPosition;
+                });
+        }
+
+        for(int i = enemyCount; i < m_UIAttackEnemyButtons.Length; ++i)
+        {
+            Button btn = m_UIAttackEnemyButtons[i];
+            btn.gameObject.SetActive(false);
+        }
+
+        m_UIAttackEnemyButtons[0].Select();
+        //m_EventSystem.SetSelectedGameObject(m_UIAttackEnemyButtons[0].gameObject);
+        m_Cursor.SetActive(true);
+    }
+
+    void HideAllAttackEnemiesButtons()
+    {
+        foreach (Button btn in m_UIAttackEnemyButtons)
+            btn.gameObject.SetActive(false);
+    }
 }

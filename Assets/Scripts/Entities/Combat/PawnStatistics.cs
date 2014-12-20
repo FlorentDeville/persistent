@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PawnStatistics : MonoBehaviour 
 {
+    public string m_PawnName;
 
     public float m_Atk;
 
