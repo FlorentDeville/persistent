@@ -105,6 +105,12 @@ namespace AssemblyCSharp
             return newState;
         }
 		
+        public StateType GetStateObject<StateType>(int _state)
+            where StateType : IState
+        {
+            return (StateType)m_StatesList[_state];
+        }
+
 		public void SetCurrentState(int _NewState, string _Reason)
 		{
 			if(m_NextStateLocked)

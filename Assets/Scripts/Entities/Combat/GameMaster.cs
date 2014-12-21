@@ -19,10 +19,14 @@ public partial class GameMaster : MonoBehaviour
     public CombatUI_PawnState[] m_UIPawnState;
 
     public Button m_AttackButton;
+    public Button m_MagicButton;
+    public Button m_ItemsButton;
 
     public CancelButton[] m_UIAttackEnemyButtons;
 
     public GameObject m_Cursor;
+
+    public Canvas m_CanvasActions;
 
     public enum GameMasterState
     {
@@ -129,18 +133,21 @@ public partial class GameMaster : MonoBehaviour
             CancelButton btn = m_UIAttackEnemyButtons[i];
             btn.gameObject.SetActive(true);
             Text txt = btn.transform.GetComponentInChildren<Text>();
-            txt.text = m_TurnManager.m_EnemiesPawns[i].name;
+            txt.text = m_TurnManager.m_EnemiesPawns[i].GetComponent<PawnStatistics>().m_PawnName;
             btn.onClick.AddListener(() =>
                 {
                     Debug.Log(string.Format("select enemy {0}", txt.text));
+                    SetSelectedAction(string.Format("Attack {0}", txt.text));
+                    HideAllAttackEnemiesButtons();
                 });
 
             btn.onCancel.AddListener(() =>
                 {
                     HideAllAttackEnemiesButtons();
                     m_AttackButton.Select();
-                    //m_EventSystem.SetSelectedGameObject(m_AttackButton.gameObject);
                     m_Cursor.SetActive(false);
+                    m_MagicButton.gameObject.SetActive(true);
+                    m_ItemsButton.gameObject.SetActive(true);
                 });
 
             btn.onSelect.AddListener(() =>
@@ -157,13 +164,21 @@ public partial class GameMaster : MonoBehaviour
         }
 
         m_UIAttackEnemyButtons[0].Select();
-        //m_EventSystem.SetSelectedGameObject(m_UIAttackEnemyButtons[0].gameObject);
         m_Cursor.SetActive(true);
+        m_MagicButton.gameObject.SetActive(false);
+        m_ItemsButton.gameObject.SetActive(false);
     }
 
     void HideAllAttackEnemiesButtons()
     {
         foreach (Button btn in m_UIAttackEnemyButtons)
             btn.gameObject.SetActive(false);
+    }
+
+    void SetSelectedAction(object _obj)
+    {
+        GameMaster_State_RunSingleTurn runSingleTurnState = m_Runner.GetStateObject<GameMaster_State_RunSingleTurn>((int)GameMasterState.RunSingleTurn);
+        GameMaster_State_RunSingleTurn.RunSingleTurn_State_PlayerTurn playerTurn = runSingleTurnState.GetStateObject<GameMaster_State_RunSingleTurn.RunSingleTurn_State_PlayerTurn>(GameMaster.GameMaster_State_RunSingleTurn.RunSingleTurnState.PlayerTurn);
+        playerTurn.SetSelectedAction(_obj);
     }
 }

@@ -145,11 +145,6 @@
      <Compile Include="Assets\Scripts\Assets\Core_Dialog.cs" />
      <Compile Include="Assets\Scripts\Assets\Core_DialogActor.cs" />
      <Compile Include="Assets\Scripts\Assets\Core_XmlDialog.cs" />
-     <Compile Include="Assets\Scripts\Camera\CameraBehavior.cs" />
-     <Compile Include="Assets\Scripts\Camera\CameraState.cs" />
-     <Compile Include="Assets\Scripts\Camera\CameraStateFixed.cs" />
-     <Compile Include="Assets\Scripts\Camera\CameraStateFollowing.cs" />
-     <Compile Include="Assets\Scripts\Camera\CameraStateTravelling.cs" />
      <Compile Include="Assets\Scripts\Combat_Entity\Combat_Settings.cs" />
      <Compile Include="Assets\Scripts\Component\StickToGround.cs" />
      <Compile Include="Assets\Scripts\Debug\Dialog.cs" />
@@ -172,6 +167,11 @@
      <Compile Include="Assets\Scripts\Entities\Combat\PawnUI.cs" />
      <Compile Include="Assets\Scripts\Entities\UI\CombatUI_PawnState.cs" />
      <Compile Include="Assets\Scripts\Entities\UI\CombatUI_TurnHistory.cs" />
+     <Compile Include="Assets\Scripts\Entities\World\Camera\CameraBehavior.cs" />
+     <Compile Include="Assets\Scripts\Entities\World\Camera\CameraState.cs" />
+     <Compile Include="Assets\Scripts\Entities\World\Camera\CameraStateFixed.cs" />
+     <Compile Include="Assets\Scripts\Entities\World\Camera\CameraStateFollowing.cs" />
+     <Compile Include="Assets\Scripts\Entities\World\Camera\CameraStateTravelling.cs" />
      <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_Behavior.cs" />
      <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_CombatSettings.cs" />
      <Compile Include="Assets\Scripts\Entities\World\Enemies\BaseEnemy_State.cs" />

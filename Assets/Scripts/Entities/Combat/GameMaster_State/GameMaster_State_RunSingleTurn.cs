@@ -37,5 +37,11 @@ public partial class GameMaster : MonoBehaviour
         {
             m_InnerRunner.Update();
         }
+
+        public StateType GetStateObject<StateType>(RunSingleTurnState _state)
+            where StateType : IState
+        {
+            return m_InnerRunner.GetStateObject<StateType>((int)_state);
+        }
     }
 }
