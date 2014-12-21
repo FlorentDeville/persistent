@@ -130,6 +130,7 @@
     <Compile Include="Assets\Editor\CreateAsset_Dialog.cs" />
     <Compile Include="Assets\Editor\CreateAsset_DialogActor.cs" />
     <Compile Include="Assets\Editor\Inspector\CancelButtonInspector.cs" />
+    <Compile Include="Assets\Editor\Inspector\PawnActionsInspector.cs" />
     <Compile Include="Assets\Editor\Spawner_Behavior_Editor.cs" />
     <Compile Include="Assets\Editor\Trigger_PressButton_Editor.cs" />
     <Compile Include="Assets\Editor\Utilities\Helper.cs" />

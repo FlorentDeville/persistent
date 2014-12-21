@@ -1,11 +1,14 @@
 ﻿using AssemblyCSharp;
 using UnityEngine;
+using Assets.Scripts.Component.Actions;
 
 public partial class GameMaster : MonoBehaviour
 {
     public partial class GameMaster_State_RunSingleTurn : IFSMState<GameMaster>
     {
         private FSMRunner m_InnerRunner;
+
+        private IAction m_SelectedAction;
 
         public enum RunSingleTurnState
         {
@@ -36,6 +39,18 @@ public partial class GameMaster : MonoBehaviour
         public override void OnExecute()
         {
             m_InnerRunner.Update();
+        }
+
+        public void SetSelectedAction(IAction _act)
+        {
+            RunSingleTurn_State_PlayerTurn playerTurn = GetStateObject<RunSingleTurn_State_PlayerTurn>(RunSingleTurnState.PlayerTurn);
+            playerTurn.SetSelectedAction();
+            m_SelectedAction = _act;
+        }
+
+        public IAction GetSelectedAction()
+        {
+            return m_SelectedAction;
         }
 
         public StateType GetStateObject<StateType>(RunSingleTurnState _state)

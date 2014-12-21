@@ -146,6 +146,8 @@
      <Compile Include="Assets\Scripts\Assets\Core_DialogActor.cs" />
      <Compile Include="Assets\Scripts\Assets\Core_XmlDialog.cs" />
      <Compile Include="Assets\Scripts\Combat_Entity\Combat_Settings.cs" />
+     <Compile Include="Assets\Scripts\Component\Actions\ActionCloseAttack.cs" />
+     <Compile Include="Assets\Scripts\Component\Actions\IAction.cs" />
      <Compile Include="Assets\Scripts\Component\StickToGround.cs" />
      <Compile Include="Assets\Scripts\Debug\Dialog.cs" />
      <Compile Include="Assets\Scripts\Entities\Combat\GameMaster.cs" />
@@ -162,6 +164,7 @@
      <Compile Include="Assets\Scripts\Entities\Combat\GameMaster_State\RunSingleTurn_State\RunSingleTurn_State_RunAction.cs" />
      <Compile Include="Assets\Scripts\Entities\Combat\GameTurn.cs" />
      <Compile Include="Assets\Scripts\Entities\Combat\GameTurnManager.cs" />
+     <Compile Include="Assets\Scripts\Entities\Combat\PawnActions.cs" />
      <Compile Include="Assets\Scripts\Entities\Combat\PawnMagicInventory.cs" />
      <Compile Include="Assets\Scripts\Entities\Combat\PawnStatistics.cs" />
      <Compile Include="Assets\Scripts\Entities\Combat\PawnUI.cs" />

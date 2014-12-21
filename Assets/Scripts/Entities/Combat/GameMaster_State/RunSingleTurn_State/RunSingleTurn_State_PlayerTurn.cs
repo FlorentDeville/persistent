@@ -1,5 +1,6 @@
 ﻿using AssemblyCSharp;
 using UnityEngine;
+using Assets.Scripts.Component.Actions;
 
 public partial class GameMaster : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public partial class GameMaster : MonoBehaviour
             public override int State { get { return (int)RunSingleTurnState.PlayerTurn; } }
 
             private bool m_IsActionSelected;
-            private object m_SelectedAction;
+            //private IAction m_SelectedAction;
 
             public override void OnEnter()
             {
@@ -29,9 +30,9 @@ public partial class GameMaster : MonoBehaviour
                 m_Behavior.m_CanvasActions.gameObject.SetActive(false);
             }
 
-            public void SetSelectedAction(object _obj)
+            public void SetSelectedAction()
             {
-                m_SelectedAction = _obj;
+                //m_SelectedAction = _act;
                 m_IsActionSelected = true;
             }
         }

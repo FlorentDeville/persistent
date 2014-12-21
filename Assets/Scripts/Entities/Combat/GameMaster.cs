@@ -8,6 +8,7 @@ using Assets.Scripts.Entities.Combat;
 
 using AssemblyCSharp;
 using Assets.Scripts.Entities.UI;
+using Assets.Scripts.Component.Actions;
 
 [RequireComponent(typeof(Combat_Settings))]
 public partial class GameMaster : MonoBehaviour 
@@ -137,8 +138,12 @@ public partial class GameMaster : MonoBehaviour
             btn.onClick.AddListener(() =>
                 {
                     Debug.Log(string.Format("select enemy {0}", txt.text));
-                    SetSelectedAction(string.Format("Attack {0}", txt.text));
                     HideAllAttackEnemiesButtons();
+
+                    IAction attackAction = m_TurnManager.GetCurrentPawn().GetComponent<PawnActions>().GetAttackAction();
+                    attackAction.SetTarget(obj);
+                    SetSelectedAction(attackAction);
+
                 });
 
             btn.onCancel.AddListener(() =>
@@ -175,10 +180,16 @@ public partial class GameMaster : MonoBehaviour
             btn.gameObject.SetActive(false);
     }
 
-    void SetSelectedAction(object _obj)
+    void SetSelectedAction(IAction _act)
     {
-        GameMaster_State_RunSingleTurn runSingleTurnState = m_Runner.GetStateObject<GameMaster_State_RunSingleTurn>((int)GameMasterState.RunSingleTurn);
-        GameMaster_State_RunSingleTurn.RunSingleTurn_State_PlayerTurn playerTurn = runSingleTurnState.GetStateObject<GameMaster_State_RunSingleTurn.RunSingleTurn_State_PlayerTurn>(GameMaster.GameMaster_State_RunSingleTurn.RunSingleTurnState.PlayerTurn);
-        playerTurn.SetSelectedAction(_obj);
+        GameMaster_State_RunSingleTurn runSingleTurnState = GetRunSingleTurnState();//m_Runner.GetStateObject<GameMaster_State_RunSingleTurn>((int)GameMasterState.RunSingleTurn);
+        runSingleTurnState.SetSelectedAction(_act);
+        //GameMaster_State_RunSingleTurn.RunSingleTurn_State_PlayerTurn playerTurn = runSingleTurnState.GetStateObject<GameMaster_State_RunSingleTurn.RunSingleTurn_State_PlayerTurn>(GameMaster.GameMaster_State_RunSingleTurn.RunSingleTurnState.PlayerTurn);
+        //playerTurn.SetSelectedAction(_act);
+    }
+
+    GameMaster_State_RunSingleTurn GetRunSingleTurnState()
+    {
+        return m_Runner.GetStateObject<GameMaster_State_RunSingleTurn>((int)GameMasterState.RunSingleTurn);
     }
 }
