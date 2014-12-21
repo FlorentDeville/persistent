@@ -16,7 +16,8 @@ public partial class GameMaster : MonoBehaviour
             PlayerTurn,
             AITurn,
             RunAction,
-            Resolve
+            Resolve,
+            Over
         }
 
         public override int State { get { return (int)GameMasterState.RunSingleTurn; } }
@@ -29,6 +30,7 @@ public partial class GameMaster : MonoBehaviour
             m_InnerRunner.RegisterState<RunSingleTurn_State_AITurn>();
             m_InnerRunner.RegisterState<RunSingleTurn_State_RunAction>();
             m_InnerRunner.RegisterState<RunSingleTurn_State_Resolve>();
+            m_InnerRunner.RegisterState<RunSingleTurn_State_Over>();
         }
 
         public override void OnEnter()
@@ -39,6 +41,10 @@ public partial class GameMaster : MonoBehaviour
         public override void OnExecute()
         {
             m_InnerRunner.Update();
+            if(m_InnerRunner.GetCurrentState() == (int)RunSingleTurnState.Over)
+            {
+                m_Runner.SetCurrentState((int)GameMasterState.CheckGoal, "turn over");
+            }
         }
 
         public void SetSelectedAction(IAction _act)

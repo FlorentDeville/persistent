@@ -15,7 +15,8 @@ public partial class GameMaster : MonoBehaviour
 
             public override void OnEnter()
             {
-                m_Behavior.m_CanvasActions.gameObject.SetActive(true);
+                //m_Behavior.m_CanvasActions.gameObject.SetActive(true);
+                m_Behavior.m_ActionsMenu.ActivateMenu();
                 m_IsActionSelected = false;
             }
 
@@ -27,7 +28,8 @@ public partial class GameMaster : MonoBehaviour
 
             public override void OnExit()
             {
-                m_Behavior.m_CanvasActions.gameObject.SetActive(false);
+                m_Behavior.m_ActionsMenu.DeactivateMenu();
+                //m_Behavior.m_CanvasActions.gameObject.SetActive(false);
             }
 
             public void SetSelectedAction()

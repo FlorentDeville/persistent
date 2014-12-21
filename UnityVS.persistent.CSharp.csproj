@@ -166,7 +166,9 @@
     <Compile Include="Assets\Scripts\Assets\Core_XmlDialog.cs" />
     <Compile Include="Assets\Scripts\Component\Actions\ActionCloseAttack.cs" />
     <Compile Include="Assets\Scripts\Component\Actions\IAction.cs" />
+    <Compile Include="Assets\Scripts\Entities\Combat\GameMaster_State\RunSingleTurn_State\RunSingleTurn_State_Over.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\PawnActions.cs" />
+    <Compile Include="Assets\Scripts\Entities\UI\CombatUI_CanvasActions.cs" />
     <Compile Include="Assets\Scripts\Entities\World\Camera\CameraBehavior.cs" />
     <Compile Include="Assets\Scripts\Entities\World\Camera\CameraState.cs" />
     <Compile Include="Assets\Scripts\Entities\World\Camera\CameraStateFixed.cs" />

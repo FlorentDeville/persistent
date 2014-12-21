@@ -19,6 +19,8 @@ public partial class GameMaster : MonoBehaviour
 
     public CombatUI_PawnState[] m_UIPawnState;
 
+    public CombatUI_CanvasActions m_ActionsMenu;
+
     public Button m_AttackButton;
     public Button m_MagicButton;
     public Button m_ItemsButton;
@@ -27,7 +29,7 @@ public partial class GameMaster : MonoBehaviour
 
     public GameObject m_Cursor;
 
-    public Canvas m_CanvasActions;
+    //public Canvas m_CanvasActions;
 
     public enum GameMasterState
     {
