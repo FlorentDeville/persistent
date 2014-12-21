@@ -13,8 +13,9 @@ public class CombatUI_TurnHistory : MonoBehaviour
         //Set the current turn
         GameTurn currentTurn = _manager.m_currentTurn;
         int currentTurnId = 0;
-        foreach(GameObject pawnGameObject in currentTurn.m_Pawns)
+        for (int i = _manager.m_PlayingPawnIdInCurrentTurn; i < currentTurn.m_Pawns.Count; ++i)
         {
+            GameObject pawnGameObject = currentTurn.m_Pawns[i];
             if (currentTurnId >= historyCount)
                 return;
 

@@ -11,7 +11,6 @@ public partial class GameMaster : MonoBehaviour
         {
             //compute turns history
             m_Behavior.m_TurnManager.Init();
-            m_Behavior.m_UITurnHistory.UpdateTurnHistory(m_Behavior.m_TurnManager);
 
             //init ui state
             int playerPawnCount = m_Behavior.m_TurnManager.m_PlayerPawns.Count;

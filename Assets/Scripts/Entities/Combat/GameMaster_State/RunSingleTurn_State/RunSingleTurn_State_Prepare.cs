@@ -11,6 +11,7 @@ public partial class GameMaster : MonoBehaviour
 
             public override void OnEnter()
             {
+                m_Behavior.m_UITurnHistory.UpdateTurnHistory(m_Behavior.m_TurnManager);
                 GameObject obj = m_Behavior.m_TurnManager.GetCurrentPawn();
 
                 PawnStatistics stat = obj.GetComponent<PawnStatistics>();
