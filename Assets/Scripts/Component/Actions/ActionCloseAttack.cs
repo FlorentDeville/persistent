@@ -27,6 +27,7 @@ namespace Assets.Scripts.Component.Actions
         private enum CloseUpAttackState
         {
             MoveToEnemy,
+            WaitForAttackToStart,
             Attack,
             ComeBack
         }
@@ -50,22 +51,31 @@ namespace Assets.Scripts.Component.Actions
 
         public override Result Execute()
         {
+            Result res = Result.Continue;
             switch(m_State)
             { 
                 case CloseUpAttackState.MoveToEnemy:
-                    return Execute_MoveToEnemy();
+                    res = Execute_MoveToEnemy();
+                    break;
+
+                case CloseUpAttackState.WaitForAttackToStart:
+                    res = Execute_WaitForAttackToStart();
+                    break;
 
                 case CloseUpAttackState.Attack:
-                    return Execute_Attack();
+                    res = Execute_Attack();
+                    break;
 
                 case CloseUpAttackState.ComeBack:
-                    return Execute_ComeBack();
+                    res = Execute_ComeBack();
+                    break;
 
                 default:
                     Debug.LogError(string.Format("unknown state {0}", m_State));
                     break;
             }
-            return Result.Continue;
+            StickToGround.Apply(m_Pawn);
+            return res;
         }
 
         public override void Resolve(ResolveResult _result)
@@ -107,10 +117,15 @@ namespace Assets.Scripts.Component.Actions
             else
             {
                 m_Pawn.transform.position = m_AttackPosition;
-                m_State = CloseUpAttackState.Attack;
+                Animator anim = m_Pawn.GetComponent<Animator>();
+                if(anim != null)
+                {
+                    anim.SetTrigger(m_AnimTrigAttackState);
+                }
+
+                m_State = CloseUpAttackState.WaitForAttackToStart;
                 //get anim graph and go to the next state.
             }
-            StickToGround.Apply(m_Pawn);
             return Result.Continue;
         }
 
@@ -118,9 +133,26 @@ namespace Assets.Scripts.Component.Actions
         {
             //check if the anim state is over
             m_Pawn.transform.position = m_AttackPosition;
-            StickToGround.Apply(m_Pawn);
-            m_State = CloseUpAttackState.ComeBack;
-            m_TimeStartTravel = Time.fixedTime;
+
+            Animator anim = m_Pawn.GetComponent<Animator>();
+            if (anim != null)
+            {
+                int AttackHash = Animator.StringToHash("Base Layer.Attack");
+                int IdleHash = Animator.StringToHash("Base Layer.Idle");
+                int NothingHash = Animator.StringToHash("Base Layer.Nothing");
+                int DeadHash = Animator.StringToHash("Base Layer.Dead");
+                AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
+                if (info.nameHash != AttackHash)
+                {
+                    m_State = CloseUpAttackState.ComeBack;
+                    m_TimeStartTravel = Time.fixedTime;  
+                }
+            }
+            else
+            {
+                m_State = CloseUpAttackState.ComeBack;
+                m_TimeStartTravel = Time.fixedTime;
+            }
             return Result.Continue;
         }
 
@@ -132,7 +164,6 @@ namespace Assets.Scripts.Component.Actions
             {
                 Vector3 newPos = Vector3.Lerp(m_AttackPosition, m_InitialPosition, t);
                 m_Pawn.transform.position = newPos;
-                StickToGround.Apply(m_Pawn);
                 return Result.Continue;
             }
             else
@@ -142,6 +173,30 @@ namespace Assets.Scripts.Component.Actions
             }
 
             return Result.Over;
+        }
+
+        private Result Execute_WaitForAttackToStart()
+        {
+            m_Pawn.transform.position = m_AttackPosition;
+            Animator anim = m_Pawn.GetComponent<Animator>();
+            if (anim != null)
+            {
+                int AttackHash = Animator.StringToHash("Base Layer.Attack");
+                int IdleHash = Animator.StringToHash("Base Layer.Idle");
+                int NothingHash = Animator.StringToHash("Base Layer.Nothing");
+                int DeadHash = Animator.StringToHash("Base Layer.Dead");
+                AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
+                if (info.nameHash == AttackHash)
+                {
+                    m_State = CloseUpAttackState.Attack;
+                }
+            }
+            else
+            {
+                m_State = CloseUpAttackState.Attack;
+            }
+
+            return Result.Continue;
         }
     }
 }
