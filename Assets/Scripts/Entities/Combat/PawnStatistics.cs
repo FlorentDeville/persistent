@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Assets;
+using UnityEngine;
 using System.Collections;
 
 public class PawnStatistics : MonoBehaviour 
@@ -43,15 +44,5 @@ public class PawnStatistics : MonoBehaviour
 
     public bool m_IsControlledByPlayer;
 
-	// Use this for initialization
-	void Start () 
-    {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () 
-    {
-	
-	}
+    public Weapon m_EquippedWeapon;
 }

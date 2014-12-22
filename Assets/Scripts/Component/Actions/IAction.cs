@@ -25,9 +25,21 @@ namespace Assets.Scripts.Component.Actions
 
         public virtual Result Execute() { return Result.Over; }
 
+        public virtual void Resolve(ResolveResult _result) { }
+
         public void SetTarget(GameObject _pawnTarget)
         {
             m_Target = _pawnTarget;
+        }
+    }
+
+    public class ResolveResult
+    {
+        public int m_Damage;
+
+        public ResolveResult()
+        {
+            m_Damage = 0;
         }
     }
 }

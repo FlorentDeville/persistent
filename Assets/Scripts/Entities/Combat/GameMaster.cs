@@ -29,6 +29,8 @@ public partial class GameMaster : MonoBehaviour
 
     public GameObject m_Cursor;
 
+    public GameObject m_UIDamageText;
+
     //public Canvas m_CanvasActions;
 
     public enum GameMasterState
@@ -98,6 +100,7 @@ public partial class GameMaster : MonoBehaviour
         m_TurnManager = new GameTurnManager(m_Pawns);
 
         HideAllAttackEnemiesButtons();
+        m_UIDamageText.SetActive(false);
 	}
 	
 	// Update is called once per frame

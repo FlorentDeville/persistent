@@ -145,6 +145,7 @@
      <Compile Include="Assets\Scripts\Assets\Core_Dialog.cs" />
      <Compile Include="Assets\Scripts\Assets\Core_DialogActor.cs" />
      <Compile Include="Assets\Scripts\Assets\Core_XmlDialog.cs" />
+     <Compile Include="Assets\Scripts\Assets\Weapon.cs" />
      <Compile Include="Assets\Scripts\Combat_Entity\Combat_Settings.cs" />
      <Compile Include="Assets\Scripts\Component\Actions\ActionCloseAttack.cs" />
      <Compile Include="Assets\Scripts\Component\Actions\IAction.cs" />
@@ -201,6 +202,7 @@
      <Compile Include="Assets\Scripts\Interaction\Trigger\Trigger_PressButton.cs" />
      <Compile Include="Assets\Scripts\Manager\DialogManager.cs" />
      <Compile Include="Assets\Scripts\Manager\GameSceneManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\GameStateManager.cs" />
      <Compile Include="Assets\Scripts\Manager\Parameter\CombatSceneParameter.cs" />
      <Compile Include="Assets\Scripts\Manager\Parameter\ISceneParameter.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerBehavior.cs" />

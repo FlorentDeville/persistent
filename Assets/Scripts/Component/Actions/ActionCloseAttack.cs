@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Assets.Scripts.Assets;
 
 namespace Assets.Scripts.Component.Actions
 {
@@ -64,6 +65,29 @@ namespace Assets.Scripts.Component.Actions
                     break;
             }
             return Result.Continue;
+        }
+
+        public override void Resolve(ResolveResult _result)
+        {
+            PawnStatistics pawnStats = m_Pawn.GetComponent<PawnStatistics>();
+            PawnStatistics targetStats = m_Target.GetComponent<PawnStatistics>();
+
+            float weaponBonus = 0;
+            if(pawnStats.m_EquippedWeapon != null)
+            {
+                Weapon wpn = pawnStats.m_EquippedWeapon;
+                weaponBonus = wpn.m_Atk + Random.Range(-wpn.m_AtkR, wpn.m_AtkR);
+            }
+
+            float dmg = pawnStats.m_Atk + weaponBonus - targetStats.m_Def;
+            if(dmg < 0) dmg = 0;
+            int realDamage = (int)dmg;
+
+            targetStats.m_HP -= realDamage;
+            if (targetStats.m_HP < 0)
+                targetStats.m_HP = 0;
+
+            _result.m_Damage = realDamage;
         }
 
         private Result Execute_MoveToEnemy()
