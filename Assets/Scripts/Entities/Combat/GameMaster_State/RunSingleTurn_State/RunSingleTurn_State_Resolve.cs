@@ -1,5 +1,6 @@
 ﻿using AssemblyCSharp;
 using Assets.Scripts.Component.Actions;
+using Assets.Scripts.Manager;
 using UnityEngine;
 
 public partial class GameMaster : MonoBehaviour
@@ -71,10 +72,11 @@ public partial class GameMaster : MonoBehaviour
 
             private void UpdateUIState()
             {
-                int playerPawnCount = m_Behavior.m_TurnManager.m_PlayerPawns.Count;
+                GameTurnManager turnMng = GameTurnManager.GetInstance();
+                int playerPawnCount = turnMng.m_PlayerPawns.Count;
                 for (int i = 0; i < playerPawnCount; ++i)
                 {
-                    GameObject pawn = m_Behavior.m_TurnManager.m_PlayerPawns[i];
+                    GameObject pawn = turnMng.m_PlayerPawns[i];
                     PawnUI pawnUIComponent = pawn.GetComponent<PawnUI>();
                     if (pawnUIComponent == null)
                     {

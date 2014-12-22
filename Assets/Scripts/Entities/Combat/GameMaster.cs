@@ -52,8 +52,6 @@ public partial class GameMaster : MonoBehaviour
 
     List<GameObject> m_Pawns;
 
-    GameTurnManager m_TurnManager;
-
 	// Use this for initialization
 	void Start () 
     {
@@ -97,7 +95,7 @@ public partial class GameMaster : MonoBehaviour
             StickToGround.Apply(pawn.gameObject);
         }
 
-        m_TurnManager = new GameTurnManager(m_Pawns);
+        //m_TurnManager = new GameTurnManager(m_Pawns);
 
         HideAllAttackEnemiesButtons();
         m_UIDamageText.SetActive(false);
@@ -111,22 +109,27 @@ public partial class GameMaster : MonoBehaviour
 
     void OnAttackClicked()
     {
-        int enemyCount = m_TurnManager.m_EnemiesPawns.Count;
+        GameTurnManager turnMng = GameTurnManager.GetInstance();
+        int enemyCount = turnMng.m_EnemiesPawns.Count;
+        int buttonUsed = 0;
         for(int i = 0; i < enemyCount; ++i)
         {
-            GameObject obj = m_TurnManager.m_EnemiesPawns[i];
+            GameObject objPawn = turnMng.m_EnemiesPawns[i];
+            PawnBehavior bhv = objPawn.GetComponent<PawnBehavior>();
+            if (bhv.m_State == PawnState.Dead)
+                continue;
 
-            CancelButton btn = m_UIAttackEnemyButtons[i];
+            CancelButton btn = m_UIAttackEnemyButtons[buttonUsed];
             btn.gameObject.SetActive(true);
             Text txt = btn.transform.GetComponentInChildren<Text>();
-            txt.text = m_TurnManager.m_EnemiesPawns[i].GetComponent<PawnStatistics>().m_PawnName;
+            txt.text = objPawn.GetComponent<PawnStatistics>().m_PawnName;
             btn.onClick.AddListener(() =>
                 {
                     Debug.Log(string.Format("select enemy {0}", txt.text));
                     HideAllAttackEnemiesButtons();
 
-                    IAction attackAction = m_TurnManager.GetCurrentPawn().GetComponent<PawnActions>().GetAttackAction();
-                    attackAction.SetTarget(obj);
+                    IAction attackAction = turnMng.GetCurrentPawn().GetComponent<PawnActions>().GetAttackAction();
+                    attackAction.SetTarget(objPawn);
                     SetSelectedAction(attackAction);
 
                 });
@@ -142,12 +145,14 @@ public partial class GameMaster : MonoBehaviour
 
             btn.onSelect.AddListener(() =>
                 {
-                    Vector3 camPosition = Camera.main.WorldToScreenPoint(obj.transform.position);
+                    Vector3 camPosition = Camera.main.WorldToScreenPoint(objPawn.transform.position);
                     m_Cursor.transform.position = camPosition;
                 });
+
+            ++buttonUsed;
         }
 
-        for(int i = enemyCount; i < m_UIAttackEnemyButtons.Length; ++i)
+        for (int i = buttonUsed; i < m_UIAttackEnemyButtons.Length; ++i)
         {
             Button btn = m_UIAttackEnemyButtons[i];
             btn.gameObject.SetActive(false);

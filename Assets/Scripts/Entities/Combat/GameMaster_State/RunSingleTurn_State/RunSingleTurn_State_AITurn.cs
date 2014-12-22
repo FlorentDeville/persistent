@@ -1,5 +1,6 @@
 ﻿using AssemblyCSharp;
 using Assets.Scripts.Entities.Combat;
+using Assets.Scripts.Manager;
 using UnityEngine;
 
 
@@ -17,11 +18,12 @@ public partial class GameMaster : MonoBehaviour
 
             public override void OnExecute()
             {
-                PawnActions actions = m_Behavior.m_TurnManager.GetCurrentPawn().GetComponent<PawnActions>();
+                GameTurnManager turnMng = GameTurnManager.GetInstance();
+                PawnActions actions = turnMng.GetCurrentPawn().GetComponent<PawnActions>();
 
                 //Get the target
-                int id = Random.Range(0, m_Behavior.m_TurnManager.m_PlayerPawns.Count);
-                GameObject obj = m_Behavior.m_TurnManager.m_PlayerPawns[id];
+                int id = Random.Range(0, turnMng.m_PlayerPawns.Count);
+                GameObject obj = turnMng.m_PlayerPawns[id];
                 actions.m_Attack.SetTarget(obj);
                 m_Behavior.SetSelectedAction(actions.m_Attack);
                 m_Runner.SetCurrentState((int)RunSingleTurnState.RunAction, "AI has selected action");

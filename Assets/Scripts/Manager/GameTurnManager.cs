@@ -1,11 +1,32 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Entities.Combat;
 
 using System.Collections.Generic;
+using UnityEngine;
 
-namespace Assets.Scripts.Entities.Combat
+namespace Assets.Scripts.Manager
 {
+    public class GameTurn
+    {
+        public List<GameObject> m_Pawns;
+
+        public GameTurn()
+        {
+            m_Pawns = new List<GameObject>();
+        }
+
+        public void CleanDeadPawn()
+        {
+            m_Pawns.RemoveAll(pawn =>
+                {
+                    return pawn.GetComponent<PawnBehavior>().m_State == PawnState.Dead;
+                });
+        }
+    }
+
     public class GameTurnManager
     {
+        private static GameTurnManager m_Instance = null;
+
         public GameTurn m_currentTurn;
         public int m_PlayingPawnIdInCurrentTurn;
 
@@ -17,35 +38,32 @@ namespace Assets.Scripts.Entities.Combat
         public List<GameObject> m_EnemiesPawns;
         private List<GameObject> m_OrderedPawns;
 
-        public GameTurnManager(List<GameObject> _pawns)
+        public static GameTurnManager GetInstance()
+        {
+            if (m_Instance == null)
+                m_Instance = new GameTurnManager();
+
+            return m_Instance;
+        }
+
+        private GameTurnManager()
+        {
+            m_TurnPredictions = new List<GameTurn>();
+            m_OrderedPawns = new List<GameObject>();
+        }
+
+        public void Init(List<GameObject> _pawns)
         {
             m_TurnPredictionCount = 2;
-            m_TurnPredictions = new List<GameTurn>();
+            m_TurnPredictions.Clear();
             m_TurnPredictions.Capacity = 2;
-
-            m_currentTurn = new GameTurn();
-            m_PlayingPawnIdInCurrentTurn = -1;
 
             m_Pawns = _pawns;
             m_PlayerPawns = _pawns.FindAll(item => item.GetComponent<PawnStatistics>().m_IsControlledByPlayer);
             m_EnemiesPawns = _pawns.FindAll(item => !item.GetComponent<PawnStatistics>().m_IsControlledByPlayer);
 
-             //alternate players and enemies
-            int maxSize = m_PlayerPawns.Count > m_EnemiesPawns.Count ? m_PlayerPawns.Count : m_EnemiesPawns.Count;
-            m_OrderedPawns = new List<GameObject>();
+            ComputeOrderedPawn();
 
-            for (int i = 0; i < maxSize; ++i)
-            {
-                if (i < m_PlayerPawns.Count)
-                    m_OrderedPawns.Add(m_PlayerPawns[i]);
-
-                if (i < m_EnemiesPawns.Count)
-                    m_OrderedPawns.Add(m_EnemiesPawns[i]);
-            }
-        }
-
-        public void Init()
-        {
             m_currentTurn = ComputeTurn();
             m_PlayingPawnIdInCurrentTurn = 0;
 
@@ -65,7 +83,13 @@ namespace Assets.Scripts.Entities.Combat
                 m_currentTurn = ComputeTurn();
                 m_PlayingPawnIdInCurrentTurn = 0;                
             }
+            else
+            {
+                m_currentTurn.CleanDeadPawn();
+            }
 
+            CleanUpDeadPawns();
+            ComputeOrderedPawn();
             ComputePredictionTurns();
         }
 
@@ -106,6 +130,10 @@ namespace Assets.Scripts.Entities.Combat
             GameTurn turn = new GameTurn();
             for (int pawnId = 0; pawnId < m_OrderedPawns.Count; ++pawnId)
             {
+                PawnBehavior bhv = m_OrderedPawns[pawnId].GetComponent<PawnBehavior>();
+                if (bhv.m_State == PawnState.Dead)
+                    continue;
+
                 PawnStatistics stat = m_OrderedPawns[pawnId].GetComponent<PawnStatistics>();
                 if (stat.m_Priority >= PRIORITY_THRESHOLD) // if the priority is above threshold, add turn
                 {
@@ -118,6 +146,33 @@ namespace Assets.Scripts.Entities.Combat
             }
 
             return turn;
+        }
+
+        private void ComputeOrderedPawn()
+        {
+            int maxSize = m_PlayerPawns.Count > m_EnemiesPawns.Count ? m_PlayerPawns.Count : m_EnemiesPawns.Count;
+            m_OrderedPawns = new List<GameObject>();
+
+            for (int i = 0; i < maxSize; ++i)
+            {
+                if (i < m_PlayerPawns.Count)
+                    m_OrderedPawns.Add(m_PlayerPawns[i]);
+
+                if (i < m_EnemiesPawns.Count)
+                    m_OrderedPawns.Add(m_EnemiesPawns[i]);
+            }
+        }
+
+        private void CleanUpDeadPawns()
+        {
+            m_PlayerPawns.RemoveAll(item =>
+                {
+                    return item.GetComponent<PawnBehavior>().m_State == PawnState.Dead;
+                });
+            m_EnemiesPawns.RemoveAll(item =>
+            {
+                return item.GetComponent<PawnBehavior>().m_State == PawnState.Dead;
+            });
         }
     }
 }

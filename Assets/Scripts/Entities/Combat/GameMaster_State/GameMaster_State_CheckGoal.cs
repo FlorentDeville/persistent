@@ -1,11 +1,20 @@
 ﻿using AssemblyCSharp;
+using Assets.Scripts.Manager;
+
 using UnityEngine;
 
 public partial class GameMaster : MonoBehaviour
 {
     public class GameMaster_State_CheckGoal : IFSMState<GameMaster>
     {
+        private GameTurnManager m_TurnManager;
+
         public override int State { get { return (int)GameMasterState.CheckGoal; } }
+
+        public override void Initialize()
+        {
+            m_TurnManager = GameTurnManager.GetInstance();
+        }
 
         public override void OnEnter()
         {
@@ -16,13 +25,13 @@ public partial class GameMaster : MonoBehaviour
             else
             {
                 m_Runner.SetCurrentState((int)GameMasterState.RunSingleTurn, "");
-                m_Behavior.m_TurnManager.NextTurn();
+                m_TurnManager.NextTurn();
             }
         }
 
         private bool AreAllEnemiesDead()
         {
-            foreach(GameObject obj in m_Behavior.m_TurnManager.m_EnemiesPawns)
+            foreach (GameObject obj in m_TurnManager.m_EnemiesPawns)
             {
                 PawnStatistics stat = obj.GetComponent<PawnStatistics>();
                 if (stat.m_HP > 0)
@@ -34,7 +43,7 @@ public partial class GameMaster : MonoBehaviour
 
         private bool AreAllPlayerPawnsDead()
         {
-            foreach(GameObject obj in m_Behavior.m_TurnManager.m_PlayerPawns)
+            foreach (GameObject obj in m_TurnManager.m_PlayerPawns)
             {
                 PawnStatistics stat = obj.GetComponent<PawnStatistics>();
                 if (stat.m_HP > 0)

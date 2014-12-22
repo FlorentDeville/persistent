@@ -169,6 +169,7 @@
     <Compile Include="Assets\Scripts\Component\Actions\IAction.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\GameMaster_State\RunSingleTurn_State\RunSingleTurn_State_Over.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\PawnActions.cs" />
+    <Compile Include="Assets\Scripts\Entities\Combat\PawnBehavior.cs" />
     <Compile Include="Assets\Scripts\Entities\UI\CombatUI_CanvasActions.cs" />
     <Compile Include="Assets\Scripts\Entities\World\Camera\CameraBehavior.cs" />
     <Compile Include="Assets\Scripts\Entities\World\Camera\CameraState.cs" />
@@ -190,8 +191,7 @@
     <Compile Include="Assets\Scripts\Entities\Combat\GameMaster_State\RunSingleTurn_State\RunSingleTurn_State_Prepare.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\GameMaster_State\RunSingleTurn_State\RunSingleTurn_State_Resolve.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\GameMaster_State\RunSingleTurn_State\RunSingleTurn_State_RunAction.cs" />
-    <Compile Include="Assets\Scripts\Entities\Combat\GameTurn.cs" />
-    <Compile Include="Assets\Scripts\Entities\Combat\GameTurnManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\GameTurnManager.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\PawnMagicInventory.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\PawnStatistics.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\PawnUI.cs" />

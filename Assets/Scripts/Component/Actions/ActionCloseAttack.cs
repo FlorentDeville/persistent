@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Assets.Scripts.Assets;
+using Assets.Scripts.Entities.Combat;
 
 namespace Assets.Scripts.Component.Actions
 {
@@ -84,8 +85,12 @@ namespace Assets.Scripts.Component.Actions
             int realDamage = (int)dmg;
 
             targetStats.m_HP -= realDamage;
-            if (targetStats.m_HP < 0)
+            if (targetStats.m_HP <= 0)
+            {
                 targetStats.m_HP = 0;
+                PawnBehavior behavior = m_Target.GetComponent<PawnBehavior>();
+                behavior.m_State = PawnState.Dead;
+            }
 
             _result.m_Damage = realDamage;
         }

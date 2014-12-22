@@ -1,4 +1,5 @@
 ﻿using AssemblyCSharp;
+using Assets.Scripts.Manager;
 using UnityEngine;
 
 public partial class GameMaster : MonoBehaviour
@@ -11,8 +12,9 @@ public partial class GameMaster : MonoBehaviour
 
             public override void OnEnter()
             {
-                m_Behavior.m_UITurnHistory.UpdateTurnHistory(m_Behavior.m_TurnManager);
-                GameObject obj = m_Behavior.m_TurnManager.GetCurrentPawn();
+                GameTurnManager turnMng = GameTurnManager.GetInstance();
+                m_Behavior.m_UITurnHistory.UpdateTurnHistory(turnMng);
+                GameObject obj = turnMng.GetCurrentPawn();
 
                 PawnStatistics stat = obj.GetComponent<PawnStatistics>();
 

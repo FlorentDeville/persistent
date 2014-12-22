@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Entities.Combat;
+using Assets.Scripts.Manager;
 using UnityEngine;
 using UnityEngine.UI;
 
