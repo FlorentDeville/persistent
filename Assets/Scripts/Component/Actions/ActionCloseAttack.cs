@@ -26,9 +26,11 @@ namespace Assets.Scripts.Component.Actions
 
         private enum CloseUpAttackState
         {
+            StartMoveToEnemy,
             MoveToEnemy,
             WaitForAttackToStart,
             Attack,
+            StartComeBack,
             ComeBack
         }
         private CloseUpAttackState m_State;
@@ -44,7 +46,7 @@ namespace Assets.Scripts.Component.Actions
 
             m_TravelTime = distanceToTravel / m_Speed;
 
-            m_State = CloseUpAttackState.MoveToEnemy;
+            m_State = CloseUpAttackState.StartMoveToEnemy;
 
             m_TimeStartTravel = Time.fixedTime;
         }
@@ -54,6 +56,10 @@ namespace Assets.Scripts.Component.Actions
             Result res = Result.Continue;
             switch(m_State)
             { 
+                case CloseUpAttackState.StartMoveToEnemy:
+                    res = Execute_StartMoveToEnemy();
+                    break;
+
                 case CloseUpAttackState.MoveToEnemy:
                     res = Execute_MoveToEnemy();
                     break;
@@ -64,6 +70,10 @@ namespace Assets.Scripts.Component.Actions
 
                 case CloseUpAttackState.Attack:
                     res = Execute_Attack();
+                    break;
+
+                case CloseUpAttackState.StartComeBack:
+                    res = Execute_StartComeBack();
                     break;
 
                 case CloseUpAttackState.ComeBack:
@@ -105,6 +115,21 @@ namespace Assets.Scripts.Component.Actions
             _result.m_Damage = realDamage;
         }
 
+        private Result Execute_StartMoveToEnemy()
+        {
+            if(!string.IsNullOrEmpty(m_AnimTrigRunState))
+            {
+                Animator anim = m_Pawn.GetComponent<Animator>();
+                if(anim != null)
+                {
+                    anim.SetTrigger(m_AnimTrigRunState);
+                }
+            }
+
+            m_State = CloseUpAttackState.MoveToEnemy;
+            return Result.Continue;
+        }
+
         private Result Execute_MoveToEnemy()
         {
             float t = (Time.fixedTime - m_TimeStartTravel) / m_TravelTime;
@@ -126,53 +151,9 @@ namespace Assets.Scripts.Component.Actions
                 m_State = CloseUpAttackState.WaitForAttackToStart;
                 //get anim graph and go to the next state.
             }
+
+            m_Pawn.transform.forward = (m_AttackPosition - m_InitialPosition).normalized;
             return Result.Continue;
-        }
-
-        private Result Execute_Attack()
-        {
-            //check if the anim state is over
-            m_Pawn.transform.position = m_AttackPosition;
-
-            Animator anim = m_Pawn.GetComponent<Animator>();
-            if (anim != null)
-            {
-                int AttackHash = Animator.StringToHash("Base Layer.Attack");
-                int IdleHash = Animator.StringToHash("Base Layer.Idle");
-                int NothingHash = Animator.StringToHash("Base Layer.Nothing");
-                int DeadHash = Animator.StringToHash("Base Layer.Dead");
-                AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
-                if (info.nameHash != AttackHash)
-                {
-                    m_State = CloseUpAttackState.ComeBack;
-                    m_TimeStartTravel = Time.fixedTime;  
-                }
-            }
-            else
-            {
-                m_State = CloseUpAttackState.ComeBack;
-                m_TimeStartTravel = Time.fixedTime;
-            }
-            return Result.Continue;
-        }
-
-        private Result Execute_ComeBack()
-        {
-            float t = (Time.fixedTime - m_TimeStartTravel) / m_TravelTime;
-
-            if (t < 1)
-            {
-                Vector3 newPos = Vector3.Lerp(m_AttackPosition, m_InitialPosition, t);
-                m_Pawn.transform.position = newPos;
-                return Result.Continue;
-            }
-            else
-            {
-                m_Pawn.transform.position = m_InitialPosition;
-                //get anim graph to the idle state
-            }
-
-            return Result.Over;
         }
 
         private Result Execute_WaitForAttackToStart()
@@ -195,8 +176,81 @@ namespace Assets.Scripts.Component.Actions
             {
                 m_State = CloseUpAttackState.Attack;
             }
-
+            m_Pawn.transform.forward = (m_AttackPosition - m_InitialPosition).normalized;
             return Result.Continue;
+        }
+
+        private Result Execute_Attack()
+        {
+            //check if the anim state is over
+            m_Pawn.transform.position = m_AttackPosition;
+
+            Animator anim = m_Pawn.GetComponent<Animator>();
+            if (anim != null)
+            {
+                int AttackHash = Animator.StringToHash("Base Layer.Attack");
+                int IdleHash = Animator.StringToHash("Base Layer.Idle");
+                int NothingHash = Animator.StringToHash("Base Layer.Nothing");
+                int DeadHash = Animator.StringToHash("Base Layer.Dead");
+                AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
+                if (info.nameHash != AttackHash)
+                {
+                    m_State = CloseUpAttackState.StartComeBack;
+                    m_TimeStartTravel = Time.fixedTime;  
+                }
+            }
+            else
+            {
+                m_State = CloseUpAttackState.StartComeBack;
+                m_TimeStartTravel = Time.fixedTime;
+            }
+
+            m_Pawn.transform.forward = (m_AttackPosition - m_InitialPosition).normalized;
+            return Result.Continue;
+        }
+
+        private Result Execute_StartComeBack()
+        {
+            m_Pawn.transform.position = m_AttackPosition;
+            if (!string.IsNullOrEmpty(m_AnimTrigRunState))
+            {
+                Animator anim = m_Pawn.GetComponent<Animator>();
+                if (anim != null)
+                {
+                    anim.SetTrigger(m_AnimTrigRunState);
+                }
+            }
+
+            m_State = CloseUpAttackState.ComeBack;
+            return Result.Continue;
+        }
+
+        private Result Execute_ComeBack()
+        {
+            float t = (Time.fixedTime - m_TimeStartTravel) / m_TravelTime;
+
+            m_Pawn.transform.forward = (m_InitialPosition - m_AttackPosition).normalized;
+            if (t < 1)
+            {
+                Vector3 newPos = Vector3.Lerp(m_AttackPosition, m_InitialPosition, t);
+                m_Pawn.transform.position = newPos;
+                return Result.Continue;
+            }
+            else
+            {
+                m_Pawn.transform.position = m_InitialPosition;
+                //get anim graph to the idle state
+            }
+
+            if (!string.IsNullOrEmpty(m_AnimTrigIdleState))
+            {
+                Animator anim = m_Pawn.GetComponent<Animator>();
+                if (anim != null)
+                {
+                    anim.SetTrigger(m_AnimTrigIdleState);
+                }
+            }
+            return Result.Over;
         }
     }
 }

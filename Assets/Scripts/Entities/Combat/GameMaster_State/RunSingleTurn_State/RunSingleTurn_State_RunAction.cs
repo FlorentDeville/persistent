@@ -18,12 +18,6 @@ public partial class GameMaster : MonoBehaviour
                 m_SelectedAction.Prepare();
             }
 
-            public override void OnExecute()
-            {
-                //if (m_SelectedAction.Execute() == IAction.Result.Over)
-                //    m_Runner.SetCurrentState((int)RunSingleTurnState.Resolve, "action is over");
-            }
-
             public override void OnLateExecute()
             {
                 if (m_SelectedAction.Execute() == IAction.Result.Over)

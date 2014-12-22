@@ -15,14 +15,8 @@ namespace Assets.Scripts.Entities.Combat
 
         private Vector3 m_InitialPosition;
 
-        public void Awake()
-        {
-            SetIdleState();
-        }
-
         public void Start()
         {
-            TriggerAnimState(m_TriggerIdleState);
             m_InitialPosition = gameObject.transform.position;
         }
 
