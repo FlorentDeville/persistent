@@ -13,15 +13,23 @@ public class StickToGround : MonoBehaviour
 	// Update is called once per frame
 	void LateUpdate () 
 	{
-		//Start a cast to the ground
-		RaycastHit hit;
-		if (Physics.Raycast (gameObject.transform.position, -Vector3.up, out hit)) 
-		{
-			//In here, the raycast got a result
-			//Compute how much we went through the ground and move the entity up of this amount.
-			Vector3 oldPos = gameObject.transform.position;
-			oldPos.y += gameObject.transform.collider.bounds.extents.y - hit.distance;
-			gameObject.transform.position = oldPos;
-		}
+        Apply(gameObject);
 	}
+
+    public static void Apply(GameObject _obj)
+    {
+        if (_obj.renderer == null)
+            return;
+
+        //Start a cast to the ground
+        RaycastHit hit;
+        if (Physics.Raycast(_obj.transform.position, -Vector3.up, out hit))
+        {
+            //In here, the raycast got a result
+            //Compute how much we went through the ground and move the entity up of this amount.
+            Vector3 oldPos = _obj.transform.position;
+            oldPos.y += _obj.transform.renderer.bounds.extents.y - hit.distance;
+            _obj.transform.position = oldPos;
+        }
+    }
 }

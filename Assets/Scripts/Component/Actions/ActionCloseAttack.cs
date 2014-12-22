@@ -81,7 +81,7 @@ namespace Assets.Scripts.Component.Actions
                 m_State = CloseUpAttackState.Attack;
                 //get anim graph and go to the next state.
             }
-
+            StickToGround.Apply(m_Pawn);
             return Result.Continue;
         }
 
@@ -101,6 +101,7 @@ namespace Assets.Scripts.Component.Actions
             {
                 Vector3 newPos = Vector3.Lerp(m_AttackPosition, m_InitialPosition, t);
                 m_Pawn.transform.position = newPos;
+                StickToGround.Apply(m_Pawn);
                 return Result.Continue;
             }
             else

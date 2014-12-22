@@ -79,17 +79,7 @@ public partial class GameMaster : MonoBehaviour
             pawn.parent = gameObject.transform.root;
             m_Pawns.Add(pawn.gameObject);
 
-            //move it on the ground
-            if (pawn.gameObject.renderer)
-            {
-                Ray ToTheGround = new Ray(pawn.position, Vector3.down);
-                RaycastHit hit = new RaycastHit();
-                if (Physics.Raycast(ToTheGround, out hit))
-                {
-                    Vector3 newPosition = pawn.position - (Vector3.down * hit.distance - pawn.gameObject.renderer.bounds.extents);
-                    pawn.position = newPosition;
-                }
-            }
+            StickToGround.Apply(pawn.gameObject);
         }
 
         for(int prefabId = 0; prefabId < m_SceneParameter.m_PlayerPawns.Count; prefabId++)
@@ -102,17 +92,7 @@ public partial class GameMaster : MonoBehaviour
             pawn.parent = gameObject.transform.root;
             m_Pawns.Add(pawn.gameObject);
 
-            //move it on the ground
-            if (pawn.gameObject.renderer)
-            {
-                Ray ToTheGround = new Ray(pawn.position, Vector3.down);
-                RaycastHit hit = new RaycastHit();
-                if (Physics.Raycast(ToTheGround, out hit))
-                {
-                    Vector3 newPosition = pawn.position - (Vector3.down * hit.distance - pawn.gameObject.renderer.bounds.extents);
-                    pawn.position = newPosition;
-                }
-            }
+            StickToGround.Apply(pawn.gameObject);
         }
 
         m_TurnManager = new GameTurnManager(m_Pawns);
