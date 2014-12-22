@@ -86,11 +86,6 @@ namespace Assets.Scripts.Entities.Combat
             return m_currentTurn.m_Pawns.Count - 1 == m_PlayingPawnIdInCurrentTurn;
         }
 
-        public void MoveToNextPawnTurn()
-        {
-            ++m_PlayingPawnIdInCurrentTurn;
-        }
-
         private void ComputePredictionTurns()
         {
             for(int turnPredictionId = 0; turnPredictionId < m_TurnPredictionCount; ++turnPredictionId)
@@ -106,7 +101,6 @@ namespace Assets.Scripts.Entities.Combat
 
         private GameTurn ComputeTurn()
         {
-            //everything before this line could be precomputed and stored.
             const int PRIORITY_THRESHOLD = 1;
 
             GameTurn turn = new GameTurn();

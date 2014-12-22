@@ -16,7 +16,7 @@ public partial class GameMaster : MonoBehaviour
             else
             {
                 m_Runner.SetCurrentState((int)GameMasterState.RunSingleTurn, "");
-                m_Behavior.m_TurnManager.MoveToNextPawnTurn();
+                m_Behavior.m_TurnManager.NextTurn();
             }
         }
 
