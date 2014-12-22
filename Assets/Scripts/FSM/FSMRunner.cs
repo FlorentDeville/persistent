@@ -202,6 +202,12 @@ namespace AssemblyCSharp
 				return;
 			}
 		}
+
+        public void LateUpdate()
+        {
+            if (m_EnteredState)
+                m_StatesList[m_CurrentState].OnLateExecute();
+        }
 	}
 }
 

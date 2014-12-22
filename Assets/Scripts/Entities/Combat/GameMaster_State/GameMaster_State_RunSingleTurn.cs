@@ -47,6 +47,11 @@ public partial class GameMaster : MonoBehaviour
             }
         }
 
+        public override void OnLateExecute()
+        {
+            m_InnerRunner.LateUpdate();
+        }
+
         public void SetSelectedAction(IAction _act)
         {
             RunSingleTurn_State_PlayerTurn playerTurn = GetStateObject<RunSingleTurn_State_PlayerTurn>(RunSingleTurnState.PlayerTurn);

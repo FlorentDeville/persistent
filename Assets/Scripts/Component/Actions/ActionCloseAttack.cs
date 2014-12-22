@@ -89,7 +89,7 @@ namespace Assets.Scripts.Component.Actions
             {
                 targetStats.m_HP = 0;
                 PawnBehavior behavior = m_Target.GetComponent<PawnBehavior>();
-                behavior.m_State = PawnState.Dead;
+                behavior.SetDeadState();
             }
 
             _result.m_Damage = realDamage;
@@ -117,6 +117,8 @@ namespace Assets.Scripts.Component.Actions
         private Result Execute_Attack()
         {
             //check if the anim state is over
+            m_Pawn.transform.position = m_AttackPosition;
+            StickToGround.Apply(m_Pawn);
             m_State = CloseUpAttackState.ComeBack;
             m_TimeStartTravel = Time.fixedTime;
             return Result.Continue;

@@ -107,6 +107,11 @@ public partial class GameMaster : MonoBehaviour
         m_Runner.Update();
 	}
 
+    void LateUpdate()
+    {
+        m_Runner.LateUpdate();
+    }
+
     void OnAttackClicked()
     {
         GameTurnManager turnMng = GameTurnManager.GetInstance();

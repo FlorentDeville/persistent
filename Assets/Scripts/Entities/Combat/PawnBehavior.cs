@@ -7,15 +7,62 @@ namespace Assets.Scripts.Entities.Combat
     {
         public PawnState m_State;
 
+        public string m_TriggerIdleState;
+
+        public string m_TriggerDyingState;
+
+        public string m_TriggerNothingState;
+
+        private Vector3 m_InitialPosition;
+
         public void Awake()
         {
-            m_State = PawnState.Alive;
+            SetIdleState();
+        }
+
+        public void Start()
+        {
+            TriggerAnimState(m_TriggerIdleState);
+            m_InitialPosition = gameObject.transform.position;
+        }
+
+        public void SetDeadState()
+        {
+            m_State = PawnState.Dead;
+            TriggerAnimState(m_TriggerDyingState);
+        }
+
+        public void SetNothingState()
+        {
+            TriggerAnimState(m_TriggerNothingState);
+        }
+
+        public void SetIdleState()
+        {
+            TriggerAnimState(m_TriggerIdleState);
+        }
+
+        private void TriggerAnimState(string _triggerName)
+        {
+            if (!string.IsNullOrEmpty(_triggerName))
+            {
+                Animator anim = GetComponent<Animator>();
+                if (anim != null)
+                    anim.SetTrigger(_triggerName);
+            }
+        }
+
+        void LateUpdate()
+        {
+            if (m_State == PawnState.Dead)
+                gameObject.transform.position = m_InitialPosition;
         }
     }
 
     public enum PawnState
     {
-        Alive,
-        Dead
+        Idle,
+        Nothing,
+        Dead,
     }
 }

@@ -23,6 +23,8 @@ namespace AssemblyCSharp
 
         public abstract void OnExecute();
 
+        public abstract void OnLateExecute();
+
         public abstract void OnExit();
 	
 	}
@@ -44,6 +46,8 @@ namespace AssemblyCSharp
         public override void OnEnter() { }
 
         public override void OnExecute() { }
+
+        public override void OnLateExecute() { }
 
         public override void OnExit() { }
     }
