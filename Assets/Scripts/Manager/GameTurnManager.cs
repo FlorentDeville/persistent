@@ -86,6 +86,8 @@ namespace Assets.Scripts.Manager
             else
             {
                 m_currentTurn.CleanDeadPawn();
+                if (m_PlayingPawnIdInCurrentTurn >= m_currentTurn.m_Pawns.Count)
+                    m_PlayingPawnIdInCurrentTurn = m_currentTurn.m_Pawns.Count - 1;
             }
 
             CleanUpDeadPawns();
