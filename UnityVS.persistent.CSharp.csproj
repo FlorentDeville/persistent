@@ -161,6 +161,7 @@
     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TrackGroups\DirectorGroup.cs" />
     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TrackGroups\MultiActorTrackGroup.cs" />
     <Compile Include="Assets\Cinema Suite\Cinema Director\System\Runtime\TrackGroups\TrackGroup.cs" />
+    <Compile Include="Assets\Scripts\Assets\CharactersTable.cs" />
     <Compile Include="Assets\Scripts\Assets\Core_Dialog.cs" />
     <Compile Include="Assets\Scripts\Assets\Core_DialogActor.cs" />
     <Compile Include="Assets\Scripts\Assets\Core_XmlDialog.cs" />

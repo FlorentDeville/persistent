@@ -131,7 +131,6 @@ public partial class GameMaster : MonoBehaviour
             txt.text = objPawn.GetComponent<PawnStatistics>().m_PawnName;
             btn.onClick.AddListener(() =>
                 {
-                    Debug.Log(string.Format("select enemy {0}", txt.text));
                     HideAllAttackEnemiesButtons();
 
                     IAction attackAction = turnMng.GetCurrentPawn().GetComponent<PawnActions>().GetAttackAction();

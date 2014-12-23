@@ -5,6 +5,8 @@ namespace Assets.Scripts.Entities.Combat
 {
     public class PawnBehavior : MonoBehaviour
     {
+        public int m_CharacterId; //make it an enum or something!!
+
         public PawnState m_State;
 
         public string m_TriggerIdleState;

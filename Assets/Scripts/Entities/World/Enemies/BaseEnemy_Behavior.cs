@@ -89,9 +89,7 @@ namespace Persistent.WorldEntity
             PlayerBehavior behavior = _col.GetComponent<PlayerBehavior>();
             if(behavior != null)
             {
-                if(m_Runner.GetCurrentState() != (int)EnemyState.DeathEffect
-                    && m_Runner.GetCurrentState() != (int)EnemyState.WaitForEndOfDeathEffect &&
-                    m_CanEnterInCombat)
+                if(m_CanEnterInCombat)
                 {
                     m_CanEnterInCombat = false;
                     m_Runner.SetCurrentState((int)EnemyState.DeathEffect, "collision with player");

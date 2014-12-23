@@ -1,5 +1,6 @@
 ﻿using AssemblyCSharp;
 using Assets.Scripts.Manager;
+using Assets.Scripts.Entities.Combat;
 using UnityEngine;
 
 public partial class GameMaster : MonoBehaviour
@@ -33,6 +34,8 @@ public partial class GameMaster : MonoBehaviour
                     return;
                 }
 
+                InitializePawnStatistics(pawn);
+
                 m_Behavior.m_UIPawnState[i].gameObject.SetActive(true);
                 m_Behavior.m_UIPawnState[i].SetAvatar(pawnUIComponent.m_TurnSprite);
                 m_Behavior.m_UIPawnState[i].SetHP(stat.m_HP, stat.m_MaxHP);
@@ -48,6 +51,17 @@ public partial class GameMaster : MonoBehaviour
             }
 
             m_Runner.SetCurrentState((int)GameMasterState.RunSingleTurn, "Init state over");
+        }
+
+        private void InitializePawnStatistics(GameObject _pawn)
+        {
+            GameTurnManager turnMng = GameTurnManager.GetInstance();
+
+            PawnBehavior bhv = _pawn.GetComponent<PawnBehavior>();
+            Character savedCharacter = GameStateManager.GetInstance().GetCharacter(bhv.m_CharacterId);
+
+            PawnStatistics stats = _pawn.GetComponent<PawnStatistics>();
+            savedCharacter.LoadTo(stats);        
         }
     }
 
