@@ -192,6 +192,8 @@
     <Compile Include="Assets\Scripts\Entities\Combat\GameMaster_State\RunSingleTurn_State\RunSingleTurn_State_Prepare.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\GameMaster_State\RunSingleTurn_State\RunSingleTurn_State_Resolve.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\GameMaster_State\RunSingleTurn_State\RunSingleTurn_State_RunAction.cs" />
+    <Compile Include="Assets\Scripts\Interactions\InteractionLoadScene.cs" />
+    <Compile Include="Assets\Scripts\Interactions\Trigger\Trigger_EnterCollider.cs" />
     <Compile Include="Assets\Scripts\Manager\GameTurnManager.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\PawnMagicInventory.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\PawnStatistics.cs" />
@@ -216,10 +218,10 @@
     <Compile Include="Assets\Scripts\Graphics\RendererController.cs" />
     <Compile Include="Assets\Scripts\Helper\Damper.cs" />
     <Compile Include="Assets\Scripts\Input\InputHelper.cs" />
-    <Compile Include="Assets\Scripts\Interaction\Interaction.cs" />
-    <Compile Include="Assets\Scripts\Interaction\InteractionAnimationTrigger.cs" />
-    <Compile Include="Assets\Scripts\Interaction\InteractionDialog.cs" />
-    <Compile Include="Assets\Scripts\Interaction\Trigger\Trigger_PressButton.cs" />
+    <Compile Include="Assets\Scripts\Interactions\Interaction.cs" />
+    <Compile Include="Assets\Scripts\Interactions\InteractionAnimationTrigger.cs" />
+    <Compile Include="Assets\Scripts\Interactions\InteractionDialog.cs" />
+    <Compile Include="Assets\Scripts\Interactions\Trigger\Trigger_PressButton.cs" />
     <Compile Include="Assets\Scripts\Manager\DialogManager.cs" />
     <Compile Include="Assets\Scripts\Manager\GameSceneManager.cs" />
     <Compile Include="Assets\Scripts\Manager\GameStateManager.cs" />
