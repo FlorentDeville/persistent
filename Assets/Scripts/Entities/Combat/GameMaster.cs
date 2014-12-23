@@ -30,8 +30,9 @@ public partial class GameMaster : MonoBehaviour
     public GameObject m_Cursor;
 
     public GameObject m_UIDamageText;
-
-    //public Canvas m_CanvasActions;
+    public GameObject m_UIGameOverText;
+    public GameObject m_UIVictoryText;
+    
 
     public enum GameMasterState
     {
@@ -95,10 +96,10 @@ public partial class GameMaster : MonoBehaviour
             StickToGround.Apply(pawn.gameObject);
         }
 
-        //m_TurnManager = new GameTurnManager(m_Pawns);
-
         HideAllAttackEnemiesButtons();
         m_UIDamageText.SetActive(false);
+        m_UIGameOverText.SetActive(false);
+        m_UIVictoryText.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -177,10 +178,8 @@ public partial class GameMaster : MonoBehaviour
 
     void SetSelectedAction(IAction _act)
     {
-        GameMaster_State_RunSingleTurn runSingleTurnState = GetRunSingleTurnState();//m_Runner.GetStateObject<GameMaster_State_RunSingleTurn>((int)GameMasterState.RunSingleTurn);
+        GameMaster_State_RunSingleTurn runSingleTurnState = GetRunSingleTurnState();
         runSingleTurnState.SetSelectedAction(_act);
-        //GameMaster_State_RunSingleTurn.RunSingleTurn_State_PlayerTurn playerTurn = runSingleTurnState.GetStateObject<GameMaster_State_RunSingleTurn.RunSingleTurn_State_PlayerTurn>(GameMaster.GameMaster_State_RunSingleTurn.RunSingleTurnState.PlayerTurn);
-        //playerTurn.SetSelectedAction(_act);
     }
 
     GameMaster_State_RunSingleTurn GetRunSingleTurnState()

@@ -22,6 +22,8 @@ namespace Persistent.WorldEntity
 
         private GameObject m_DeathEffectInstance;
 
+        private bool m_CanEnterInCombat;
+
         // Use this for initialization
         void Start()
         {
@@ -48,6 +50,8 @@ namespace Persistent.WorldEntity
 
             EnabledWorldMeshRenderer(false);
             EnableCombatMeshRenderer(false);
+
+            m_CanEnterInCombat = true;
         }
 
         // Update is called once per frame
@@ -58,6 +62,7 @@ namespace Persistent.WorldEntity
 
         public void OnSpawn()
         {
+            m_CanEnterInCombat = true;
             if(m_Runner != null)
                 m_Runner.StartState((int)EnemyState.Birth);
 
@@ -85,8 +90,10 @@ namespace Persistent.WorldEntity
             if(behavior != null)
             {
                 if(m_Runner.GetCurrentState() != (int)EnemyState.DeathEffect
-                    && m_Runner.GetCurrentState() != (int)EnemyState.WaitForEndOfDeathEffect)
+                    && m_Runner.GetCurrentState() != (int)EnemyState.WaitForEndOfDeathEffect &&
+                    m_CanEnterInCombat)
                 {
+                    m_CanEnterInCombat = false;
                     m_Runner.SetCurrentState((int)EnemyState.DeathEffect, "collision with player");
 
                     CombatSceneParameter param = new CombatSceneParameter();
