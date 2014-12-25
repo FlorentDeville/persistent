@@ -22,10 +22,17 @@ namespace Assets.Scripts.Manager
             get { return m_WeaponInventory; }
         }
 
+        private List<Item> m_ItemsInventory;
+        public List<Item> ItemsInventory
+        {
+            get { return m_ItemsInventory; }
+        }
+
         private GameStateManager()
         {
             m_Characters = new Dictionary<int, Character>();
             m_WeaponInventory = new List<Weapon>();
+            m_ItemsInventory = new List<Item>();
         }
 
         public static GameStateManager GetInstance()
@@ -65,6 +72,30 @@ namespace Assets.Scripts.Manager
                 m_WeaponInventory.Add(weapon);
             }
             
+        }
+
+        public void LoadDefaultItemInventory()
+        {
+            if (m_ItemsInventory.Count != 0)
+                return;
+
+            string relPath = "Items";
+
+            string[] itemsToLoad = new string[]
+            {
+                "coin",
+                "potion",
+                "map",
+                "wing"
+            };
+
+            foreach (string itemName in itemsToLoad)
+            {
+                string path = string.Format("{0}/{1}", relPath, itemName);
+                Item newItem = Resources.Load<Item>(path);
+                m_ItemsInventory.Add(newItem);
+            }
+
         }
 
         private void LoadDefaultCharacter(int _id)

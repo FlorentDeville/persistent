@@ -19,18 +19,44 @@ namespace Assets.Scripts.Entities.Menu
         [SerializeField]
         private Text[] m_InventoryTextField;
 
+        [SerializeField]
+        private Image[] m_InventoryImageField;
+
         void Start()
         {
-            if(Debug.isDebugBuild)
+            if (Debug.isDebugBuild)
+            {
                 GameStateManager.GetInstance().LoadDefaultWeaponInventory();
+                GameStateManager.GetInstance().LoadDefaultItemInventory();
+            }
 
             m_ItemsButton.Select();
         }
 
         public void ShowItems()
         {
-            foreach (Text widget in m_InventoryTextField)
-                widget.gameObject.SetActive(false);
+            int textFieldId = 0;
+            foreach (Item wep in GameStateManager.GetInstance().ItemsInventory)
+            {
+                if (textFieldId >= m_InventoryTextField.Length)
+                    break;
+
+                Text textWidget = m_InventoryTextField[textFieldId];
+                textWidget.text = wep.m_ItemWeapon;
+
+                m_InventoryImageField[textFieldId].sprite = wep.m_Image;
+
+                textWidget.gameObject.SetActive(true);
+                m_InventoryImageField[textFieldId].gameObject.SetActive(true);
+
+                ++textFieldId;
+            }
+
+            for (int i = textFieldId; i < m_InventoryTextField.Length; ++i)
+            {
+                m_InventoryTextField[i].gameObject.SetActive(false);
+                m_InventoryImageField[i].gameObject.SetActive(false);
+            }
         }
 
         public void ShowWeapons()
@@ -44,13 +70,18 @@ namespace Assets.Scripts.Entities.Menu
                 Text textWidget = m_InventoryTextField[textFieldId];
                 textWidget.text = wep.m_WeaponName;
 
+                m_InventoryImageField[textFieldId].sprite = wep.m_Image;
+
                 textWidget.gameObject.SetActive(true);
+                m_InventoryImageField[textFieldId].gameObject.SetActive(true);
+
                 ++textFieldId;
             }
 
             for(int i = textFieldId; i < m_InventoryTextField.Length; ++i)
             {
-                m_InventoryTextField[textFieldId].gameObject.SetActive(false);
+                m_InventoryTextField[i].gameObject.SetActive(false);
+                m_InventoryImageField[i].gameObject.SetActive(false);
             }
         }
     }
