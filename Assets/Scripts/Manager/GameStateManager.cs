@@ -1,6 +1,8 @@
 ﻿using Assets.Scripts.Assets;
 using System.Collections.Generic;
 
+using UnityEngine;
+
 namespace Assets.Scripts.Manager
 {
     public class GameStateManager
@@ -14,9 +16,16 @@ namespace Assets.Scripts.Manager
             get { return m_Characters.Values; }
         }
 
+        private List<Weapon> m_WeaponInventory;
+        public List<Weapon> WeaponInventory
+        {
+            get { return m_WeaponInventory; }
+        }
+
         private GameStateManager()
         {
             m_Characters = new Dictionary<int, Character>();
+            m_WeaponInventory = new List<Weapon>();
         }
 
         public static GameStateManager GetInstance()
@@ -33,6 +42,29 @@ namespace Assets.Scripts.Manager
                 LoadDefaultCharacter(_id);
 
             return m_Characters[_id];
+        }
+
+        public void LoadDefaultWeaponInventory()
+        {
+            if (m_WeaponInventory.Count != 0)
+                return;
+
+            string relPath = "Weapon";
+
+            string[] weaponsToLoad = new string[3]
+            {
+                "axe",
+                "sword",
+                "brokensword"
+            };
+
+            foreach(string weaponName in weaponsToLoad)
+            {
+                string path = string.Format("{0}/{1}", relPath, weaponName);
+                Weapon weapon = Resources.Load<Weapon>(path);
+                m_WeaponInventory.Add(weapon);
+            }
+            
         }
 
         private void LoadDefaultCharacter(int _id)

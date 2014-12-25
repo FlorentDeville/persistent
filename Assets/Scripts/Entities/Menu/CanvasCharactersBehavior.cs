@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Manager;
+﻿using Assets.Scripts.Helper;
+using Assets.Scripts.Manager;
 using Assets.Scripts.UI;
 
 using UnityEngine;
@@ -44,42 +45,25 @@ namespace Assets.Scripts.Entities.Menu
         [SerializeField]
         private Text m_TxtWepMGRAtk;
 
-        [SerializeField]
-        private float m_InputCooldown;
-
-        private float m_LastInputTime;
-
-        private int m_SelectedButtonId;
-
-        private List<KeyValuePair<int, CustomButton>> m_MapCharaIdButton;
+        private CustomButton m_SelectedButton;
 
         void Start()
         {
-            m_LastInputTime = 0;
-            m_MapCharaIdButton = new List<KeyValuePair<int,CustomButton>>(m_BtnCharacters.Length);
-
             if(Debug.isDebugBuild)
             {
                 GameStateManager.GetInstance().GetCharacter(0);
                 GameStateManager.GetInstance().GetCharacter(1);
             }
 
-            m_SelectedButtonId = 0;
             int btnId = 0;
             foreach(Character chara in GameStateManager.GetInstance().Characters)
             {
                 if (m_BtnCharacters.Length <= btnId)
                     break;
 
-                m_MapCharaIdButton.Add(new KeyValuePair<int, CustomButton>(chara.m_Id, m_BtnCharacters[btnId]));
-
                 m_BtnCharacters[btnId].GetComponentInChildren<Text>().text = chara.m_Name;
-                m_BtnCharacters[btnId].onSelect.AddListener(() =>
-                    {
-                        int charaId = m_MapCharaIdButton[m_SelectedButtonId].Key;
-                        Character selectedCharacter = GameStateManager.GetInstance().GetCharacter(charaId);
-                        ShowCharacteristics(selectedCharacter);
-                    });
+                int charaId = chara.m_Id;
+                m_BtnCharacters[btnId].onSelect.AddListener(() => { ShowCharacteristics(charaId); });
 
                 ++btnId;
             }
@@ -87,64 +71,35 @@ namespace Assets.Scripts.Entities.Menu
             for (int i = btnId; i < m_BtnCharacters.Length; ++i)
                 m_BtnCharacters[btnId].gameObject.SetActive(false);
 
-            Select(0);
+            Select(m_BtnCharacters[0]);
         }
 
-        void Update()
+        void ShowCharacteristics(int _charaId)
         {
-            if (!CanTakeInput())
-                return;
-
-            if(Input.GetAxis("Vertical") > 0.9f)
-            {
-                --m_SelectedButtonId;
-                if (m_SelectedButtonId < 0)
-                    m_SelectedButtonId = 0;
-
-                Select(m_SelectedButtonId);
-                m_LastInputTime = Time.fixedTime;
-            }
-            else if(Input.GetAxis("Vertical") < -0.9f)
-            {
-                ++m_SelectedButtonId;
-                if (m_SelectedButtonId >= m_MapCharaIdButton.Count)
-                    m_SelectedButtonId = m_MapCharaIdButton.Count - 1;
-
-                Select(m_SelectedButtonId);
-                m_LastInputTime = Time.fixedTime;
-            }
+            Character selectedCharacter = GameStateManager.GetInstance().GetCharacter(_charaId);
+            m_TxtAtk.text = selectedCharacter.m_Statistics.m_Atk.ToString();
+            m_TxtDef.text = selectedCharacter.m_Statistics.m_Def.ToString();
+            m_TxtMGAtk.text = selectedCharacter.m_Statistics.m_MGAtk.ToString();
+            m_TxtMGDef.text = selectedCharacter.m_Statistics.m_MGDef.ToString();
+            m_TxtHP.text = string.Format("{0} / {1}", selectedCharacter.m_Statistics.m_HP, selectedCharacter.m_Statistics.m_MaxHP);
+            m_TxtMP.text = string.Format("{0} / {1}", selectedCharacter.m_Statistics.m_MP, selectedCharacter.m_Statistics.m_MaxMP);
         }
 
-        bool CanTakeInput()
-        {
-            if (m_LastInputTime + m_InputCooldown < Time.fixedTime)
-                return true;
-
-            return false;
-        }
-
-        void ShowCharacteristics(Character _chara)
-        {
-            m_TxtAtk.text = _chara.m_Statistics.m_Atk.ToString();
-            m_TxtDef.text = _chara.m_Statistics.m_Def.ToString();
-            m_TxtMGAtk.text = _chara.m_Statistics.m_MGAtk.ToString();
-            m_TxtMGDef.text = _chara.m_Statistics.m_MGDef.ToString();
-            m_TxtHP.text = string.Format("{0} / {1}", _chara.m_Statistics.m_HP, _chara.m_Statistics.m_MaxHP);
-            m_TxtMP.text = string.Format("{0} / {1}", _chara.m_Statistics.m_MP, _chara.m_Statistics.m_MaxMP);
-        }
-
-        void Select(int _buttonId)
+        void Select(CustomButton _button)
         {
             UnselectedAll();
 
-            m_SelectedButtonId = _buttonId;
-            m_MapCharaIdButton[_buttonId].Value.Select();
+            m_SelectedButton = _button;
+            m_SelectedButton.Select();
         }
 
         void UnselectedAll()
         {
-            foreach (KeyValuePair<int, CustomButton> pair in m_MapCharaIdButton)
-                pair.Value.Deselect();
+            foreach (CustomButton btn in m_BtnCharacters)
+            {
+                if (btn.gameObject.activeInHierarchy && btn.enabled)
+                    btn.Deselect();
+            }
         }
     }
 }

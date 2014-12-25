@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Helper;
+
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
@@ -6,6 +8,7 @@ namespace Assets.Scripts.UI
 {
     public class CustomButton : MonoBehaviour
     {
+#pragma warning disable 649
         public enum CustomButtonState
         {
             Selected,
@@ -41,8 +44,17 @@ namespace Assets.Scripts.UI
         [SerializeField]
         private string m_Text;
 
+        [SerializeField]
+        private CustomButton m_Top;
+
+        [SerializeField]
+        private CustomButton m_Bottom;
+
+        private Cooldown m_InputCooldown;
+
         void Awake()
         {
+            m_InputCooldown = new Cooldown(0.2f);
             m_ImageWidget = GetComponent<Image>();
             m_TextWidget = GetComponentInChildren<Text>();
             m_TextWidget.text = m_Text;
@@ -55,6 +67,7 @@ namespace Assets.Scripts.UI
             if (m_ImageWidget != null)
                 m_ImageWidget.color = m_Highlighted;
             onSelect.Invoke();
+            m_InputCooldown.StartCooldown();
         }
 
         public void Deselect()
@@ -63,6 +76,37 @@ namespace Assets.Scripts.UI
             if(m_ImageWidget != null)
                 m_ImageWidget.color = m_Normal;
             onDeselect.Invoke();
+        }
+
+        void Update()
+        {
+            UpdateInput();
+        }
+
+        private void UpdateInput()
+        {
+            if (m_State != CustomButtonState.Selected)
+                return;
+
+            if (!m_InputCooldown.IsCooldownElapsed())
+                return;
+
+            if(Input.GetAxis("Vertical") > 0.9f)
+            {
+                if(m_Top != null && m_Top.enabled && m_Top.gameObject.activeInHierarchy)
+                {
+                    Deselect();
+                    m_Top.Select();
+                }
+            }
+            else if(Input.GetAxis("Vertical") < -0.9f)
+            {
+                if(m_Bottom != null && m_Bottom.enabled && m_Bottom.gameObject.activeInHierarchy)
+                {
+                    Deselect();
+                    m_Bottom.Select();
+                }
+            }
         }
     }
 }

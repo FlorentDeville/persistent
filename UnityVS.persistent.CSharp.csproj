@@ -165,6 +165,7 @@
     <Compile Include="Assets\Scripts\Assets\Core_Dialog.cs" />
     <Compile Include="Assets\Scripts\Assets\Core_DialogActor.cs" />
     <Compile Include="Assets\Scripts\Assets\Core_XmlDialog.cs" />
+    <Compile Include="Assets\Scripts\Assets\Item.cs" />
     <Compile Include="Assets\Scripts\Assets\Weapon.cs" />
     <Compile Include="Assets\Scripts\Component\Actions\ActionCloseAttack.cs" />
     <Compile Include="Assets\Scripts\Component\Actions\IAction.cs" />
@@ -172,6 +173,7 @@
     <Compile Include="Assets\Scripts\Entities\Combat\PawnActions.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\PawnBehavior.cs" />
     <Compile Include="Assets\Scripts\Entities\Menu\CanvasCharactersBehavior.cs" />
+    <Compile Include="Assets\Scripts\Entities\Menu\CanvasInventoryBehavior.cs" />
     <Compile Include="Assets\Scripts\Entities\Menu\CanvasMenuBehavior.cs" />
     <Compile Include="Assets\Scripts\Entities\UI\CombatUI_CanvasActions.cs" />
     <Compile Include="Assets\Scripts\Entities\World\Camera\CameraBehavior.cs" />
@@ -194,6 +196,7 @@
     <Compile Include="Assets\Scripts\Entities\Combat\GameMaster_State\RunSingleTurn_State\RunSingleTurn_State_Prepare.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\GameMaster_State\RunSingleTurn_State\RunSingleTurn_State_Resolve.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\GameMaster_State\RunSingleTurn_State\RunSingleTurn_State_RunAction.cs" />
+    <Compile Include="Assets\Scripts\Helper\Cooldown.cs" />
     <Compile Include="Assets\Scripts\Interactions\InteractionLoadScene.cs" />
     <Compile Include="Assets\Scripts\Interactions\Trigger\Trigger_EnterCollider.cs" />
     <Compile Include="Assets\Scripts\Manager\GameTurnManager.cs" />

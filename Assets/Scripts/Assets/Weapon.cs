@@ -5,7 +5,9 @@ namespace Assets.Scripts.Assets
     [System.Serializable]
     public class Weapon : ScriptableObject
     {
-        public string Name;
+        public string m_WeaponName;
+
+        public Sprite m_Image;
 
         public float m_Atk;
 

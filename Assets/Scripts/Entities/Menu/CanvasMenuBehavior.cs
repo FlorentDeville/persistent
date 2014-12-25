@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Manager;
+﻿using Assets.Scripts.Helper;
+using Assets.Scripts.Manager;
+
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -15,18 +17,16 @@ namespace Assets.Scripts.Entities.Menu
         [SerializeField]
         private int  m_DefaultTabId;
 
-        [SerializeField]
-        private float m_InputCooldown;
+        private Cooldown m_InputCooldown;
 
         private int m_SelectedTabId;
-
-        private float m_LastInputTime;
 
         private bool m_StartButtonDown;
 
         void Awake()
         {
             m_StartButtonDown = false;
+            m_InputCooldown = new Cooldown(0.2f);
         }
 
         void Start()
@@ -36,31 +36,31 @@ namespace Assets.Scripts.Entities.Menu
             ShowTab(m_Tabs[m_DefaultTabId].m_Canvas);
 
             m_SelectedTabId = m_DefaultTabId;
-            m_LastInputTime = 0;
+            m_InputCooldown.StartCooldown();
         }
 
         void Update()
         {
-            if (!CanTakeInput())
+            if (!m_InputCooldown.IsCooldownElapsed())
                 return;
 
             if(Input.GetButton("RB"))
             {
-                m_LastInputTime = Time.fixedTime;
                 ++m_SelectedTabId;
                 if (m_SelectedTabId >= m_Tabs.Length)
                     m_SelectedTabId = 0;
 
                 UpdateSelectedTab(m_Tabs[m_SelectedTabId]);
+                m_InputCooldown.StartCooldown();
             }
             else if(Input.GetButton("LB"))
             {
-                m_LastInputTime = Time.fixedTime;
                 --m_SelectedTabId;
                 if (m_SelectedTabId < 0)
                     m_SelectedTabId = m_Tabs.Length - 1;
 
                 UpdateSelectedTab(m_Tabs[m_SelectedTabId]);
+                m_InputCooldown.StartCooldown();
             }
             else if(Input.GetButtonDown("Start"))
             {
@@ -71,14 +71,6 @@ namespace Assets.Scripts.Entities.Menu
                 if (m_StartButtonDown)
                     GameSceneManager.GetInstance().Pop(true);
             }
-        }
-
-        bool CanTakeInput()
-        {
-            if (m_LastInputTime + m_InputCooldown < Time.fixedTime)
-                return true;
-
-            return false;
         }
 
         void UpdateSelectedTab(ButtonCanvasPair _selectedTab)
