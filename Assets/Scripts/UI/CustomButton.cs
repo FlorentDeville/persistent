@@ -41,7 +41,7 @@ namespace Assets.Scripts.UI
         [SerializeField]
         private string m_Text;
 
-        void Start()
+        void Awake()
         {
             m_ImageWidget = GetComponent<Image>();
             m_TextWidget = GetComponentInChildren<Text>();
@@ -52,14 +52,16 @@ namespace Assets.Scripts.UI
         public void Select()
         {
             m_State = CustomButtonState.Selected;
-            m_ImageWidget.color = m_Highlighted;
+            if (m_ImageWidget != null)
+                m_ImageWidget.color = m_Highlighted;
             onSelect.Invoke();
         }
 
         public void Deselect()
         {
             m_State = CustomButtonState.Unselected;
-            m_ImageWidget.color = m_Normal;
+            if(m_ImageWidget != null)
+                m_ImageWidget.color = m_Normal;
             onDeselect.Invoke();
         }
     }

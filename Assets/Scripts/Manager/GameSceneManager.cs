@@ -43,6 +43,12 @@ namespace Assets.Scripts.Manager
             m_ParameterStack.Push(_parameter);
         }
 
+        public void LoadPauseMenuScene()
+        {
+            m_RootStack.Peek().SetActive(false);
+            Application.LoadLevelAdditive("PauseMenu");
+        }
+
         public void PushCurrentRoot()
         {
             GameObject any = GameObject.FindObjectOfType<GameObject>();
@@ -51,18 +57,18 @@ namespace Assets.Scripts.Manager
 
         public GameObject Pop(bool _destroy)
         {
-            m_ParameterStack.Pop();
+            if(m_ParameterStack.Count != 0)
+                m_ParameterStack.Pop();
 
             GameObject top = m_RootStack.Pop();
-            top.SetActive(false);
-            m_RootStack.Peek().SetActive(true);
-
-            if(_destroy)
+            if (top != null)
             {
-                GameObject.Destroy(top);
-                return null;
+                top.SetActive(false);
+                if (_destroy)
+                    GameObject.Destroy(top);
             }
 
+            m_RootStack.Peek().SetActive(true);
             return top;
             
         }

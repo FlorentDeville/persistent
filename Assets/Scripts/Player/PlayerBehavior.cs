@@ -3,6 +3,8 @@ using System.Collections;
 
 using AssemblyCSharp;
 
+using Assets.Scripts.Manager;
+
 namespace Persistent
 {
 	public class PlayerBehavior : MonoBehaviour 
@@ -31,6 +33,9 @@ namespace Persistent
 		void Update () 
 		{
 			m_Runner.Update();
+
+            if(Input.GetButton("Start"))
+                GameSceneManager.GetInstance().LoadPauseMenuScene();
 		}
 	}
 }

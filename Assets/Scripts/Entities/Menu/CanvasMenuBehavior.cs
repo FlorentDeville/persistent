@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Manager;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
@@ -20,6 +21,13 @@ namespace Assets.Scripts.Entities.Menu
         private int m_SelectedTabId;
 
         private float m_LastInputTime;
+
+        private bool m_StartButtonDown;
+
+        void Awake()
+        {
+            m_StartButtonDown = false;
+        }
 
         void Start()
         {
@@ -53,6 +61,15 @@ namespace Assets.Scripts.Entities.Menu
                     m_SelectedTabId = m_Tabs.Length - 1;
 
                 UpdateSelectedTab(m_Tabs[m_SelectedTabId]);
+            }
+            else if(Input.GetButtonDown("Start"))
+            {
+                m_StartButtonDown = true;
+            }
+            else if(Input.GetButtonUp("Start"))
+            {
+                if (m_StartButtonDown)
+                    GameSceneManager.GetInstance().Pop(true);
             }
         }
 
