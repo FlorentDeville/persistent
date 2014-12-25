@@ -24,19 +24,16 @@ namespace Assets.Scripts.Entities.Menu
             if(Debug.isDebugBuild)
                 GameStateManager.GetInstance().LoadDefaultWeaponInventory();
 
-            m_ItemsButton.onSelect.AddListener(() => { ShowItems(); });
-            m_WeaponsButton.onSelect.AddListener(() => { ShowWeapons(); });
-
             m_ItemsButton.Select();
         }
 
-        private void ShowItems()
+        public void ShowItems()
         {
             foreach (Text widget in m_InventoryTextField)
                 widget.gameObject.SetActive(false);
         }
 
-        private void ShowWeapons()
+        public void ShowWeapons()
         { 
             int textFieldId = 0;
             foreach(Weapon wep in GameStateManager.GetInstance().WeaponInventory)
