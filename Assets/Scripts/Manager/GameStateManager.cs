@@ -9,6 +9,11 @@ namespace Assets.Scripts.Manager
 
         private Dictionary<int, Character> m_Characters;
 
+        public Dictionary<int, Character>.ValueCollection Characters
+        {
+            get { return m_Characters.Values; }
+        }
+
         private GameStateManager()
         {
             m_Characters = new Dictionary<int, Character>();
@@ -34,11 +39,18 @@ namespace Assets.Scripts.Manager
         {
             Character newChar = new Character();
             newChar.m_Id = _id;
-            newChar.m_Name = "Default";
+            if (_id == 0)
+                newChar.m_Name = "Player";
+            else
+                newChar.m_Name = "Sidekick";
+
             newChar.m_EquippedWeapon = null;
             newChar.m_Statistics = new CharacterStatistics();
 
-            newChar.m_Statistics.m_Atk = 300;
+            if(_id == 0)
+                newChar.m_Statistics.m_Atk = 300;
+            else
+                newChar.m_Statistics.m_Atk = 200;
             newChar.m_Statistics.m_Def = 2;
             newChar.m_Statistics.m_HP = 100;
             newChar.m_Statistics.m_MaxHP = 100;
