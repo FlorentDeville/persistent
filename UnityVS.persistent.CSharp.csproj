@@ -173,9 +173,11 @@
     <Compile Include="Assets\Scripts\Entities\Combat\PawnActions.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\PawnBehavior.cs" />
     <Compile Include="Assets\Scripts\Entities\Menu\CanvasCharactersBehavior.cs" />
+    <Compile Include="Assets\Scripts\Entities\Menu\CanvasEquipementBehavior.cs" />
     <Compile Include="Assets\Scripts\Entities\Menu\CanvasInventoryBehavior.cs" />
     <Compile Include="Assets\Scripts\Entities\Menu\CanvasMenuBehavior.cs" />
     <Compile Include="Assets\Scripts\Entities\Menu\CanvasOptionsBehavior.cs" />
+    <Compile Include="Assets\Scripts\Entities\Menu\CanvasWeaponSelectionBehavior.cs" />
     <Compile Include="Assets\Scripts\Entities\UI\CombatUI_CanvasActions.cs" />
     <Compile Include="Assets\Scripts\Entities\World\Camera\CameraBehavior.cs" />
     <Compile Include="Assets\Scripts\Entities\World\Camera\CameraState.cs" />

@@ -33,43 +33,9 @@ namespace Assets.Scripts.Entities.Menu
         [SerializeField]
         private Text m_TxtMP;
 
-        [SerializeField]
-        private Text m_TxtWepAtk;
-
-        [SerializeField]
-        private Text m_TxtWepRAtk;
-
-        [SerializeField]
-        private Text m_TxtWepMGAtk;
-
-        [SerializeField]
-        private Text m_TxtWepMGRAtk;
-
-        private CustomButton m_SelectedButton;
-
         void Start()
         {
-            if(Debug.isDebugBuild)
-            {
-                GameStateManager.GetInstance().GetCharacter(0);
-                GameStateManager.GetInstance().GetCharacter(1);
-            }
-
-            int btnId = 0;
-            foreach(Character chara in GameStateManager.GetInstance().Characters)
-            {
-                if (m_BtnCharacters.Length <= btnId)
-                    break;
-
-                m_BtnCharacters[btnId].GetComponentInChildren<Text>().text = chara.m_Name;
-                int charaId = chara.m_Id;
-                m_BtnCharacters[btnId].onSelect.AddListener(() => { ShowCharacteristics(charaId); });
-
-                ++btnId;
-            }
-
-            for (int i = btnId; i < m_BtnCharacters.Length; ++i)
-                m_BtnCharacters[btnId].gameObject.SetActive(false);
+            InitializeCharactersButtons();
 
             Select(m_BtnCharacters[0]);
         }
@@ -88,9 +54,7 @@ namespace Assets.Scripts.Entities.Menu
         void Select(CustomButton _button)
         {
             UnselectedAll();
-
-            m_SelectedButton = _button;
-            m_SelectedButton.Select();
+            _button.Select();
         }
 
         void UnselectedAll()
@@ -100,6 +64,31 @@ namespace Assets.Scripts.Entities.Menu
                 if (btn.gameObject.activeInHierarchy && btn.enabled)
                     btn.Deselect();
             }
+        }
+
+        private void InitializeCharactersButtons()
+        {
+            if (Debug.isDebugBuild)
+            {
+                GameStateManager.GetInstance().GetCharacter(0);
+                GameStateManager.GetInstance().GetCharacter(1);
+            }
+
+            int btnId = 0;
+            foreach (Character chara in GameStateManager.GetInstance().Characters)
+            {
+                if (m_BtnCharacters.Length <= btnId)
+                    break;
+
+                m_BtnCharacters[btnId].GetComponentInChildren<Text>().text = chara.m_Name;
+                int charaId = chara.m_Id;
+                m_BtnCharacters[btnId].onSelect.AddListener(() => { ShowCharacteristics(charaId); });
+
+                ++btnId;
+            }
+
+            for (int i = btnId; i < m_BtnCharacters.Length; ++i)
+                m_BtnCharacters[btnId].gameObject.SetActive(false);
         }
     }
 }

@@ -13,12 +13,15 @@ namespace Assets.Scripts.UI
         {
             Selected,
             Unselected,
+            Pressed,
             Unknown
         }
 
         public Color m_Normal;
 
         public Color m_Highlighted;
+
+        public Color m_Pressed;
 
         public string Text
         {
@@ -30,19 +33,36 @@ namespace Assets.Scripts.UI
                     m_TextWidget.text = m_Text;
             }
         }
-        
+
+        [SerializeField]
+        private string m_Text;
+
+        [SerializeField]
+        private bool m_HandleInput;
+        public bool HandleInput
+        {
+            get { return m_HandleInput; }
+            set
+            {
+                m_HandleInput = value;
+                if (m_HandleInput)
+                    m_InputCooldown.StartCooldown();
+            }
+        }
+
         public UnityEvent onSelect;
 
         public UnityEvent onDeselect;
+
+        public UnityEvent onClick;
+
+        public UnityEvent onCancel;
 
         private Image m_ImageWidget;
 
         private Text m_TextWidget;
 
         private CustomButtonState m_State;
-
-        [SerializeField]
-        private string m_Text;
 
         [SerializeField]
         private CustomButton m_Top;
@@ -80,13 +100,24 @@ namespace Assets.Scripts.UI
 
         void Update()
         {
-            UpdateInput();
+            if (m_HandleInput)
+                UpdateInput();
         }
 
         private void UpdateInput()
         {
-            if (m_State != CustomButtonState.Selected)
+            if (m_State == CustomButtonState.Unselected)
                 return;
+
+            if(m_State == CustomButtonState.Pressed)
+            {
+                if(m_InputCooldown.IsCooldownElapsed())
+                {
+                    m_State = CustomButtonState.Selected;
+                    m_ImageWidget.color = m_Highlighted;
+                    return;
+                }
+            }
 
             if (!m_InputCooldown.IsCooldownElapsed())
                 return;
@@ -106,6 +137,18 @@ namespace Assets.Scripts.UI
                     Deselect();
                     m_Bottom.Select();
                 }
+            }
+            else if(Input.GetButton("Submit") && m_State == CustomButtonState.Selected)
+            {
+                m_State = CustomButtonState.Pressed;
+                m_ImageWidget.color = m_Pressed;
+                m_InputCooldown.StartCooldown();
+                onClick.Invoke();
+            }
+            else if(Input.GetButton("Cancel") && m_State == CustomButtonState.Selected)
+            {
+                m_InputCooldown.StartCooldown();
+                onCancel.Invoke();
             }
         }
     }
