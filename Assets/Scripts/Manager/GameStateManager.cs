@@ -51,6 +51,20 @@ namespace Assets.Scripts.Manager
             return m_Characters[_id];
         }
 
+        public bool IsEquipped(Weapon _weapon)
+        {
+            if(_weapon == null)
+                return false;
+
+            foreach(Character chara in Characters)
+            {
+                if (_weapon == chara.m_EquippedWeapon)
+                    return true;
+            }
+
+            return false;
+        }
+
         public void LoadDefaultWeaponInventory()
         {
             if (m_WeaponInventory.Count != 0)

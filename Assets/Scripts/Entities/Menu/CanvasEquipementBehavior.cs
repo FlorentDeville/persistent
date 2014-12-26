@@ -102,7 +102,8 @@ namespace Assets.Scripts.Entities.Menu
         {
             m_SelectedCharacterId = _charaId;
             LoseFocus();
-            m_CanvasWeaponSelector.Activate();
+            Weapon equippedWeapon = GameStateManager.GetInstance().GetCharacter(_charaId).m_EquippedWeapon;
+            m_CanvasWeaponSelector.Activate(equippedWeapon);
         }
 
         private void OnWeaponSelected(Weapon _weapon)
