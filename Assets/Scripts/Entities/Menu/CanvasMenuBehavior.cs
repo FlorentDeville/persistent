@@ -71,6 +71,10 @@ namespace Assets.Scripts.Entities.Menu
                 if (m_StartButtonDown)
                     GameSceneManager.GetInstance().Pop(true);
             }
+            else if(Input.GetButton("B"))
+            {
+                GameSceneManager.GetInstance().Pop(true);
+            }
         }
 
         void UpdateSelectedTab(ButtonCanvasPair _selectedTab)
