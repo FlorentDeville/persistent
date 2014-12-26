@@ -2,11 +2,15 @@
 using Assets.Scripts.Manager;
 using Assets.Scripts.Entities.Combat;
 using UnityEngine;
+using UnityEngine.UI;
 
 public partial class GameMaster : MonoBehaviour
 {
     public class GameMaster_State_Init : IFSMState<GameMaster>
     {
+        public RawImage m_FadeWidget;
+        public Color m_InitColor;
+
         public override int State { get { return (int)GameMasterState.Init; } }
 
         public override void OnEnter()
@@ -14,6 +18,7 @@ public partial class GameMaster : MonoBehaviour
             //compute turns history
             GameTurnManager turnMng = GameTurnManager.GetInstance();
             turnMng.Init(m_Behavior.m_Pawns);
+            m_Behavior.m_UITurnHistory.UpdateTurnHistory(turnMng);
 
             //init ui state
             int playerPawnCount = turnMng.m_PlayerPawns.Count;
@@ -50,7 +55,17 @@ public partial class GameMaster : MonoBehaviour
                 m_Behavior.m_UIPawnState[i].gameObject.SetActive(false);
             }
 
-            m_Runner.SetCurrentState((int)GameMasterState.RunSingleTurn, "Init state over");
+            m_Behavior.ActivateMenu(false);
+
+            m_FadeWidget.gameObject.SetActive(true);
+            m_FadeWidget.color = m_InitColor;
+
+            m_Runner.SetCurrentState((int)GameMasterState.PlayIntro, "Init state over");
+        }
+
+        public override void OnExit()
+        {
+            //m_FadeWidget.gameObject.SetActive(false);
         }
 
         private void InitializePawnStatistics(GameObject _pawn)

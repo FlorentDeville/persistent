@@ -1,6 +1,8 @@
 ﻿using AssemblyCSharp;
 using Assets.Scripts.Manager;
 using Assets.Scripts.Entities.Combat;
+using Assets.Scripts.Entities.World;
+
 using UnityEngine;
 
 public partial class GameMaster : MonoBehaviour
@@ -19,6 +21,8 @@ public partial class GameMaster : MonoBehaviour
             }
 
             GameSceneManager.GetInstance().Pop(true);
+
+            LevelMaster.GetInstance().ComeBackFromBattle();
         }
     }
 }

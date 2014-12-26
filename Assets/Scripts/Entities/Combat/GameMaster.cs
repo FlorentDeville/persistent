@@ -32,11 +32,29 @@ public partial class GameMaster : MonoBehaviour
     public GameObject m_UIDamageText;
     public GameObject m_UIGameOverText;
     public GameObject m_UIVictoryText;
-    
+
+    #region Variable State Init
+
+    [Header("State : Init")]
+    public RawImage m_InitFadeWidget;
+
+    public Color m_InitColor;
+
+    #endregion
+
+    #region Variable State PlayIntro
+
+    [Header("State : Play Intro")]
+    public CinemaDirector.Cutscene m_IntroCutscene;
+
+    public float m_ColorScreenDuration;
+
+    #endregion
 
     public enum GameMasterState
     {
         Init,
+        PlayIntro,
         RunSingleTurn,
         CheckGoal,
         GameOver,
@@ -57,13 +75,21 @@ public partial class GameMaster : MonoBehaviour
 	void Start () 
     {
         m_Runner = new FSMRunner(gameObject);
-        m_Runner.RegisterState<GameMaster_State_Init>();
+        
         m_Runner.RegisterState<GameMaster_State_RunSingleTurn>();
         m_Runner.RegisterState<GameMaster_State_CheckGoal>();
         m_Runner.RegisterState<GameMaster_State_GameOver>();
         m_Runner.RegisterState<GameMaster_State_Victory>();
         m_Runner.RegisterState<GameMaster_State_Terminate>();
         m_Runner.RegisterState<GameMaster_State_DummyLoop>();
+
+        GameMaster_State_Init stateInit = m_Runner.RegisterState<GameMaster_State_Init>();
+        stateInit.m_FadeWidget = m_InitFadeWidget;
+        stateInit.m_InitColor = m_InitColor;
+
+        GameMaster_State_PlayIntro statePlayIntro = m_Runner.RegisterState<GameMaster_State_PlayIntro>();
+        statePlayIntro.m_IntroCutscene = m_IntroCutscene;
+
         m_Runner.StartState((int)GameMasterState.Init);
 
         m_Pawns = new List<GameObject>();
@@ -184,5 +210,12 @@ public partial class GameMaster : MonoBehaviour
     GameMaster_State_RunSingleTurn GetRunSingleTurnState()
     {
         return m_Runner.GetStateObject<GameMaster_State_RunSingleTurn>((int)GameMasterState.RunSingleTurn);
+    }
+
+    private void ActivateMenu(bool _activate)
+    {
+        m_AttackButton.gameObject.SetActive(_activate);
+        m_ItemsButton.gameObject.SetActive(_activate);
+        m_MagicButton.gameObject.SetActive(_activate);
     }
 }

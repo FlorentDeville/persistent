@@ -169,6 +169,7 @@
     <Compile Include="Assets\Scripts\Assets\Weapon.cs" />
     <Compile Include="Assets\Scripts\Component\Actions\ActionCloseAttack.cs" />
     <Compile Include="Assets\Scripts\Component\Actions\IAction.cs" />
+    <Compile Include="Assets\Scripts\Entities\Combat\GameMaster_State\GameMaster_State_PlayIntro.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\GameMaster_State\RunSingleTurn_State\RunSingleTurn_State_Over.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\PawnActions.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\PawnBehavior.cs" />
