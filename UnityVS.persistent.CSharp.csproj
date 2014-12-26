@@ -172,6 +172,7 @@
     <Compile Include="Assets\Scripts\Entities\Combat\GameMaster_State\RunSingleTurn_State\RunSingleTurn_State_Over.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\PawnActions.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\PawnBehavior.cs" />
+    <Compile Include="Assets\Scripts\Entities\IFreezableMonoBehavior.cs" />
     <Compile Include="Assets\Scripts\Entities\Menu\CanvasCharactersBehavior.cs" />
     <Compile Include="Assets\Scripts\Entities\Menu\CanvasEquipementBehavior.cs" />
     <Compile Include="Assets\Scripts\Entities\Menu\CanvasInventoryBehavior.cs" />
@@ -199,6 +200,8 @@
     <Compile Include="Assets\Scripts\Entities\Combat\GameMaster_State\RunSingleTurn_State\RunSingleTurn_State_Prepare.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\GameMaster_State\RunSingleTurn_State\RunSingleTurn_State_Resolve.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\GameMaster_State\RunSingleTurn_State\RunSingleTurn_State_RunAction.cs" />
+    <Compile Include="Assets\Scripts\Entities\World\LevelMaster.cs" />
+    <Compile Include="Assets\Scripts\Entities\World\LevelMaster_State.cs" />
     <Compile Include="Assets\Scripts\Helper\Cooldown.cs" />
     <Compile Include="Assets\Scripts\Interactions\InteractionLoadScene.cs" />
     <Compile Include="Assets\Scripts\Interactions\Trigger\Trigger_EnterCollider.cs" />

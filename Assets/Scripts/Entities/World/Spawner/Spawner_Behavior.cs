@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+using Assets.Scripts.Entities.World.Enemies;
+
 namespace Persistent.WorldEntity
 {
     public class Spawner_Behavior : MonoBehaviour

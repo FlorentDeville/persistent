@@ -6,9 +6,12 @@ using System.Text;
 using AssemblyCSharp;
 using UnityEngine;
 
-namespace Persistent.WorldEntity
+using Persistent;
+using Persistent.WorldEntity;
+
+namespace Assets.Scripts.Entities.World.Enemies
 {
-    public partial class BaseEnemy_Behavior : MonoBehaviour
+    public partial class BaseEnemy_Behavior : IFreezableMonoBehavior
     {
         public class BaseEnemy_State_Birth : IFSMState<BaseEnemy_Behavior>
         {
@@ -21,7 +24,7 @@ namespace Persistent.WorldEntity
                 m_BirstStateStartTime = Time.fixedTime;
 
                 m_Behavior.m_BirthEffectInstance.SetActive(true);
-                Component[] components = m_Behavior.m_BirthEffectInstance.GetComponentsInChildren(typeof(ParticleEmitter));
+                UnityEngine.Component[] components = m_Behavior.m_BirthEffectInstance.GetComponentsInChildren(typeof(ParticleEmitter));
                 foreach (ParticleEmitter emitter in components)
                     emitter.emit = true;
             }
@@ -30,7 +33,7 @@ namespace Persistent.WorldEntity
             {
                 if (Time.fixedTime >= m_BirstStateStartTime + m_Behavior.m_WorldSettings.m_BirthEffectDuration)
                 {
-                    Component[] components = m_Behavior.m_BirthEffectInstance.GetComponentsInChildren(typeof(ParticleEmitter));
+                    UnityEngine.Component[] components = m_Behavior.m_BirthEffectInstance.GetComponentsInChildren(typeof(ParticleEmitter));
 
                     foreach (ParticleEmitter emitter in components)
                         emitter.emit = false;
@@ -92,7 +95,7 @@ namespace Persistent.WorldEntity
             {
                 m_StartTimeState = Time.fixedTime;
                 m_Behavior.m_DeathEffectInstance.SetActive(true);
-                Component[] components = m_Behavior.m_DeathEffectInstance.GetComponentsInChildren(typeof(ParticleEmitter));
+                UnityEngine.Component[] components = m_Behavior.m_DeathEffectInstance.GetComponentsInChildren(typeof(ParticleEmitter));
                 foreach (ParticleEmitter emitter in components)
                     emitter.emit = true;
             }
@@ -101,7 +104,7 @@ namespace Persistent.WorldEntity
             {
                 if(Time.fixedTime >= m_StartTimeState + m_Behavior.m_WorldSettings.m_DeathEffectDuration)
                 {
-                    Component[] components = m_Behavior.m_DeathEffectInstance.GetComponentsInChildren(typeof(ParticleEmitter));
+                    UnityEngine.Component[] components = m_Behavior.m_DeathEffectInstance.GetComponentsInChildren(typeof(ParticleEmitter));
                     foreach (ParticleEmitter emitter in components)
                         emitter.emit = false;
 
@@ -119,7 +122,7 @@ namespace Persistent.WorldEntity
             {
                 bool effectOver = true;
 
-                Component[] components = m_Behavior.m_DeathEffectInstance.GetComponentsInChildren(typeof(ParticleEmitter));
+                UnityEngine.Component[] components = m_Behavior.m_DeathEffectInstance.GetComponentsInChildren(typeof(ParticleEmitter));
                 foreach (ParticleEmitter emitter in components)
                 {
                     if(emitter.particleCount != 0)

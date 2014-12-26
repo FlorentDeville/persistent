@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 using AssemblyCSharp;
 
+using Assets.Scripts.Entities;
 using Assets.Scripts.Manager;
 using Assets.Scripts.Manager.Parameter;
 
-namespace Persistent.WorldEntity
+using Persistent;
+using Persistent.WorldEntity;
+
+namespace Assets.Scripts.Entities.World.Enemies
 {
     [RequireComponent(typeof(BaseEnemy_WorldSettings))]
     [RequireComponent(typeof(BaseEnemy_CombatSettings))]
-    public partial class BaseEnemy_Behavior : MonoBehaviour
+    public partial class BaseEnemy_Behavior : IFreezableMonoBehavior
     {
         private BaseEnemy_WorldSettings m_WorldSettings;
 
@@ -57,7 +61,8 @@ namespace Persistent.WorldEntity
         // Update is called once per frame
         void Update()
         {
-            m_Runner.Update();
+            if(!m_Freezed)
+                m_Runner.Update();
         }
 
         public void OnSpawn()
@@ -92,19 +97,17 @@ namespace Persistent.WorldEntity
                 if(m_CanEnterInCombat)
                 {
                     m_CanEnterInCombat = false;
+
                     m_Runner.SetCurrentState((int)EnemyState.DeathEffect, "collision with player");
 
-                    CombatSceneParameter param = new CombatSceneParameter();
-                    param.m_EnemiesPawns.AddRange(m_CombatSettings.m_PawnsPrefab);
-
-                    Transform prefabPawnPlayer = Resources.Load<Transform>("Prefabs/Pawns/Pawn_Player");
-                    Transform prefabPawnSidekick = Resources.Load<Transform>("Prefabs/Pawns/Pawn_Sidekick");
-                    param.m_PlayerPawns.Add(prefabPawnPlayer);
-                    param.m_PlayerPawns.Add(prefabPawnSidekick);
-
-                    GameSceneManager.GetInstance().LoadCombatScene("Level_01_Combat_01", param);
+                    LevelMaster.GetInstance().StartBattleTransition(m_CombatSettings);
                 }
             }
+        }
+
+        protected override void OnFreeze(bool _value)
+        {
+            GetComponent<NavMeshAgent>().enabled = !_value;
         }
     }
 
