@@ -78,11 +78,11 @@ namespace Assets.Scripts.Manager
 
             string relPath = "Weapon";
 
-            string[] weaponsToLoad = new string[3]
+            string[] weaponsToLoad = new string[]
             {
-                "axe",
-                "sword",
-                "brokensword"
+                "axe"
+                , "sword"
+                //, "brokensword"
             };
 
             foreach(string weaponName in weaponsToLoad)

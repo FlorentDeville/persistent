@@ -62,7 +62,6 @@ namespace Assets.Scripts.Entities.Menu
                 Weapon w = wep;
                 m_BtnInventory[textFieldId].onSelect.AddListener(() => { Compare(m_EquipedWeapon, w); });
                 m_BtnInventory[textFieldId].onClick.AddListener(() => { onWeaponClicked(ref w); });
-                m_BtnInventory[textFieldId].onCancel.AddListener(() => { onCanvasClose(); });
 
                 m_BtnInventory[textFieldId].gameObject.SetActive(true);
 
@@ -72,6 +71,11 @@ namespace Assets.Scripts.Entities.Menu
             for (int i = textFieldId; i < m_BtnInventory.Length; ++i)
             {
                 m_BtnInventory[i].gameObject.SetActive(false);
+            }
+
+            if(textFieldId == 0)
+            {
+                ActiveComparisonWidget(false);
             }
 
         }
@@ -84,6 +88,12 @@ namespace Assets.Scripts.Entities.Menu
             DeselectAndHandleInputAll();
 
             m_BtnInventory[0].Select();
+        }
+
+        void Update()
+        {
+            if (Input.GetButton("Cancel"))
+                onCanvasClose();
         }
 
         private void onWeaponClicked(ref Weapon wep)
@@ -124,6 +134,8 @@ namespace Assets.Scripts.Entities.Menu
             SetComparison(m_RAtkIncrease, _equiped.m_AtkR, _selected.m_AtkR);
             SetComparison(m_MGAtkIncrease, _equiped.m_MGAtk, _selected.m_MGAtk);
             SetComparison(m_MGRAtkIncrease, _equiped.m_MGAtkR, _selected.m_MGAtkR);
+
+            ActiveComparisonWidget(true);
         }
 
         private void SetComparison(Text _widget, float _currentValue, float _newValue)
@@ -163,6 +175,14 @@ namespace Assets.Scripts.Entities.Menu
             //m_RAtkIncrease.color = Color.green;
             //m_MGAtkIncrease.color = Color.green;
             //m_MGRAtkIncrease.color = Color.green;
+        }
+
+        private void ActiveComparisonWidget(bool _active)
+        {
+            m_AtkIncrease.gameObject.SetActive(false);
+            m_RAtkIncrease.gameObject.SetActive(false);
+            m_MGAtkIncrease.gameObject.SetActive(false);
+            m_MGRAtkIncrease.gameObject.SetActive(false);
         }
     }
 }
