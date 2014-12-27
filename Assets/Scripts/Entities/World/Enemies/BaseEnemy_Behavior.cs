@@ -8,12 +8,20 @@ using Assets.Scripts.Manager.Parameter;
 using Persistent;
 using Persistent.WorldEntity;
 
+#pragma warning disable 649
+
 namespace Assets.Scripts.Entities.World.Enemies
 {
     [RequireComponent(typeof(BaseEnemy_WorldSettings))]
     [RequireComponent(typeof(BaseEnemy_CombatSettings))]
     public partial class BaseEnemy_Behavior : IFreezableMonoBehavior
     {
+        [Header("State : Idle"), SerializeField]
+        private string m_TriggerAnimToPlay;
+
+        [Header("AI"), SerializeField]
+        private AIMode m_AIMode;
+
         private BaseEnemy_WorldSettings m_WorldSettings;
 
         private BaseEnemy_CombatSettings m_CombatSettings;
@@ -40,20 +48,41 @@ namespace Assets.Scripts.Entities.World.Enemies
             m_Runner.RegisterState<BaseEnemy_State_Death>();
             m_Runner.RegisterState<BaseEnemy_State_EndOfDeath>();
 
-            Transform instance = (Transform)Instantiate(m_WorldSettings.m_BirthEffect, transform.position, Quaternion.identity);
-            instance.parent = transform;
-            m_BirthEffectInstance = instance.gameObject;
-            m_BirthEffectInstance.SetActive(false);
+            m_Runner.RegisterState<BaseEnemy_State_Idle>();
 
-            instance = (Transform)Instantiate(m_WorldSettings.m_DeathEffect, transform.position, Quaternion.identity);
-            instance.parent = transform;
-            m_DeathEffectInstance = instance.gameObject;
-            m_DeathEffectInstance.SetActive(false);
+            if (m_WorldSettings.m_BirthEffect != null)
+            {
+                Transform instance = (Transform)Instantiate(m_WorldSettings.m_BirthEffect, transform.position, Quaternion.identity);
+                instance.parent = transform;
+                m_BirthEffectInstance = instance.gameObject;
+                m_BirthEffectInstance.SetActive(false);
+            }
 
-            m_Runner.StartState((int)EnemyState.Birth);
+            if (m_WorldSettings.m_DeathEffect)
+            {
+                Transform instance = (Transform)Instantiate(m_WorldSettings.m_DeathEffect, transform.position, Quaternion.identity);
+                instance.parent = transform;
+                m_DeathEffectInstance = instance.gameObject;
+                m_DeathEffectInstance.SetActive(false);
+            }
+
+            switch(m_AIMode)
+            {
+                case AIMode.DrivenBySpawner:
+                    m_Runner.StartState((int)EnemyState.Birth);
+                    break;
+
+                case AIMode.Idle:
+                    m_Runner.StartState((int)EnemyState.Idle);
+                    break;
+
+                default:
+                    Debug.LogError(string.Format("The AI mode {0} is not supported.", m_AIMode));
+                    break;
+            }
+            //m_Runner.StartState((int)EnemyState.Birth);
 
             EnabledWorldMeshRenderer(false);
-            EnableCombatMeshRenderer(false);
 
             m_CanEnterInCombat = true;
         }
@@ -84,11 +113,6 @@ namespace Assets.Scripts.Entities.World.Enemies
             m_WorldSettings.m_Gfx.SetActive(_enabled);
         }
 
-        private void EnableCombatMeshRenderer(bool _enabled)
-        {
-            m_CombatSettings.m_Gfx.SetActive(_enabled);
-        }
-
         void OnTriggerEnter(Collider _col)
         {
             PlayerBehavior behavior = _col.GetComponent<PlayerBehavior>();
@@ -114,10 +138,22 @@ namespace Assets.Scripts.Entities.World.Enemies
     public enum EnemyState
     {
         Undefined,
+
+        //State when the enemy was spawned
         Birth,
         Life,
         DeathEffect,
         WaitForEndOfDeathEffect,
+
+        //State for enemies no attached to a spawner.
+        Idle,
+
         Count
+    }
+
+    public enum AIMode
+    {
+        DrivenBySpawner,
+        Idle
     }
 }

@@ -141,5 +141,23 @@ namespace Assets.Scripts.Entities.World.Enemies
                     
             }
         }
+
+        public class BaseEnemy_State_Idle : IFSMState<BaseEnemy_Behavior>
+        {
+            public override int State
+            {
+                get { return (int)EnemyState.Idle; }
+            }
+
+            public override void OnEnter()
+            {
+                Animator anim = m_Behavior.GetComponent<Animator>();
+                if (anim == null)
+                    return;
+
+                anim.SetTrigger(m_Behavior.m_TriggerAnimToPlay);
+                m_Behavior.EnabledWorldMeshRenderer(true);
+            }
+        }
     }
 }
