@@ -211,11 +211,4 @@ public partial class GameMaster : MonoBehaviour
     {
         return m_Runner.GetStateObject<GameMaster_State_RunSingleTurn>((int)GameMasterState.RunSingleTurn);
     }
-
-    private void ActivateMenu(bool _activate)
-    {
-        m_AttackButton.gameObject.SetActive(_activate);
-        m_ItemsButton.gameObject.SetActive(_activate);
-        m_MagicButton.gameObject.SetActive(_activate);
-    }
 }

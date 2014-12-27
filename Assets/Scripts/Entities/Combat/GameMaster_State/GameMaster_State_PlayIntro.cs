@@ -29,11 +29,5 @@ public partial class GameMaster : MonoBehaviour
             if (m_IntroCutscene.State != Cutscene.CutsceneState.Playing)
                 m_Runner.SetCurrentState((int)GameMasterState.RunSingleTurn, "intro over");
         }
-
-        public override void OnExit()
-        {
-            m_Behavior.ActivateMenu(true);
-            m_Behavior.m_AttackButton.Select();
-        }
     }
 }
