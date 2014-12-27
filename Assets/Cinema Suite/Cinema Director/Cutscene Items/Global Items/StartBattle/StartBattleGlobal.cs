@@ -3,7 +3,7 @@ using Persistent.WorldEntity;
 
 namespace CinemaDirector
 {
-    [CutsceneItemAttribute("Battle", "Start Battle")]
+    [CutsceneItemAttribute("Level Master", "Start Battle")]
     public class StartBattleGlobal : CinemaGlobalEvent
     {
         public BaseEnemy_CombatSettings m_Settings;
