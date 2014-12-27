@@ -23,6 +23,12 @@ namespace Persistent
 
         private bool m_waitForInteractionEnd;
 
+        void Awake()
+        {
+            foreach (Interaction inter in m_interactions)
+                inter.enabled = false;
+        }
+
         // Use this for initialization
         void Start()
         {

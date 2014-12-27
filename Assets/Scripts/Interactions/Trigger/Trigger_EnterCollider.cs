@@ -19,6 +19,9 @@ namespace Assets.Scripts.Interactions.Trigger
 
         void OnTriggerEnter(Collider _col)
         {
+            if (!enabled)
+                return;
+
             if (_col.gameObject.name != GameObjectHelper.getPlayerName())
                 return;
 

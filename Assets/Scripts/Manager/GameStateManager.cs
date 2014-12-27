@@ -51,6 +51,11 @@ namespace Assets.Scripts.Manager
             return m_Characters[_id];
         }
 
+        public void AddToInventory(Weapon _weapon)
+        {
+            m_WeaponInventory.Add(_weapon);
+        }
+
         public bool IsEquipped(Weapon _weapon)
         {
             if(_weapon == null)
@@ -67,6 +72,7 @@ namespace Assets.Scripts.Manager
 
         public void LoadDefaultWeaponInventory()
         {
+            return;
             if (m_WeaponInventory.Count != 0)
                 return;
 
