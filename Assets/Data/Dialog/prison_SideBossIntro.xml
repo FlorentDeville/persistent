@@ -1,0 +1,12 @@
+<Dialog>
+	<Title>prison_sidequest_01</Title>
+	<Text>
+		<Part ActorName="Side Boss">Stop here! You cannot pass!</Part>
+
+    <Part ActorName="Player">What the hell is that?</Part>
+		
+		<Part ActorName="SideKick">No idea.</Part>
+		
+		<Part ActorName="SideKick">Let's kick his ass!</Part>
+	</Text>
+</Dialog>
