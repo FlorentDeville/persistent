@@ -1,0 +1,16 @@
+<Dialog>
+	<Title>prison_02</Title>
+	<Text>
+		<Part ActorName="SideKick">We are too late. He is dead.</Part>
+
+    <Part ActorName="Player">So we took all those risks for nothing!</Part>
+		
+		<Part ActorName="SideKick">We did what was right. That's what matters.</Part>
+		
+		<Part ActorName="Player">He left us his equippement...</Part>
+
+    <Part ActorName="SideKick">We can't pickpocket a dead man!</Part>
+
+    <Part ActorName="Player">Stop being so prude. Let's loot this fucker.</Part>
+	</Text>
+</Dialog>

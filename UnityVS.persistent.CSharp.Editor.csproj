@@ -141,6 +141,7 @@
     <None Include="Assets\Data\Dialog\dialog_King_Intro.xml" />
     <None Include="Assets\Data\Dialog\dialog_Prison_Intro.xml" />
     <None Include="Assets\Data\Dialog\prison_01.xml" />
+    <None Include="Assets\Data\Dialog\prison_02.xml" />
     <None Include="Assets\Data\Dialog\prison_SideBossIntro.xml" />
     <None Include="Assets\Data\Shaders\Fog.shader" />
     <None Include="Assets\Data\Shaders\Silouhette_Outlined.shader" />
