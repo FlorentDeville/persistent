@@ -26,6 +26,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: GoToAttack
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 3
     m_Name: Base Layer
@@ -38,6 +44,26 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!1101 &110104424
+Transition:
+  serializedVersion: 2
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 0}
+  m_DstState: {fileID: 110263492}
+  m_TransitionDuration: .100000001
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: GoToAttack
+    m_EventTreshold: 0
+    m_ExitTime: .899999976
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+  m_CanTransitionToSelf: 0
 --- !u!1101 &110108450
 Transition:
   serializedVersion: 2
@@ -118,6 +144,26 @@ Transition:
   m_Solo: 0
   m_Mute: 0
   m_CanTransitionToSelf: 0
+--- !u!1101 &110198416
+Transition:
+  serializedVersion: 2
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110263492}
+  m_DstState: {fileID: 110296374}
+  m_TransitionDuration: .25
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 5
+    m_ConditionEvent: 
+    m_EventTreshold: 0
+    m_ExitTime: .75
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+  m_CanTransitionToSelf: 0
 --- !u!1102 &110209324
 State:
   m_ObjectHideFlags: 3
@@ -133,6 +179,21 @@ State:
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
+--- !u!1102 &110246016
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Pawn_SideQuestBoss_Attack
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: 474fdb5d8a406c1488fa78dcb8ceb967, type: 2}
+  m_ParentStateMachine: {fileID: 110767756}
+  m_Position: {x: -13, y: 29, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
 --- !u!1102 &110246334
 State:
   m_ObjectHideFlags: 3
@@ -145,6 +206,21 @@ State:
   - {fileID: 7400000, guid: f92c3bf9d5883cc40ad0caeb6666d56b, type: 2}
   m_ParentStateMachine: {fileID: 110767756}
   m_Position: {x: -48, y: -36, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
+--- !u!1102 &110263492
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Attack
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: 474fdb5d8a406c1488fa78dcb8ceb967, type: 2}
+  m_ParentStateMachine: {fileID: 110767756}
+  m_Position: {x: -372, y: -108, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -175,9 +251,24 @@ StateMachine:
   - {fileID: 110296374}
   - {fileID: 110209324}
   - {fileID: 110246334}
+  - {fileID: 110246016}
+  - {fileID: 110263492}
   m_ChildStateMachine: []
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
+    data:
+      first: {fileID: 110263492}
+      second:
+      - {fileID: 110198416}
+    data:
+      first: {fileID: 110246016}
+      second: []
+    data:
+      first: {fileID: 110246334}
+      second: []
+    data:
+      first: {fileID: 110209324}
+      second: []
     data:
       first: {fileID: 110296374}
       second: []
@@ -187,6 +278,7 @@ StateMachine:
       - {fileID: 110184922}
       - {fileID: 110137062}
       - {fileID: 110150614}
+      - {fileID: 110104424}
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: -84, y: -132, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
