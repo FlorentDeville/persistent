@@ -6630,6 +6630,7 @@ Transform:
   - {fileID: 1112534659}
   - {fileID: 2142718040}
   - {fileID: 1377151607}
+  - {fileID: 2086306534}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!114 &971188146
@@ -7057,12 +7058,12 @@ MonoBehaviour:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -22.2999992
+        value: -7.51999998
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       - time: 5
-        value: -5.92999983
+        value: .689999998
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -7072,12 +7073,12 @@ MonoBehaviour:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 11.5
+        value: 15.0200005
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       - time: 5
-        value: 4.17999983
+        value: 6.48999977
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -7087,12 +7088,12 @@ MonoBehaviour:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -12.8000002
+        value: -10.6400003
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       - time: 5
-        value: -23.8099995
+        value: -28.9799995
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -7816,8 +7817,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.77000046, y: 1.14999998, z: -2.68000007}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2086306534}
+  m_Children: []
   m_Father: {fileID: 971188145}
   m_RootOrder: 1
 --- !u!114 &1112534660
@@ -11384,7 +11384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firetime: 0
-  duration: 5
+  duration: 5.03858662
   curveData:
   - Type: Transform
     PropertyName: localEulerAngles
@@ -11398,7 +11398,7 @@ MonoBehaviour:
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-      - time: 5
+      - time: 5.03858662
         value: 14.4886351
         inSlope: 0
         outSlope: 0
@@ -11413,7 +11413,7 @@ MonoBehaviour:
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-      - time: 5
+      - time: 5.03858662
         value: 20.1587029
         inSlope: 0
         outSlope: 0
@@ -11428,7 +11428,7 @@ MonoBehaviour:
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-      - time: 5
+      - time: 5.03858662
         value: 359.994202
         inSlope: 0
         outSlope: 0
@@ -12874,7 +12874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea88cf454d6b69408653729ea66ec34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 5
+  duration: 5.47072601
   runningTime: 0
   playbackSpeed: 1
   state: 0
@@ -15300,13 +15300,13 @@ GUITexture:
   m_GameObject: {fileID: 1953421890}
   m_Enabled: 0
   m_Texture: {fileID: 407108185}
-  m_Color: {r: 0, g: 0, b: 0, a: .0116971731}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_PixelInset:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 738
-    height: 492
+    width: 1440
+    height: 319
   m_LeftBorder: 0
   m_RightBorder: 0
   m_TopBorder: 0
@@ -16173,12 +16173,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2086306529}
-  m_LocalRotation: {x: -.12414559, y: -.173621148, z: .0221186187, w: -.976705849}
-  m_LocalPosition: {x: -5.92999983, y: 4.17999983, z: -23.8099995}
+  m_LocalRotation: {x: .124145091, y: .173639476, z: -.0221213643, w: .976702631}
+  m_LocalPosition: {x: .680000007, y: 6.48999977, z: -28.9699993}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1112534659}
-  m_RootOrder: 0
+  m_Father: {fileID: 971188145}
+  m_RootOrder: 4
 --- !u!1 &2088776955
 GameObject:
   m_ObjectHideFlags: 0
