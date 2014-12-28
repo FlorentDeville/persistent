@@ -674,13 +674,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a7869bf9d896c40bcc5032d500888a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AttackType: 0
-  m_Attack:
-    m_AnimTrigRunState: GoToWalk
-    m_AnimTrigAttackState: GoToAttack
-    m_AnimTrigIdleState: GoToIdle
-    m_Speed: 5
-    m_AttackDistance: 2
   m_ActionEntries:
   - m_Action: 1
     m_TypeOfAction: 0
@@ -746,6 +739,8 @@ MonoBehaviour:
   m_AnimStateNameDying: Dead
   m_TriggerNothingState: GoToNothing
   m_AnimStateNameNothing: Nothing
+  m_TriggerNormalHitState: GoToNormalHit
+  m_AnimStateNameNormalHit: NormalHit
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
