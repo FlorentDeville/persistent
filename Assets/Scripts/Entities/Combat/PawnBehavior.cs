@@ -20,6 +20,20 @@ namespace Assets.Scripts.Entities.Combat
         public void Start()
         {
             m_InitialPosition = gameObject.transform.position;
+            switch (m_State)
+            {
+                case PawnState.Idle:
+                    SetIdleState();
+                    break;
+
+                case PawnState.Dead:
+                    SetDeadState();
+                    break;
+
+                case PawnState.Nothing:
+                    SetNothingState();
+                    break;
+            }
         }
 
         public void SetDeadState()
@@ -30,11 +44,13 @@ namespace Assets.Scripts.Entities.Combat
 
         public void SetNothingState()
         {
+            m_State = PawnState.Nothing;
             TriggerAnimState(m_TriggerNothingState);
         }
 
         public void SetIdleState()
         {
+            m_State = PawnState.Idle;
             TriggerAnimState(m_TriggerIdleState);
         }
 

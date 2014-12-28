@@ -9038,7 +9038,7 @@ MonoBehaviour:
   - {x: -.318267822, y: 0, z: 11.5717163}
   m_mode: 2
   m_enemyPrefab: {fileID: 400012, guid: f3a6fd4409b34374a94e39bdf3a59c73, type: 2}
-  m_DelayBeforeSpawn: 5
+  m_DelayBeforeSpawn: 50
 --- !u!4 &370127804
 Transform:
   m_ObjectHideFlags: 0
@@ -10971,7 +10971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a64e88ccdf4ca44b2f4cb2114f88da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firetime: 13.6033239
+  firetime: 12.5685797
 --- !u!1 &448064247
 GameObject:
   m_ObjectHideFlags: 0
@@ -17529,7 +17529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf3feabd4a1df584ea17f311e94e2a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firetime: 8.55646133
+  firetime: 8.22498226
   Name: GoToIdle
 --- !u!1 &708748565
 GameObject:
@@ -26496,7 +26496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc5e0a476ab20344cbe5a6de035967b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firetime: 9.5
+  firetime: 9.22495079
   MethodName: ShowDialog
   SendMessageOptions: 1
 --- !u!1 &1064861544
@@ -27284,7 +27284,7 @@ MonoBehaviour:
   - {x: -23.2661133, y: 0, z: 3.3394165}
   m_mode: 1
   m_enemyPrefab: {fileID: 400012, guid: f3a6fd4409b34374a94e39bdf3a59c73, type: 2}
-  m_DelayBeforeSpawn: 5
+  m_DelayBeforeSpawn: 50
 --- !u!4 &1094248203
 Transform:
   m_ObjectHideFlags: 0
@@ -30534,7 +30534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc5e0a476ab20344cbe5a6de035967b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firetime: 10.5
+  firetime: 9.64647198
   MethodName: ShowDialog
   SendMessageOptions: 1
 --- !u!1 &1267633361
@@ -31627,7 +31627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc5e0a476ab20344cbe5a6de035967b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firetime: 10
+  firetime: 9.43571186
   MethodName: ShowDialog
   SendMessageOptions: 1
 --- !u!1 &1301205431
@@ -37385,7 +37385,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6164366aa00189a4490818c2b1540706, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 180.330002
+      value: 146.600006
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6164366aa00189a4490818c2b1540706, type: 2}
       propertyPath: m_LocalRotation.x
@@ -37454,7 +37454,7 @@ MonoBehaviour:
   - {x: -26.491272, y: -4.07168198, z: 7.3269043}
   m_mode: 1
   m_enemyPrefab: {fileID: 400012, guid: f3a6fd4409b34374a94e39bdf3a59c73, type: 2}
-  m_DelayBeforeSpawn: 5
+  m_DelayBeforeSpawn: 50
 --- !u!4 &1499851152
 Transform:
   m_ObjectHideFlags: 0
@@ -37622,7 +37622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937b9eb698794dd4bba21a2b0979a901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firetime: 13.6033239
+  firetime: 12.4741783
   Behaviour: {fileID: 1825601747}
 --- !u!1 &1511605382
 GameObject:
@@ -40973,7 +40973,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PawnsPrefab:
-  - {fileID: 400012, guid: 5488b8f0c4f34a741a12aa573e897441, type: 2}
   - {fileID: 444896, guid: 2c2b25baa77fe5c4e90e21c2dfd43c31, type: 2}
   - {fileID: 400012, guid: 5488b8f0c4f34a741a12aa573e897441, type: 2}
 --- !u!114 &1652342124
@@ -42118,7 +42117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a0478267d06a34695b9dd295ee6f2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firetime: 11.1088982
+  firetime: 10.1733742
   m_Settings: {fileID: 1652342123}
 --- !u!1 &1687416533
 GameObject:
@@ -45709,7 +45708,7 @@ Transform:
   m_PrefabInternal: {fileID: 1499106871}
   m_GameObject: {fileID: 1825601744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.8999996, y: -.300000012, z: 180.330002}
+  m_LocalPosition: {x: 24.8999996, y: -.300000012, z: 146.600006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 671252233}
@@ -47108,7 +47107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea88cf454d6b69408653729ea66ec34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 13.9803886
+  duration: 12.9408875
   runningTime: 0
   playbackSpeed: 1
   state: 0

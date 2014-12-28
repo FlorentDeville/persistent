@@ -17,6 +17,7 @@ namespace Assets.Scripts.Component.Actions
 
         public float m_AttackDistance;
 
+        private Quaternion m_InitialOrientation;
         private Vector3 m_InitialPosition;
         private Vector3 m_TargetPosition;
         private Vector3 m_AttackPosition;
@@ -37,6 +38,7 @@ namespace Assets.Scripts.Component.Actions
 
         public override void Prepare()
         {
+            m_InitialOrientation = m_Pawn.transform.localRotation;
             m_InitialPosition = m_Pawn.transform.position;
             m_TargetPosition = m_Target.transform.position;
 
@@ -141,14 +143,17 @@ namespace Assets.Scripts.Component.Actions
             }
             else
             {
+                m_State = CloseUpAttackState.Attack;
                 m_Pawn.transform.position = m_AttackPosition;
                 Animator anim = m_Pawn.GetComponent<Animator>();
                 if(anim != null)
                 {
-                    anim.SetTrigger(m_AnimTrigAttackState);
+                    if (!string.IsNullOrEmpty(m_AnimTrigAttackState))
+                    {
+                        anim.SetTrigger(m_AnimTrigAttackState);
+                        m_State = CloseUpAttackState.WaitForAttackToStart;
+                    }
                 }
-
-                m_State = CloseUpAttackState.WaitForAttackToStart;
                 //get anim graph and go to the next state.
             }
 
@@ -239,6 +244,7 @@ namespace Assets.Scripts.Component.Actions
             else
             {
                 m_Pawn.transform.position = m_InitialPosition;
+                m_Pawn.transform.localRotation = m_InitialOrientation;
                 //get anim graph to the idle state
             }
 
@@ -247,6 +253,7 @@ namespace Assets.Scripts.Component.Actions
                 Animator anim = m_Pawn.GetComponent<Animator>();
                 if (anim != null)
                 {
+                    anim.ResetTrigger(m_AnimTrigRunState);
                     anim.SetTrigger(m_AnimTrigIdleState);
                 }
             }

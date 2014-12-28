@@ -692,7 +692,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PawnsPrefab:
-  - {fileID: 400012, guid: 5488b8f0c4f34a741a12aa573e897441, type: 2}
   - {fileID: 444896, guid: 2c2b25baa77fe5c4e90e21c2dfd43c31, type: 2}
   - {fileID: 400012, guid: 5488b8f0c4f34a741a12aa573e897441, type: 2}
 --- !u!114 &11461370

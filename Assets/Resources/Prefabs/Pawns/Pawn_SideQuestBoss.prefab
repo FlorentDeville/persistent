@@ -657,7 +657,7 @@ Animator:
   m_GameObject: {fileID: 144896}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d907df3289cf9874a9d6fbb18165ca33, type: 2}
+  m_Controller: {fileID: 9100000, guid: e5702f98a3a9dcd4cb3d313950c1b893, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -677,9 +677,9 @@ MonoBehaviour:
   m_AttackType: 0
   m_Attack:
     m_AnimTrigRunState: GoToWalk
-    m_AnimTrigAttackState: GoToAttack
+    m_AnimTrigAttackState: 
     m_AnimTrigIdleState: GoToIdle
-    m_Speed: 10
+    m_Speed: 5
     m_AttackDistance: 2
 --- !u!114 &11444878
 MonoBehaviour:
@@ -692,7 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8f2bc34d80cfa42bf1a132f7028486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TurnSprite: {fileID: 21300000, guid: 4867ad2ce2e48464694ad83bb0429406, type: 3}
+  m_TurnSprite: {fileID: 21300000, guid: 2f7798c87ff45764db4bf1c995aa0b00, type: 3}
 --- !u!114 &11444880
 MonoBehaviour:
   m_ObjectHideFlags: 1
