@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using UnityEditor;
 
-namespace AssemblyCSharpEditor
+namespace Assets.Editor.Utilities
 {
 	public class Helper
 	{
