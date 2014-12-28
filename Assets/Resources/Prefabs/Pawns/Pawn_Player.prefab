@@ -113,7 +113,7 @@ MonoBehaviour:
     m_AnimTrigAttackState: 
     m_AnimTrigIdleState: 
     m_Speed: 10
-    m_AttackDistance: 2
+    m_AttackDistance: 0
 --- !u!114 &11487076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,8 +128,12 @@ MonoBehaviour:
   m_CharacterId: 0
   m_State: 0
   m_TriggerIdleState: 
+  m_AnimStateNameIdle: 
   m_TriggerDyingState: 
+  m_AnimStateNameDying: 
   m_TriggerNothingState: 
+  m_AnimStateNameNothing: 
+  m_AttackAnchorRadius: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

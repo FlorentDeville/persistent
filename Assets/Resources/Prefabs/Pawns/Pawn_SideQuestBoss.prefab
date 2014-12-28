@@ -730,9 +730,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CharacterId: -1
   m_State: 0
+  m_AttackAnchorRadius: 1
   m_TriggerIdleState: GoToIdle
+  m_AnimStateNameIdle: Idle
   m_TriggerDyingState: GoToDead
+  m_AnimStateNameDying: Dead
   m_TriggerNothingState: GoToNothing
+  m_AnimStateNameNothing: Nothing
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

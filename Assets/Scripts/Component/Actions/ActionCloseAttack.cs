@@ -43,7 +43,10 @@ namespace Assets.Scripts.Component.Actions
             m_TargetPosition = m_Target.transform.position;
 
             Vector3 direction = m_TargetPosition - m_InitialPosition;
-            float distanceToTravel = direction.magnitude - m_AttackDistance;
+
+            PawnBehavior pawnBhv = m_Pawn.GetComponent<PawnBehavior>();
+            PawnBehavior targetBhv = m_Target.GetComponent<PawnBehavior>();
+            float distanceToTravel = direction.magnitude - m_AttackDistance - pawnBhv.m_AttackAnchorRadius - targetBhv.m_AttackAnchorRadius;
             m_AttackPosition = m_InitialPosition + direction.normalized * distanceToTravel;
 
             m_TravelTime = distanceToTravel / m_Speed;
