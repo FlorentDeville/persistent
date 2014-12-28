@@ -24,10 +24,8 @@ public class StickToGround : MonoBehaviour
             return;
 
         List<Renderer> listRenderers = new List<Renderer>(renderers);
-        //listRenderers[0].bounds.min
         float min = listRenderers.Min(item => item.bounds.min.y);
         float offset = _obj.transform.position.y - min;
-        //float max = listRenderers.Select(item => item.bounds.extents.y).Max();
 
         //Start a cast to the ground
         RaycastHit hit;
