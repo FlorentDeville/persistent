@@ -532,13 +532,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CharacterId: 0
   m_State: 0
+  m_AttackAnchorRadius: 1
   m_TriggerIdleState: GoToIdle
   m_AnimStateNameIdle: Idle
   m_TriggerDyingState: GoToDead
   m_AnimStateNameDying: Dead
   m_TriggerNothingState: GoToNothing
   m_AnimStateNameNothing: Nothing
-  m_AttackAnchorRadius: 1
 --- !u!114 &11420122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -569,6 +569,15 @@ MonoBehaviour:
     m_AnimTrigIdleState: GoToIdle
     m_Speed: 10
     m_AttackDistance: 0
+  m_ActionEntries:
+  - m_Action: 1
+    m_TypeOfAction: 0
+    m_CloseAction:
+      m_AnimTrigRunState: GoToWalk
+      m_AnimTrigAttackState: GoToAttack
+      m_AnimTrigIdleState: GoToIdle
+      m_Speed: 10
+      m_AttackDistance: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

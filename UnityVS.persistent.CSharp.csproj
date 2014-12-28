@@ -170,6 +170,7 @@
     <Compile Include="Assets\Scripts\Assets\Weapon.cs" />
     <Compile Include="Assets\Scripts\Combat_Entity\Combat_Settings.cs" />
     <Compile Include="Assets\Scripts\Component\Actions\ActionCloseAttack.cs" />
+    <Compile Include="Assets\Scripts\Component\Actions\ActionEntry.cs" />
     <Compile Include="Assets\Scripts\Component\Actions\IAction.cs" />
     <Compile Include="Assets\Scripts\Component\StickToGround.cs" />
     <Compile Include="Assets\Scripts\Debug\Dialog.cs" />
@@ -202,6 +203,7 @@
     <Compile Include="Assets\Scripts\Entities\UI\CombatUI_CanvasActions.cs" />
     <Compile Include="Assets\Scripts\Entities\UI\CombatUI_PawnState.cs" />
     <Compile Include="Assets\Scripts\Entities\UI\CombatUI_TurnHistory.cs" />
+    <Compile Include="Assets\Scripts\Entities\World\ActionId.cs" />
     <Compile Include="Assets\Scripts\Entities\World\Camera\CameraBehavior.cs" />
     <Compile Include="Assets\Scripts\Entities\World\Camera\CameraState.cs" />
     <Compile Include="Assets\Scripts\Entities\World\Camera\CameraStateFixed.cs" />

@@ -1,4 +1,5 @@
 ﻿using AssemblyCSharp;
+using Assets.Scripts.Component.Actions;
 using Assets.Scripts.Entities.Combat;
 using Assets.Scripts.Manager;
 using UnityEngine;
@@ -20,12 +21,15 @@ public partial class GameMaster : MonoBehaviour
             {
                 GameTurnManager turnMng = GameTurnManager.GetInstance();
                 PawnActions actions = turnMng.GetCurrentPawn().GetComponent<PawnActions>();
+                IAction selectedAction = actions.GetAttackAction();
 
-                //Get the target
+                //Set target
                 int id = Random.Range(0, turnMng.m_PlayerPawns.Count);
                 GameObject obj = turnMng.m_PlayerPawns[id];
-                actions.m_Attack.SetTarget(obj);
-                m_Behavior.SetSelectedAction(actions.m_Attack);
+                selectedAction.SetTarget(obj);
+
+                //Set the action to run and go to next state
+                m_Behavior.SetSelectedAction(selectedAction);
                 m_Runner.SetCurrentState((int)RunSingleTurnState.RunAction, "AI has selected action");
             }
         }

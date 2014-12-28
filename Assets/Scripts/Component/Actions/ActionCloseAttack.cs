@@ -124,7 +124,7 @@ namespace Assets.Scripts.Component.Actions
         {
             if(!string.IsNullOrEmpty(m_AnimTrigRunState))
             {
-                Animator anim = m_Pawn.GetComponent<Animator>();
+                Animator anim = m_Pawn.GetComponentInChildren<Animator>();
                 if(anim != null)
                 {
                     anim.SetTrigger(m_AnimTrigRunState);
@@ -148,14 +148,11 @@ namespace Assets.Scripts.Component.Actions
             {
                 m_State = CloseUpAttackState.Attack;
                 m_Pawn.transform.position = m_AttackPosition;
-                Animator anim = m_Pawn.GetComponent<Animator>();
-                if(anim != null)
+                Animator anim = m_Pawn.GetComponentInChildren<Animator>();
+                if (anim != null && !string.IsNullOrEmpty(m_AnimTrigAttackState))
                 {
-                    if (!string.IsNullOrEmpty(m_AnimTrigAttackState))
-                    {
-                        anim.SetTrigger(m_AnimTrigAttackState);
-                        m_State = CloseUpAttackState.WaitForAttackToStart;
-                    }
+                    anim.SetTrigger(m_AnimTrigAttackState);
+                    m_State = CloseUpAttackState.WaitForAttackToStart;
                 }
                 //get anim graph and go to the next state.
             }
@@ -167,7 +164,7 @@ namespace Assets.Scripts.Component.Actions
         private Result Execute_WaitForAttackToStart()
         {
             m_Pawn.transform.position = m_AttackPosition;
-            Animator anim = m_Pawn.GetComponent<Animator>();
+            Animator anim = m_Pawn.GetComponentInChildren<Animator>();
             if (anim != null)
             {
                 int AttackHash = Animator.StringToHash("Base Layer.Attack");
@@ -193,7 +190,7 @@ namespace Assets.Scripts.Component.Actions
             //check if the anim state is over
             m_Pawn.transform.position = m_AttackPosition;
 
-            Animator anim = m_Pawn.GetComponent<Animator>();
+            Animator anim = m_Pawn.GetComponentInChildren<Animator>();
             if (anim != null)
             {
                 int AttackHash = Animator.StringToHash("Base Layer.Attack");
@@ -204,13 +201,15 @@ namespace Assets.Scripts.Component.Actions
                 if (info.nameHash != AttackHash)
                 {
                     m_State = CloseUpAttackState.StartComeBack;
-                    m_TimeStartTravel = Time.fixedTime;  
+                    m_TimeStartTravel = Time.fixedTime;
+                    Enemy_NormalHit();
                 }
             }
             else
             {
                 m_State = CloseUpAttackState.StartComeBack;
                 m_TimeStartTravel = Time.fixedTime;
+                Enemy_NormalHit();
             }
 
             m_Pawn.transform.forward = (m_AttackPosition - m_InitialPosition).normalized;
@@ -222,7 +221,7 @@ namespace Assets.Scripts.Component.Actions
             m_Pawn.transform.position = m_AttackPosition;
             if (!string.IsNullOrEmpty(m_AnimTrigRunState))
             {
-                Animator anim = m_Pawn.GetComponent<Animator>();
+                Animator anim = m_Pawn.GetComponentInChildren<Animator>();
                 if (anim != null)
                 {
                     anim.SetTrigger(m_AnimTrigRunState);
@@ -248,12 +247,11 @@ namespace Assets.Scripts.Component.Actions
             {
                 m_Pawn.transform.position = m_InitialPosition;
                 m_Pawn.transform.localRotation = m_InitialOrientation;
-                //get anim graph to the idle state
             }
 
             if (!string.IsNullOrEmpty(m_AnimTrigIdleState))
             {
-                Animator anim = m_Pawn.GetComponent<Animator>();
+                Animator anim = m_Pawn.GetComponentInChildren<Animator>();
                 if (anim != null)
                 {
                     anim.ResetTrigger(m_AnimTrigRunState);
@@ -261,6 +259,11 @@ namespace Assets.Scripts.Component.Actions
                 }
             }
             return Result.Over;
+        }
+
+        private void Enemy_NormalHit()
+        {
+            m_Target.GetComponent<PawnBehavior>().SetNormalHitState();
         }
     }
 }

@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Pawn_Player
+  m_Name: Pawn_Sidekick
   serializedVersion: 2
   m_AnimatorParameters:
   - m_Name: GoToNothing
@@ -179,21 +179,21 @@ StateMachine:
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
-      first: {fileID: 110200608}
-      second: []
-    data:
-      first: {fileID: 110264842}
-      second:
-      - {fileID: 110189738}
-    data:
-      first: {fileID: 110218898}
-      second: []
-    data:
       first: {fileID: 0}
       second:
       - {fileID: 110181046}
       - {fileID: 110118822}
       - {fileID: 110163894}
+    data:
+      first: {fileID: 110200608}
+      second: []
+    data:
+      first: {fileID: 110218898}
+      second: []
+    data:
+      first: {fileID: 110264842}
+      second:
+      - {fileID: 110189738}
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: -156, y: -120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

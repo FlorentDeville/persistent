@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class StickToGround : MonoBehaviour 
 {
@@ -18,8 +19,15 @@ public class StickToGround : MonoBehaviour
 
     public static void Apply(GameObject _obj)
     {
-        if (_obj.renderer == null)
+        Renderer[] renderers = _obj.GetComponentsInChildren<Renderer>();
+        if (renderers == null || renderers.Length == 0)
             return;
+
+        List<Renderer> listRenderers = new List<Renderer>(renderers);
+        //listRenderers[0].bounds.min
+        float min = listRenderers.Min(item => item.bounds.min.y);
+        float offset = _obj.transform.position.y - min;
+        //float max = listRenderers.Select(item => item.bounds.extents.y).Max();
 
         //Start a cast to the ground
         RaycastHit hit;
@@ -28,7 +36,7 @@ public class StickToGround : MonoBehaviour
             //In here, the raycast got a result
             //Compute how much we went through the ground and move the entity up of this amount.
             Vector3 oldPos = _obj.transform.position;
-            oldPos.y += _obj.transform.renderer.bounds.extents.y - hit.distance;
+            oldPos.y += offset - hit.distance;
             _obj.transform.position = oldPos;
         }
     }

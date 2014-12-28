@@ -24,7 +24,17 @@ namespace Assets.Scripts.Entities.Combat
         public string m_TriggerNothingState;
         public string m_AnimStateNameNothing;
 
+        [Header("Animation State Normal Hit")]
+        public string m_TriggerNormalHitState;
+        public string m_AnimStateNameNormalHit;
+
         private Vector3 m_InitialPosition;
+        private Animator m_Mecanim;
+
+        void Awake()
+        {
+            m_Mecanim = GetComponentInChildren<Animator>();
+        }
 
         public void Start()
         {
@@ -72,13 +82,20 @@ namespace Assets.Scripts.Entities.Combat
             TriggerAnimState(m_TriggerIdleState);
         }
 
+        public void SetNormalHitState()
+        {
+            if (IsInState(m_AnimStateNameNormalHit))
+                return;
+            m_State = PawnState.NormalHit;
+            TriggerAnimState(m_TriggerNormalHitState);
+        }
+
         private void TriggerAnimState(string _triggerName)
         {
             if (!string.IsNullOrEmpty(_triggerName))
             {
-                Animator anim = GetComponent<Animator>();
-                if (anim != null)
-                    anim.SetTrigger(_triggerName);
+                if (m_Mecanim != null)
+                    m_Mecanim.SetTrigger(_triggerName);
             }
         }
 
@@ -90,12 +107,11 @@ namespace Assets.Scripts.Entities.Combat
 
         bool IsInState(string _stateName)
         {
-            Animator anim = GetComponent<Animator>();
-            if (anim == null)
+            if (m_Mecanim == null)
                 return false;
 
             int stateHash = Animator.StringToHash(string.Format("Base Layer.{0}", _stateName));
-            AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
+            AnimatorStateInfo info = m_Mecanim.GetCurrentAnimatorStateInfo(0);
             if (info.nameHash == stateHash)
                 return true;
 
@@ -108,5 +124,6 @@ namespace Assets.Scripts.Entities.Combat
         Idle,
         Nothing,
         Dead,
+        NormalHit
     }
 }

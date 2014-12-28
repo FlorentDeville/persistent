@@ -12,10 +12,26 @@ GameObject:
   - 114: {fileID: 11400000}
   - 114: {fileID: 11409124}
   - 114: {fileID: 11439812}
-  - 33: {fileID: 3300000}
-  - 23: {fileID: 2300000}
   m_Layer: 0
   m_Name: Pawn_Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &158778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 458778}
+  - 23: {fileID: 2358778}
+  - 33: {fileID: 3358778}
+  - 95: {fileID: 9558778}
+  m_Layer: 0
+  m_Name: Gfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,17 +44,30 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 535.789978, y: 21.5599995, z: 677.539978}
+  m_LocalPosition: {x: -37.0349998, y: .404000044, z: 118.319}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 458778}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &2300000
+--- !u!4 &458778
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 158778}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400000}
+  m_RootOrder: 0
+--- !u!23 &2358778
 Renderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
+  m_GameObject: {fileID: 158778}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -53,13 +82,28 @@ Renderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3300000
+--- !u!33 &3358778
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
+  m_GameObject: {fileID: 158778}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &9558778
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 158778}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fba1e42ab5b97184cb7775a87547f29c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,13 +151,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a7869bf9d896c40bcc5032d500888a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AttackType: 0
-  m_Attack:
-    m_AnimTrigRunState: 
-    m_AnimTrigAttackState: 
-    m_AnimTrigIdleState: 
-    m_Speed: 10
-    m_AttackDistance: 0
+  m_ActionEntries:
+  - m_Action: 1
+    m_TypeOfAction: 0
+    m_CloseAction:
+      m_AnimTrigRunState: 
+      m_AnimTrigAttackState: 
+      m_AnimTrigIdleState: 
+      m_Speed: 10
+      m_AttackDistance: 0
 --- !u!114 &11487076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,13 +173,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CharacterId: 0
   m_State: 0
+  m_AttackAnchorRadius: 1
   m_TriggerIdleState: 
   m_AnimStateNameIdle: 
   m_TriggerDyingState: 
   m_AnimStateNameDying: 
   m_TriggerNothingState: 
   m_AnimStateNameNothing: 
-  m_AttackAnchorRadius: 1
+  m_TriggerNormalHitState: GoToNormalHit
+  m_AnimStateNameNormalHit: NormalHit
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
