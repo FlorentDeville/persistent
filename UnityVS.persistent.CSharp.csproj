@@ -167,6 +167,7 @@
     <Compile Include="Assets\Scripts\Assets\Core_DialogActor.cs" />
     <Compile Include="Assets\Scripts\Assets\Core_XmlDialog.cs" />
     <Compile Include="Assets\Scripts\Assets\Item.cs" />
+    <Compile Include="Assets\Scripts\Assets\MagicDescription.cs" />
     <Compile Include="Assets\Scripts\Assets\Weapon.cs" />
     <Compile Include="Assets\Scripts\Combat_Entity\Combat_Settings.cs" />
     <Compile Include="Assets\Scripts\Component\Actions\ActionCloseAttack.cs" />
@@ -201,6 +202,7 @@
     <Compile Include="Assets\Scripts\Entities\Menu\CanvasOptionsBehavior.cs" />
     <Compile Include="Assets\Scripts\Entities\Menu\CanvasWeaponSelectionBehavior.cs" />
     <Compile Include="Assets\Scripts\Entities\UI\CombatUI_CanvasActions.cs" />
+    <Compile Include="Assets\Scripts\Entities\UI\CombatUI_EnemyList.cs" />
     <Compile Include="Assets\Scripts\Entities\UI\CombatUI_PawnState.cs" />
     <Compile Include="Assets\Scripts\Entities\UI\CombatUI_TurnHistory.cs" />
     <Compile Include="Assets\Scripts\Entities\World\ActionId.cs" />
@@ -216,6 +218,7 @@
     <Compile Include="Assets\Scripts\Entities\World\LevelMaster.cs" />
     <Compile Include="Assets\Scripts\Entities\World\LevelMaster_State.cs" />
     <Compile Include="Assets\Scripts\Entities\World\Level_01_Combat_01_GUI_Behavior.cs" />
+    <Compile Include="Assets\Scripts\Entities\World\MagicId.cs" />
     <Compile Include="Assets\Scripts\Entities\World\SceneRoot_Behavior.cs" />
     <Compile Include="Assets\Scripts\Entities\World\Sidekick_Entity\Sidekick_Behavior.cs" />
     <Compile Include="Assets\Scripts\Entities\World\Spawner\Spawner_Behavior.cs" />
@@ -241,6 +244,7 @@
     <Compile Include="Assets\Scripts\Manager\GameSceneManager.cs" />
     <Compile Include="Assets\Scripts\Manager\GameStateManager.cs" />
     <Compile Include="Assets\Scripts\Manager\GameTurnManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\MagicManager.cs" />
     <Compile Include="Assets\Scripts\Manager\Parameter\CombatSceneParameter.cs" />
     <Compile Include="Assets\Scripts\Manager\Parameter\ISceneParameter.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerBehavior.cs" />
@@ -250,6 +254,9 @@
     <Compile Include="Assets\Scripts\Sequence\Sequence_DialogPlayer.cs" />
     <Compile Include="Assets\Scripts\UI\CancelButton.cs" />
     <Compile Include="Assets\Scripts\UI\CustomButton.cs" />
+    <Compile Include="Assets\Scripts\UI\IWidget.cs" />
+    <Compile Include="Assets\Scripts\UI\WidgetEvent.cs" />
+    <Compile Include="Assets\Scripts\UI\WidgetManager.cs" />
     <Compile Include="Assets\Scripts\Warehouse.cs" />
   </ItemGroup>
   <ItemGroup>

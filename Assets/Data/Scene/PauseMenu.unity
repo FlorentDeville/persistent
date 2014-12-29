@@ -125,7 +125,6 @@ MonoBehaviour:
   m_Normal: {r: .745098054, g: .745098054, b: .745098054, a: 0}
   m_Highlighted: {r: 1, g: 0, b: .889655113, a: 1}
   m_Pressed: {r: 0, g: .917241335, b: 1, a: 1}
-  m_Text: 
   m_HandleInput: 1
   onSelect:
     m_PersistentCalls:
@@ -149,6 +148,8 @@ MonoBehaviour:
       PublicKeyToken=null
   m_Top: {fileID: 129324201}
   m_Bottom: {fileID: 2134305108}
+  m_Left: {fileID: 0}
+  m_Right: {fileID: 0}
 --- !u!114 &21413630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,7 +421,6 @@ MonoBehaviour:
   m_Normal: {r: .745098054, g: .745098054, b: .745098054, a: 0}
   m_Highlighted: {r: 1, g: 0, b: .889655113, a: 1}
   m_Pressed: {r: 0, g: .917241335, b: 1, a: 1}
-  m_Text: 
   m_HandleInput: 1
   onSelect:
     m_PersistentCalls:
@@ -444,6 +444,8 @@ MonoBehaviour:
       PublicKeyToken=null
   m_Top: {fileID: 1904953552}
   m_Bottom: {fileID: 21413629}
+  m_Left: {fileID: 0}
+  m_Right: {fileID: 0}
 --- !u!114 &129324202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587,7 +589,6 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .682758331, a: 1}
   m_Pressed: {r: 0, g: 0, b: 0, a: 0}
-  m_Text: Weapons
   m_HandleInput: 1
   onSelect:
     m_PersistentCalls:
@@ -623,6 +624,8 @@ MonoBehaviour:
       PublicKeyToken=null
   m_Top: {fileID: 760834825}
   m_Bottom: {fileID: 0}
+  m_Left: {fileID: 0}
+  m_Right: {fileID: 0}
 --- !u!114 &189277434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,7 +835,6 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .80689621, a: 1}
   m_Pressed: {r: 0, g: .0482757092, b: 1, a: 1}
-  m_Text: 
   m_HandleInput: 1
   onSelect:
     m_PersistentCalls:
@@ -856,6 +858,8 @@ MonoBehaviour:
       PublicKeyToken=null
   m_Top: {fileID: 0}
   m_Bottom: {fileID: 603294454}
+  m_Left: {fileID: 0}
+  m_Right: {fileID: 0}
 --- !u!114 &212946265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1342,7 +1346,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 656885247}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 73, y: -4.9000001}
@@ -1431,7 +1435,6 @@ MonoBehaviour:
   m_Normal: {r: .745098054, g: .745098054, b: .745098054, a: 0}
   m_Highlighted: {r: 1, g: 0, b: .889655113, a: 1}
   m_Pressed: {r: 0, g: .917241335, b: 1, a: 1}
-  m_Text: 
   m_HandleInput: 1
   onSelect:
     m_PersistentCalls:
@@ -1455,6 +1458,8 @@ MonoBehaviour:
       PublicKeyToken=null
   m_Top: {fileID: 492150036}
   m_Bottom: {fileID: 0}
+  m_Left: {fileID: 0}
+  m_Right: {fileID: 0}
 --- !u!114 &379617148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1533,7 +1538,6 @@ MonoBehaviour:
   m_Normal: {r: .745098054, g: .745098054, b: .745098054, a: 0}
   m_Highlighted: {r: 1, g: 0, b: .889655113, a: 1}
   m_Pressed: {r: 0, g: .917241335, b: 1, a: 1}
-  m_Text: 
   m_HandleInput: 1
   onSelect:
     m_PersistentCalls:
@@ -1557,6 +1561,8 @@ MonoBehaviour:
       PublicKeyToken=null
   m_Top: {fileID: 525730035}
   m_Bottom: {fileID: 1526410689}
+  m_Left: {fileID: 0}
+  m_Right: {fileID: 0}
 --- !u!114 &407347080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1612,7 +1618,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 656885247}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -32.2000008, y: -4.9000001}
@@ -1739,7 +1745,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 656885247}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -32.2000008, y: 30.1000004}
@@ -1861,7 +1867,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &457690684
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1870,7 +1876,7 @@ RectTransform:
   m_GameObject: {fileID: 457690683}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.44578314, y: 1.44578314, z: 1.44578314}
   m_Children:
   - {fileID: 1196137954}
   - {fileID: 773323585}
@@ -1889,12 +1895,12 @@ RectTransform:
   - {fileID: 1514375222}
   - {fileID: 997502760}
   - {fileID: 205539954}
-  m_Father: {fileID: 656885247}
+  m_Father: {fileID: 984615506}
   m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -.226660475, y: .151033223}
+  m_SizeDelta: {x: -333.453369, y: -221.697937}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &457690685
 MonoBehaviour:
@@ -2149,7 +2155,6 @@ MonoBehaviour:
   m_Normal: {r: .745098054, g: .745098054, b: .745098054, a: 0}
   m_Highlighted: {r: 1, g: 0, b: .889655113, a: 1}
   m_Pressed: {r: 0, g: .917241335, b: 1, a: 1}
-  m_Text: 
   m_HandleInput: 1
   onSelect:
     m_PersistentCalls:
@@ -2173,6 +2178,8 @@ MonoBehaviour:
       PublicKeyToken=null
   m_Top: {fileID: 1526410689}
   m_Bottom: {fileID: 379617147}
+  m_Left: {fileID: 0}
+  m_Right: {fileID: 0}
 --- !u!114 &492150037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2250,7 +2257,6 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .80689621, a: 1}
   m_Pressed: {r: 0, g: .0482757092, b: 1, a: 1}
-  m_Text: 
   m_HandleInput: 1
   onSelect:
     m_PersistentCalls:
@@ -2274,6 +2280,8 @@ MonoBehaviour:
       PublicKeyToken=null
   m_Top: {fileID: 1214158198}
   m_Bottom: {fileID: 1813859526}
+  m_Left: {fileID: 0}
+  m_Right: {fileID: 0}
 --- !u!114 &493623390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2402,7 +2410,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 656885247}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 73, y: -23.8999996}
@@ -2552,7 +2560,6 @@ MonoBehaviour:
   m_Normal: {r: .745098054, g: .745098054, b: .745098054, a: 0}
   m_Highlighted: {r: 1, g: 0, b: .889655113, a: 1}
   m_Pressed: {r: 0, g: .917241335, b: 1, a: 1}
-  m_Text: 
   m_HandleInput: 1
   onSelect:
     m_PersistentCalls:
@@ -2576,6 +2583,8 @@ MonoBehaviour:
       PublicKeyToken=null
   m_Top: {fileID: 2134305108}
   m_Bottom: {fileID: 407347079}
+  m_Left: {fileID: 0}
+  m_Right: {fileID: 0}
 --- !u!114 &525730036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2631,7 +2640,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 656885247}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -32, y: 60}
@@ -2780,7 +2789,6 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .80689621, a: 1}
   m_Pressed: {r: 0, g: .0482757092, b: 1, a: 1}
-  m_Text: 
   m_HandleInput: 1
   onSelect:
     m_PersistentCalls:
@@ -2804,6 +2812,8 @@ MonoBehaviour:
       PublicKeyToken=null
   m_Top: {fileID: 603294454}
   m_Bottom: {fileID: 0}
+  m_Left: {fileID: 0}
+  m_Right: {fileID: 0}
 --- !u!114 &583060477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2947,7 +2957,6 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .80689621, a: 1}
   m_Pressed: {r: 0, g: .0482757092, b: 1, a: 1}
-  m_Text: 
   m_HandleInput: 1
   onSelect:
     m_PersistentCalls:
@@ -2971,6 +2980,8 @@ MonoBehaviour:
       PublicKeyToken=null
   m_Top: {fileID: 212946264}
   m_Bottom: {fileID: 583060476}
+  m_Left: {fileID: 0}
+  m_Right: {fileID: 0}
 --- !u!114 &603294455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3077,7 +3088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &656885247
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3091,7 +3102,6 @@ RectTransform:
   - {fileID: 212946263}
   - {fileID: 603294453}
   - {fileID: 583060475}
-  - {fileID: 457690684}
   - {fileID: 528153429}
   - {fileID: 438283389}
   - {fileID: 2017369722}
@@ -3102,7 +3112,7 @@ RectTransform:
   - {fileID: 343460673}
   - {fileID: 510393344}
   m_Father: {fileID: 984615506}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 540, y: 360}
@@ -3177,7 +3187,6 @@ MonoBehaviour:
   - {fileID: 212946264}
   - {fileID: 603294454}
   - {fileID: 583060476}
-  m_WeaponSelection: {fileID: 457690687}
   m_TxtWepAtk: {fileID: 725558383}
   m_TxtWepRAtk: {fileID: 1004927554}
   m_TxtWepMGAtk: {fileID: 343460674}
@@ -3377,7 +3386,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 656885247}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 73, y: 30.1000004}
@@ -3658,7 +3667,6 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .641379356, a: 1}
   m_Pressed: {r: 0, g: 0, b: 0, a: 0}
-  m_Text: Items
   m_HandleInput: 1
   onSelect:
     m_PersistentCalls:
@@ -3694,6 +3702,8 @@ MonoBehaviour:
       PublicKeyToken=null
   m_Top: {fileID: 0}
   m_Bottom: {fileID: 189277433}
+  m_Left: {fileID: 0}
+  m_Right: {fileID: 0}
 --- !u!114 &760834826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4825,6 +4835,7 @@ GameObject:
   - 114: {fileID: 984615508}
   - 114: {fileID: 984615507}
   - 114: {fileID: 984615510}
+  - 114: {fileID: 984615511}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4845,6 +4856,7 @@ RectTransform:
   - {fileID: 618303382}
   - {fileID: 266000580}
   - {fileID: 971652199}
+  - {fileID: 457690684}
   - {fileID: 656885247}
   - {fileID: 1840216855}
   - {fileID: 1428842162}
@@ -4930,6 +4942,17 @@ MonoBehaviour:
   - m_Btn: {fileID: 1156834191}
     m_Canvas: {fileID: 1428842165}
   m_DefaultTabId: 0
+--- !u!114 &984615511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 984615505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 839a7585fbda60e478ae89f5fb095bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &988475967
 GameObject:
   m_ObjectHideFlags: 0
@@ -4980,7 +5003,6 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .724137783, a: 1}
   m_Pressed: {r: .199999809, g: 0, b: 1, a: 1}
-  m_Text: Load
   m_HandleInput: 1
   onSelect:
     m_PersistentCalls:
@@ -5004,6 +5026,8 @@ MonoBehaviour:
       PublicKeyToken=null
   m_Top: {fileID: 1970747743}
   m_Bottom: {fileID: 1619495508}
+  m_Left: {fileID: 0}
+  m_Right: {fileID: 0}
 --- !u!114 &988475970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5191,7 +5215,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 656885247}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 73, y: 12.1000004}
@@ -5868,7 +5892,6 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .80689621, a: 1}
   m_Pressed: {r: 0, g: .0482757092, b: 1, a: 1}
-  m_Text: 
   m_HandleInput: 1
   onSelect:
     m_PersistentCalls:
@@ -5892,6 +5915,8 @@ MonoBehaviour:
       PublicKeyToken=null
   m_Top: {fileID: 0}
   m_Bottom: {fileID: 493623389}
+  m_Left: {fileID: 0}
+  m_Right: {fileID: 0}
 --- !u!114 &1214158199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6366,7 +6391,6 @@ MonoBehaviour:
   m_Normal: {r: .745098054, g: .745098054, b: .745098054, a: 0}
   m_Highlighted: {r: 1, g: 0, b: .889655113, a: 1}
   m_Pressed: {r: 0, g: .917241335, b: 1, a: 1}
-  m_Text: 
   m_HandleInput: 1
   onSelect:
     m_PersistentCalls:
@@ -6390,6 +6414,8 @@ MonoBehaviour:
       PublicKeyToken=null
   m_Top: {fileID: 0}
   m_Bottom: {fileID: 1904953552}
+  m_Left: {fileID: 0}
+  m_Right: {fileID: 0}
 --- !u!114 &1337709242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6643,7 +6669,7 @@ RectTransform:
   - {fileID: 988475968}
   - {fileID: 1619495507}
   m_Father: {fileID: 984615506}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 540, y: 360}
@@ -7459,7 +7485,6 @@ MonoBehaviour:
   m_Normal: {r: .745098054, g: .745098054, b: .745098054, a: 0}
   m_Highlighted: {r: 1, g: 0, b: .889655113, a: 1}
   m_Pressed: {r: 0, g: .917241335, b: 1, a: 1}
-  m_Text: 
   m_HandleInput: 1
   onSelect:
     m_PersistentCalls:
@@ -7483,6 +7508,8 @@ MonoBehaviour:
       PublicKeyToken=null
   m_Top: {fileID: 407347079}
   m_Bottom: {fileID: 492150036}
+  m_Left: {fileID: 0}
+  m_Right: {fileID: 0}
 --- !u!114 &1526410690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7725,7 +7752,6 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .724137783, a: 1}
   m_Pressed: {r: .199999809, g: 0, b: 1, a: 1}
-  m_Text: Quit
   m_HandleInput: 1
   onSelect:
     m_PersistentCalls:
@@ -7749,6 +7775,8 @@ MonoBehaviour:
       PublicKeyToken=null
   m_Top: {fileID: 988475969}
   m_Bottom: {fileID: 0}
+  m_Left: {fileID: 0}
+  m_Right: {fileID: 0}
 --- !u!114 &1619495509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8232,7 +8260,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 656885247}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -32.2000008, y: -22.8999996}
@@ -8569,7 +8597,6 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .80689621, a: 1}
   m_Pressed: {r: 0, g: .0482757092, b: 1, a: 1}
-  m_Text: 
   m_HandleInput: 1
   onSelect:
     m_PersistentCalls:
@@ -8593,6 +8620,8 @@ MonoBehaviour:
       PublicKeyToken=null
   m_Top: {fileID: 493623389}
   m_Bottom: {fileID: 0}
+  m_Left: {fileID: 0}
+  m_Right: {fileID: 0}
 --- !u!114 &1813859527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8734,7 +8763,7 @@ RectTransform:
   - {fileID: 50353865}
   - {fileID: 1431112121}
   m_Father: {fileID: 984615506}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 540, y: 360}
@@ -9182,7 +9211,6 @@ MonoBehaviour:
   m_Normal: {r: .745098054, g: .745098054, b: .745098054, a: 0}
   m_Highlighted: {r: 1, g: 0, b: .889655113, a: 1}
   m_Pressed: {r: 0, g: .917241335, b: 1, a: 1}
-  m_Text: 
   m_HandleInput: 1
   onSelect:
     m_PersistentCalls:
@@ -9206,6 +9234,8 @@ MonoBehaviour:
       PublicKeyToken=null
   m_Top: {fileID: 1337709241}
   m_Bottom: {fileID: 129324201}
+  m_Left: {fileID: 0}
+  m_Right: {fileID: 0}
 --- !u!114 &1904953553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9344,7 +9374,6 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .724137783, a: 1}
   m_Pressed: {r: .199999809, g: 0, b: 1, a: 1}
-  m_Text: Save
   m_HandleInput: 1
   onSelect:
     m_PersistentCalls:
@@ -9368,6 +9397,8 @@ MonoBehaviour:
       PublicKeyToken=null
   m_Top: {fileID: 0}
   m_Bottom: {fileID: 988475969}
+  m_Left: {fileID: 0}
+  m_Right: {fileID: 0}
 --- !u!114 &1970747744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9423,7 +9454,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 656885247}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -32.2000008, y: 13.1000004}
@@ -9545,7 +9576,6 @@ MonoBehaviour:
   m_Normal: {r: .745098054, g: .745098054, b: .745098054, a: 0}
   m_Highlighted: {r: 1, g: 0, b: .889655113, a: 1}
   m_Pressed: {r: 0, g: .917241335, b: 1, a: 1}
-  m_Text: 
   m_HandleInput: 1
   onSelect:
     m_PersistentCalls:
@@ -9569,6 +9599,8 @@ MonoBehaviour:
       PublicKeyToken=null
   m_Top: {fileID: 21413629}
   m_Bottom: {fileID: 525730035}
+  m_Left: {fileID: 0}
+  m_Right: {fileID: 0}
 --- !u!114 &2134305109
 MonoBehaviour:
   m_ObjectHideFlags: 0

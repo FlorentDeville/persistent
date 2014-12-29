@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Assets;
+using Assets.Scripts.Entities.World;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -72,7 +73,7 @@ namespace Assets.Scripts.Manager
 
         public void LoadDefaultWeaponInventory()
         {
-            return;
+            //return;
             if (m_WeaponInventory.Count != 0)
                 return;
 
@@ -131,9 +132,9 @@ namespace Assets.Scripts.Manager
             newChar.m_Statistics = new CharacterStatistics();
 
             if(_id == 0)
-                newChar.m_Statistics.m_Atk = 300;
+                newChar.m_Statistics.m_Atk = 30;
             else
-                newChar.m_Statistics.m_Atk = 200;
+                newChar.m_Statistics.m_Atk = 20;
             newChar.m_Statistics.m_Def = 2;
             newChar.m_Statistics.m_HP = 100;
             newChar.m_Statistics.m_MaxHP = 100;
@@ -157,6 +158,8 @@ namespace Assets.Scripts.Manager
         public CharacterStatistics m_Statistics;
 
         public Weapon m_EquippedWeapon;
+
+        public MagicId[] m_AvailableMagic;
 
         public void LoadTo(PawnStatistics _stats)
         {

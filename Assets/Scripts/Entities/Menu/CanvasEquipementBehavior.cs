@@ -14,9 +14,6 @@ namespace Assets.Scripts.Entities.Menu
         private CustomButton[] m_BtnCharacters;
 
         [SerializeField]
-        private Canvas m_WeaponSelection;
-
-        [SerializeField]
         private Text m_TxtWepAtk;
 
         [SerializeField]
@@ -36,15 +33,10 @@ namespace Assets.Scripts.Entities.Menu
 
         private int m_SelectedCharacterId;
 
-        void Awake()
-        {
-            m_WeaponSelection.gameObject.SetActive(false);
-        }
-
         void Start()
         {
             InitializeCharactersButtons();
-            m_BtnCharacters[0].Select();
+            m_BtnCharacters[0].Send(WidgetEvent.Select);
 
             m_CanvasWeaponSelector.m_OnWeaponSelected = OnWeaponSelected;
             m_CanvasWeaponSelector.m_OnCanvasClose = OnCanvasWeaponsClose;
@@ -66,7 +58,11 @@ namespace Assets.Scripts.Entities.Menu
 
                 m_BtnCharacters[btnId].GetComponentInChildren<Text>().text = chara.m_Name;
                 int charaId = chara.m_Id;
+
+                m_BtnCharacters[btnId].onSelect.RemoveAllListeners();
                 m_BtnCharacters[btnId].onSelect.AddListener(() => { ShowCharacteristics(charaId); });
+
+                m_BtnCharacters[btnId].onClick.RemoveAllListeners();
                 m_BtnCharacters[btnId].onClick.AddListener(() => { OnSelectCharacter(charaId); });
 
                 ++btnId;
@@ -101,8 +97,8 @@ namespace Assets.Scripts.Entities.Menu
         private void OnSelectCharacter(int _charaId)
         {
             m_SelectedCharacterId = _charaId;
-            LoseFocus();
             Weapon equippedWeapon = GameStateManager.GetInstance().GetCharacter(_charaId).m_EquippedWeapon;
+            WidgetManager.GetInstance().Show(m_CanvasWeaponSelector.gameObject, false, false);
             m_CanvasWeaponSelector.Activate(equippedWeapon);
         }
 
@@ -111,9 +107,6 @@ namespace Assets.Scripts.Entities.Menu
             Character chara = GameStateManager.GetInstance().GetCharacter(m_SelectedCharacterId);
             chara.m_EquippedWeapon = _weapon;
             ShowCharacteristics(m_SelectedCharacterId);
-            m_CanvasWeaponSelector.gameObject.SetActive(false);
-
-            OnCanvasWeaponsClose();
         }
 
         private void OnCanvasWeaponsClose()
@@ -123,18 +116,6 @@ namespace Assets.Scripts.Entities.Menu
                 if (btn.gameObject.activeInHierarchy)
                     btn.HandleInput = true;
             }
-        }
-
-        private void LoseFocus()
-        {
-            foreach (CustomButton btn in m_BtnCharacters)
-                btn.HandleInput = false;
-        }
-
-        private void SetFocus()
-        {
-            foreach (CustomButton btn in m_BtnCharacters)
-                btn.HandleInput = true;
         }
     }
 }

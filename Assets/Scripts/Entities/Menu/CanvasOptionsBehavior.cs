@@ -2,6 +2,8 @@
 
 using UnityEngine;
 
+#pragma warning disable 649
+
 namespace Assets.Scripts.Entities.Menu
 {
     public class CanvasOptionsBehavior : MonoBehaviour
@@ -11,7 +13,7 @@ namespace Assets.Scripts.Entities.Menu
 
         void Start()
         {
-            m_DefaultSelected.Select();
+            m_DefaultSelected.Send(WidgetEvent.Select);
         }
     }
 }

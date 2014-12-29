@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Helper;
 using Assets.Scripts.Manager;
+using Assets.Scripts.UI;
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -82,15 +83,18 @@ namespace Assets.Scripts.Entities.Menu
 
         void ShowTab(Canvas _tabCanvas)
         {
-            HideAllTab();
-            _tabCanvas.gameObject.SetActive(true);
+            //HideAllTab();
+            WidgetManager.GetInstance().Hide();
+            WidgetManager.GetInstance().Show(_tabCanvas.gameObject, true, false);
+
+            //_tabCanvas.gameObject.SetActive(true);
         }
 
-        void HideAllTab()
-        {
-            foreach (ButtonCanvasPair tabCanvas in m_Tabs)
-                tabCanvas.m_Canvas.gameObject.SetActive(false);
-        }
+        //void HideAllTab()
+        //{
+        //    foreach (ButtonCanvasPair tabCanvas in m_Tabs)
+        //        tabCanvas.m_Canvas.gameObject.SetActive(false);
+        //}
     }
 
     [System.Serializable]

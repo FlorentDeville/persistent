@@ -9,6 +9,9 @@ using Assets.Scripts.Entities.Combat;
 using AssemblyCSharp;
 using Assets.Scripts.Entities.UI;
 using Assets.Scripts.Component.Actions;
+using Assets.Scripts.UI;
+
+#pragma warning disable 649
 
 [RequireComponent(typeof(Combat_Settings))]
 public partial class GameMaster : MonoBehaviour 
@@ -19,11 +22,8 @@ public partial class GameMaster : MonoBehaviour
 
     public CombatUI_PawnState[] m_UIPawnState;
 
-    public CombatUI_CanvasActions m_ActionsMenu;
-
-    public Button m_AttackButton;
-    public Button m_MagicButton;
-    public Button m_ItemsButton;
+    [SerializeField]
+    private CombatUI_CanvasActions m_ActionsMenu;
 
     public CancelButton[] m_UIAttackEnemyButtons;
 
@@ -70,6 +70,16 @@ public partial class GameMaster : MonoBehaviour
     Combat_Settings m_Settings;
 
     List<GameObject> m_Pawns;
+
+    private static GameMaster m_Instance = null;
+
+    public static GameMaster GetInstance()
+    {
+        if (m_Instance == null)
+            m_Instance = FindObjectOfType<GameMaster>();
+
+        return m_Instance;
+    }
 
 	// Use this for initialization
 	void Start () 
@@ -122,7 +132,6 @@ public partial class GameMaster : MonoBehaviour
             StickToGround.Apply(pawn.gameObject);
         }
 
-        HideAllAttackEnemiesButtons();
         m_UIDamageText.SetActive(false);
         m_UIGameOverText.SetActive(false);
         m_UIVictoryText.SetActive(false);
@@ -141,67 +150,61 @@ public partial class GameMaster : MonoBehaviour
 
     void OnAttackClicked()
     {
-        GameTurnManager turnMng = GameTurnManager.GetInstance();
-        int enemyCount = turnMng.m_EnemiesPawns.Count;
-        int buttonUsed = 0;
-        for(int i = 0; i < enemyCount; ++i)
-        {
-            GameObject objPawn = turnMng.m_EnemiesPawns[i];
-            PawnBehavior bhv = objPawn.GetComponent<PawnBehavior>();
-            if (bhv.m_State == PawnState.Dead)
-                continue;
+        //GameTurnManager turnMng = GameTurnManager.GetInstance();
+        //int enemyCount = turnMng.m_EnemiesPawns.Count;
+        //int buttonUsed = 0;
+        //for(int i = 0; i < enemyCount; ++i)
+        //{
+        //    GameObject objPawn = turnMng.m_EnemiesPawns[i];
+        //    PawnBehavior bhv = objPawn.GetComponent<PawnBehavior>();
+        //    if (bhv.m_State == PawnState.Dead)
+        //        continue;
 
-            CancelButton btn = m_UIAttackEnemyButtons[buttonUsed];
-            btn.gameObject.SetActive(true);
-            Text txt = btn.transform.GetComponentInChildren<Text>();
-            txt.text = objPawn.GetComponent<PawnStatistics>().m_PawnName;
-            btn.onClick.AddListener(() =>
-                {
-                    HideAllAttackEnemiesButtons();
+        //    CancelButton btn = m_UIAttackEnemyButtons[buttonUsed];
+        //    btn.gameObject.SetActive(true);
+        //    Text txt = btn.transform.GetComponentInChildren<Text>();
+        //    txt.text = objPawn.GetComponent<PawnStatistics>().m_PawnName;
+        //    btn.onClick.AddListener(() =>
+        //        {
+        //            HideAllAttackEnemiesButtons();
 
-                    IAction attackAction = turnMng.GetCurrentPawn().GetComponent<PawnActions>().GetAttackAction();
-                    attackAction.SetTarget(objPawn);
-                    SetSelectedAction(attackAction);
+        //            IAction attackAction = turnMng.GetCurrentPawn().GetComponent<PawnActions>().GetAttackAction();
+        //            attackAction.SetTarget(objPawn);
+        //            SetSelectedAction(attackAction);
 
-                });
+        //        });
 
-            btn.onCancel.AddListener(() =>
-                {
-                    HideAllAttackEnemiesButtons();
-                    m_AttackButton.Select();
-                    m_Cursor.SetActive(false);
-                    m_MagicButton.gameObject.SetActive(true);
-                    m_ItemsButton.gameObject.SetActive(true);
-                });
+        //    btn.onCancel.AddListener(() =>
+        //        {
+        //            HideAllAttackEnemiesButtons();
+        //            m_AttackButton.Select();
+        //            m_Cursor.SetActive(false);
+        //            m_MagicButton.gameObject.SetActive(true);
+        //            m_ItemsButton.gameObject.SetActive(true);
+        //        });
 
-            btn.onSelect.AddListener(() =>
-                {
-                    Vector3 camPosition = Camera.main.WorldToScreenPoint(objPawn.transform.position);
-                    m_Cursor.transform.position = camPosition;
-                });
+        //    btn.onSelect.AddListener(() =>
+        //        {
+        //            Vector3 camPosition = Camera.main.WorldToScreenPoint(objPawn.transform.position);
+        //            m_Cursor.transform.position = camPosition;
+        //        });
 
-            ++buttonUsed;
-        }
+        //    ++buttonUsed;
+        //}
 
-        for (int i = buttonUsed; i < m_UIAttackEnemyButtons.Length; ++i)
-        {
-            Button btn = m_UIAttackEnemyButtons[i];
-            btn.gameObject.SetActive(false);
-        }
+        //for (int i = buttonUsed; i < m_UIAttackEnemyButtons.Length; ++i)
+        //{
+        //    Button btn = m_UIAttackEnemyButtons[i];
+        //    btn.gameObject.SetActive(false);
+        //}
 
-        m_UIAttackEnemyButtons[0].Select();
-        m_Cursor.SetActive(true);
-        m_MagicButton.gameObject.SetActive(false);
-        m_ItemsButton.gameObject.SetActive(false);
+        //m_UIAttackEnemyButtons[0].Select();
+        //m_Cursor.SetActive(true);
+        //m_MagicButton.gameObject.SetActive(false);
+        //m_ItemsButton.gameObject.SetActive(false);
     }
 
-    void HideAllAttackEnemiesButtons()
-    {
-        foreach (Button btn in m_UIAttackEnemyButtons)
-            btn.gameObject.SetActive(false);
-    }
-
-    void SetSelectedAction(IAction _act)
+    public void SetSelectedAction(IAction _act)
     {
         GameMaster_State_RunSingleTurn runSingleTurnState = GetRunSingleTurnState();
         runSingleTurnState.SetSelectedAction(_act);
@@ -210,5 +213,17 @@ public partial class GameMaster : MonoBehaviour
     GameMaster_State_RunSingleTurn GetRunSingleTurnState()
     {
         return m_Runner.GetStateObject<GameMaster_State_RunSingleTurn>((int)GameMasterState.RunSingleTurn);
+    }
+
+    public void ShowActionsMenu()
+    {
+        WidgetManager.GetInstance().Show(m_ActionsMenu.gameObject, false, false);
+        m_ActionsMenu.Show();
+    }
+
+    public void HideActionsMenu()
+    {
+        WidgetManager.GetInstance().Hide();
+        m_ActionsMenu.Hide();
     }
 }

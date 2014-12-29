@@ -60,7 +60,11 @@ namespace Assets.Scripts.Entities.Menu
                 imgWidget.sprite = wep.m_Image;
 
                 Weapon w = wep;
+
+                m_BtnInventory[textFieldId].onSelect.RemoveAllListeners();
                 m_BtnInventory[textFieldId].onSelect.AddListener(() => { Compare(m_EquipedWeapon, w); });
+
+                m_BtnInventory[textFieldId].onClick.RemoveAllListeners();
                 m_BtnInventory[textFieldId].onClick.AddListener(() => { onWeaponClicked(ref w); });
 
                 m_BtnInventory[textFieldId].gameObject.SetActive(true);
@@ -83,27 +87,28 @@ namespace Assets.Scripts.Entities.Menu
         public void Activate(Weapon _equipedWeapon)
         {
             m_EquipedWeapon = _equipedWeapon;
-            gameObject.SetActive(true);
             InitializeWeaponList();
             DeselectAndHandleInputAll();
 
-            m_BtnInventory[0].Select();
+            m_BtnInventory[0].Send(WidgetEvent.Select);
         }
 
         void Update()
         {
-            if (Input.GetButton("Cancel"))
+            if (Input.GetButtonDown("Cancel"))
                 onCanvasClose();
         }
 
         private void onWeaponClicked(ref Weapon wep)
         {
+            WidgetManager.GetInstance().Hide();
             m_OnWeaponSelected(wep);
+            m_OnCanvasClose();
         }
 
         private void onCanvasClose()
         {
-            gameObject.SetActive(false);
+            WidgetManager.GetInstance().Hide();
             m_OnCanvasClose();
         }
 
@@ -113,7 +118,7 @@ namespace Assets.Scripts.Entities.Menu
             {
                 if(btn.gameObject.activeInHierarchy)
                 {
-                    btn.Deselect();
+                    btn.Send(WidgetEvent.Unselect);
                     btn.HandleInput = true;
                 }
             }

@@ -130,6 +130,7 @@
     <Compile Include="Assets\Editor\CreateAssets\CreateAsset_CharactersTable.cs" />
     <Compile Include="Assets\Editor\CreateAssets\CreateAsset_Dialog.cs" />
     <Compile Include="Assets\Editor\CreateAssets\CreateAsset_DialogActor.cs" />
+    <Compile Include="Assets\Editor\CreateAssets\CreateAsset_MagicDescription.cs" />
     <Compile Include="Assets\Editor\CreateAssets\CreateAsset_Weapon.cs" />
     <Compile Include="Assets\Editor\Inspector\CancelButtonInspector.cs" />
     <Compile Include="Assets\Editor\Spawner_Behavior_Editor.cs" />

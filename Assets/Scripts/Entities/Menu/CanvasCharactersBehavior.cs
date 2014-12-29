@@ -37,7 +37,15 @@ namespace Assets.Scripts.Entities.Menu
         {
             InitializeCharactersButtons();
 
-            Select(m_BtnCharacters[0]);
+            //unselect all
+            foreach (CustomButton btn in m_BtnCharacters)
+            {
+                if (btn.gameObject.activeInHierarchy && btn.enabled)
+                    btn.Send(WidgetEvent.Unselect);
+            }
+
+            m_BtnCharacters[0].Send(WidgetEvent.Select);
+
         }
 
         void ShowCharacteristics(int _charaId)
@@ -49,21 +57,6 @@ namespace Assets.Scripts.Entities.Menu
             m_TxtMGDef.text = selectedCharacter.m_Statistics.m_MGDef.ToString();
             m_TxtHP.text = string.Format("{0} / {1}", selectedCharacter.m_Statistics.m_HP, selectedCharacter.m_Statistics.m_MaxHP);
             m_TxtMP.text = string.Format("{0} / {1}", selectedCharacter.m_Statistics.m_MP, selectedCharacter.m_Statistics.m_MaxMP);
-        }
-
-        void Select(CustomButton _button)
-        {
-            UnselectedAll();
-            _button.Select();
-        }
-
-        void UnselectedAll()
-        {
-            foreach (CustomButton btn in m_BtnCharacters)
-            {
-                if (btn.gameObject.activeInHierarchy && btn.enabled)
-                    btn.Deselect();
-            }
         }
 
         private void InitializeCharactersButtons()
@@ -82,6 +75,8 @@ namespace Assets.Scripts.Entities.Menu
 
                 m_BtnCharacters[btnId].GetComponentInChildren<Text>().text = chara.m_Name;
                 int charaId = chara.m_Id;
+
+                m_BtnCharacters[btnId].onSelect.RemoveAllListeners();
                 m_BtnCharacters[btnId].onSelect.AddListener(() => { ShowCharacteristics(charaId); });
 
                 ++btnId;

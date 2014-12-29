@@ -55,7 +55,7 @@ public partial class GameMaster : MonoBehaviour
                 m_Behavior.m_UIPawnState[i].gameObject.SetActive(false);
             }
 
-            m_Behavior.m_ActionsMenu.DeactivateMenu();
+            m_Behavior.m_ActionsMenu.Hide();
 
             m_FadeWidget.gameObject.SetActive(true);
             m_FadeWidget.color = m_InitColor;

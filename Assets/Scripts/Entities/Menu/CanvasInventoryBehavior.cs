@@ -14,9 +14,6 @@ namespace Assets.Scripts.Entities.Menu
         private CustomButton m_ItemsButton;
 
         [SerializeField]
-        private CustomButton m_WeaponsButton;
-
-        [SerializeField]
         private Text[] m_InventoryTextField;
 
         [SerializeField]
@@ -30,7 +27,7 @@ namespace Assets.Scripts.Entities.Menu
                 GameStateManager.GetInstance().LoadDefaultItemInventory();
             }
 
-            m_ItemsButton.Select();
+            m_ItemsButton.Send(WidgetEvent.Select);//Select();
         }
 
         public void ShowItems()
