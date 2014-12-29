@@ -210,6 +210,18 @@ public partial class GameMaster : MonoBehaviour
         runSingleTurnState.SetSelectedAction(_act);
     }
 
+    public void ActionReady()
+    {
+        GameMaster_State_RunSingleTurn runSingleTurnState = GetRunSingleTurnState();
+        runSingleTurnState.ActionReady();
+    }
+
+    public IAction GetSelectedAction()
+    {
+        GameMaster_State_RunSingleTurn runSingleTurnState = GetRunSingleTurnState();
+        return runSingleTurnState.GetSelectedAction();
+    }
+
     GameMaster_State_RunSingleTurn GetRunSingleTurnState()
     {
         return m_Runner.GetStateObject<GameMaster_State_RunSingleTurn>((int)GameMasterState.RunSingleTurn);

@@ -31,5 +31,10 @@ namespace Assets.Scripts.Entities.Combat
                 m_ActionsMap.Add(entry.m_Action, act);
             }
         }
+
+        public IAction GetAction(ActionId _id)
+        {
+            return m_ActionsMap[_id];
+        }
     }
 }

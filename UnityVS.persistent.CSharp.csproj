@@ -203,6 +203,7 @@
     <Compile Include="Assets\Scripts\Entities\Menu\CanvasWeaponSelectionBehavior.cs" />
     <Compile Include="Assets\Scripts\Entities\UI\CombatUI_CanvasActions.cs" />
     <Compile Include="Assets\Scripts\Entities\UI\CombatUI_EnemyList.cs" />
+    <Compile Include="Assets\Scripts\Entities\UI\CombatUI_MagicList.cs" />
     <Compile Include="Assets\Scripts\Entities\UI\CombatUI_PawnState.cs" />
     <Compile Include="Assets\Scripts\Entities\UI\CombatUI_TurnHistory.cs" />
     <Compile Include="Assets\Scripts\Entities\World\ActionId.cs" />
@@ -256,6 +257,7 @@
     <Compile Include="Assets\Scripts\UI\CustomButton.cs" />
     <Compile Include="Assets\Scripts\UI\IWidget.cs" />
     <Compile Include="Assets\Scripts\UI\WidgetEvent.cs" />
+    <Compile Include="Assets\Scripts\UI\WidgetImage.cs" />
     <Compile Include="Assets\Scripts\UI\WidgetManager.cs" />
     <Compile Include="Assets\Scripts\Warehouse.cs" />
   </ItemGroup>

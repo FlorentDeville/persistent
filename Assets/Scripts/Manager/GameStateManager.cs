@@ -145,6 +145,12 @@ namespace Assets.Scripts.Manager
             newChar.m_Statistics.m_Priority = 1;
             newChar.m_Statistics.m_PriorityIncrease = 1;
 
+            newChar.m_AvailableMagic = new MagicId[]
+            {
+                MagicId.Fire_1,
+                MagicId.Slow
+            };
+
             m_Characters.Add(_id, newChar);
         }
     }

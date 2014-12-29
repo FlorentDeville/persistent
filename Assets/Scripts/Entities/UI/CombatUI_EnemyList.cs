@@ -19,6 +19,8 @@ namespace Assets.Scripts.Entities.UI
         [SerializeField]
         private GameObject m_Cursor;
 
+        private float m_OriginalX;
+
         private Action<GameObject> m_OnEnemySelected;
         public Action<GameObject> OnEnemySelected
         {
@@ -33,9 +35,13 @@ namespace Assets.Scripts.Entities.UI
             set { m_OnCanvasClosed = value; }
         }
 
+        void Awake()
+        {
+            m_OriginalX = m_BtnEnemies[0].GetComponent<RectTransform>().anchoredPosition.x;
+        }
+
         void OnEnable()
         {
-            Debug.Log("on enable");
             GameTurnManager turnMng = GameTurnManager.GetInstance();
             int enemyCount = turnMng.m_EnemiesPawns.Count;
             int buttonUsed = 0;
@@ -99,6 +105,16 @@ namespace Assets.Scripts.Entities.UI
             m_Cursor.transform.position = camPosition;
         }
 
+        public void SetColumn(int _count)
+        {
+            float x = m_OriginalX + 160 * _count;
 
+            foreach(CustomButton btn in m_BtnEnemies)
+            {
+                Vector2 pos = btn.GetComponent<RectTransform>().anchoredPosition;
+                pos.x = x;
+                btn.GetComponent<RectTransform>().anchoredPosition = pos;
+            }
+        }
     }
 }

@@ -62,7 +62,7 @@ namespace Assets.Scripts.UI
 
         private Cooldown m_InputCooldown;
 
-        void Awake()
+        new void Awake()
         {
             base.Awake();
 

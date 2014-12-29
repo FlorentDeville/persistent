@@ -38,5 +38,9 @@ namespace Assets.Scripts.UI
         }
 
         public bool HasFocus() { return m_HasFocus; }
+
+        public void SetFocus() { m_HasFocus = true; }
+
+        public void RemoveFocus() { m_HasFocus = false; }
     }
 }

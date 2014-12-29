@@ -30,6 +30,7 @@ public partial class GameMaster : MonoBehaviour
 
                 //Set the action to run and go to next state
                 m_Behavior.SetSelectedAction(selectedAction);
+                m_Behavior.ActionReady();
                 m_Runner.SetCurrentState((int)RunSingleTurnState.RunAction, "AI has selected action");
             }
         }

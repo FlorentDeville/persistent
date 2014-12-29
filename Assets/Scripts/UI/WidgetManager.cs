@@ -57,6 +57,14 @@ namespace Assets.Scripts.UI
             return obj;
         }
 
+        public void HideAll()
+        {
+            while (m_CanvasStack.Count != 0)
+                Hide();
+
+            m_CurrentWidgets = null;
+        }
+
         void Awake()
         {
             m_CanvasStack = new Stack<GameObject>();

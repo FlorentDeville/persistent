@@ -160,6 +160,14 @@ MonoBehaviour:
       m_AnimTrigIdleState: 
       m_Speed: 10
       m_AttackDistance: 0
+  - m_Action: 2
+    m_TypeOfAction: 0
+    m_CloseAction:
+      m_AnimTrigRunState: 
+      m_AnimTrigAttackState: 
+      m_AnimTrigIdleState: 
+      m_Speed: 10
+      m_AttackDistance: 10
 --- !u!114 &11487076
 MonoBehaviour:
   m_ObjectHideFlags: 1

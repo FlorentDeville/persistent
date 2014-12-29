@@ -1,6 +1,7 @@
 ﻿using AssemblyCSharp;
 using UnityEngine;
 using Assets.Scripts.Component.Actions;
+using Assets.Scripts.UI;
 
 public partial class GameMaster : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public partial class GameMaster : MonoBehaviour
             public override void OnEnter()
             {
                 m_Behavior.ShowActionsMenu();
-                //m_Behavior.m_ActionsMenu.Show();
                 m_IsActionSelected = false;
             }
 
@@ -27,8 +27,8 @@ public partial class GameMaster : MonoBehaviour
 
             public override void OnExit()
             {
-                m_Behavior.HideActionsMenu();
-                //m_Behavior.m_ActionsMenu.Hide();
+                //m_Behavior.HideActionsMenu();
+                WidgetManager.GetInstance().HideAll();
             }
 
             public void SetSelectedAction()
