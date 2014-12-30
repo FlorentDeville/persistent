@@ -4144,8 +4144,8 @@ AnimationClip:
     script: {fileID: 0}
   m_Events:
   - time: 1.2833333
-    functionName: StartEffect
-    data: 
+    functionName: StartMarker
+    data: Prefabs/Marker/MarkerFire
     objectReferenceParameter: {fileID: 0}
     floatParameter: 1
     intParameter: 0

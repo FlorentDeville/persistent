@@ -30,7 +30,7 @@ GameObject:
   - 23: {fileID: 2358778}
   - 33: {fileID: 3358778}
   - 95: {fileID: 9558778}
-  - 114: {fileID: 11412652}
+  - 114: {fileID: 11424592}
   m_Layer: 0
   m_Name: Gfx
   m_TagString: Untagged
@@ -45,7 +45,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.18658066, y: 1, z: -15.5191021}
+  m_LocalPosition: {x: 199.057297, y: 111.012177, z: -15.5191021}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 458778}
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TurnSprite: {fileID: 21300000, guid: edf0c57c9887a614aa47a1ce77e6b1e7, type: 3}
---- !u!114 &11412652
+--- !u!114 &11424592
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -149,11 +149,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 158778}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 946a2b924ff54b6438c8db35df038f9c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c7ca2683fd33ac489cdd58871623a61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ParticleSystem: {fileID: 400000, guid: 542f86e4e34b523499e0f073b1355e1a, type: 2}
-  m_Mode: 1
 --- !u!114 &11439812
 MonoBehaviour:
   m_ObjectHideFlags: 1

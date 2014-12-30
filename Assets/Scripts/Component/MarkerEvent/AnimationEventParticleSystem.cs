@@ -6,34 +6,26 @@ using UnityEngine;
 
 namespace Assets.Scripts.Component.MarkerEvent
 {
-    public class PawnParticleSystem : MonoBehaviour
+    public class AnimationEventParticleSystem : IAnimationEvent
     {
-        public enum Mode
-        {
-            OnPawn,
-            OnTarget,
-            FromPawnToTarget,
-            FromTargetToPawn
-        }
-
         [SerializeField]
         [Tooltip("Prefab of a particle system to play")]
-        Transform m_ParticleSystem;
+        GameObject m_ParticleSystem;
 
         [SerializeField]
-        Mode m_Mode;
+        DisplacementMode m_Mode;
 
+        [SerializeField]
+        [Tooltip("Duration of the particle system in second")]
         float m_LifeTime;
+
         float m_StartTime;
 
         bool m_Started;
 
-        GameObject m_ObjParticleSystem;
-
         void Awake()
         {
             m_Started = false;
-            m_ObjParticleSystem = null;
         }
 
         void Update()
@@ -43,24 +35,17 @@ namespace Assets.Scripts.Component.MarkerEvent
 
             if(m_StartTime + m_LifeTime <= Time.fixedTime)
             {
-                StopEffect();
+                StopEvent();
             }
         }
 
-        public void StartEffect(float _lifetime)
+        public override void StartEvent()
         {
-            if(m_ObjParticleSystem == null)
-            {
-                Transform instance = (Transform)Instantiate(m_ParticleSystem, Vector3.zero, Quaternion.identity);
-                m_ObjParticleSystem = instance.gameObject;
-            }
-
-            m_LifeTime = _lifetime;
             m_StartTime = Time.fixedTime;
 
             switch(m_Mode)
             {
-                case Mode.OnTarget:
+                case DisplacementMode.OnTarget:
                     StartOnTarget();
                     break;
 
@@ -71,7 +56,7 @@ namespace Assets.Scripts.Component.MarkerEvent
             m_Started = true;
         }
 
-        public void StopEffect()
+        public override void StopEvent()
         {
             StopParticleSystem();
             m_Started = false;
@@ -80,15 +65,15 @@ namespace Assets.Scripts.Component.MarkerEvent
         void StartOnTarget()
         {
             IAction action = GameMaster.GetInstance().GetSelectedAction();
-            m_ObjParticleSystem.transform.parent = action.m_Target.transform;
-            m_ObjParticleSystem.transform.localPosition = Vector3.zero;
+            transform.parent = action.m_Target.transform;
+            transform.localPosition = Vector3.zero;
             StartParticleSystem();
         }
 
         void StartParticleSystem()
         {
-            m_ObjParticleSystem.SetActive(true);
-            ParticleEmitter[] emitters = m_ObjParticleSystem.GetComponentsInChildren<ParticleEmitter>();
+            gameObject.SetActive(true);
+            ParticleEmitter[] emitters = m_ParticleSystem.GetComponentsInChildren<ParticleEmitter>();
             foreach(ParticleEmitter emitter in emitters)
             {
                 emitter.emit = true;
@@ -97,7 +82,7 @@ namespace Assets.Scripts.Component.MarkerEvent
 
         void StopParticleSystem()
         {
-            ParticleEmitter[] emitters = m_ObjParticleSystem.GetComponentsInChildren<ParticleEmitter>();
+            ParticleEmitter[] emitters = m_ParticleSystem.GetComponentsInChildren<ParticleEmitter>();
             foreach (ParticleEmitter emitter in emitters)
             {
                 emitter.emit = false;

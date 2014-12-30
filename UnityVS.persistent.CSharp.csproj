@@ -173,7 +173,9 @@
     <Compile Include="Assets\Scripts\Component\Actions\ActionCloseAttack.cs" />
     <Compile Include="Assets\Scripts\Component\Actions\ActionEntry.cs" />
     <Compile Include="Assets\Scripts\Component\Actions\IAction.cs" />
-    <Compile Include="Assets\Scripts\Component\MarkerEvent\PawnParticleSystem.cs" />
+    <Compile Include="Assets\Scripts\Component\MarkerEvent\IAnimationEvent.cs" />
+    <Compile Include="Assets\Scripts\Component\MarkerEvent\AnimationEventLibrary.cs" />
+    <Compile Include="Assets\Scripts\Component\MarkerEvent\AnimationEventParticleSystem.cs" />
     <Compile Include="Assets\Scripts\Component\StickToGround.cs" />
     <Compile Include="Assets\Scripts\Debug\Dialog.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\GameMaster.cs" />
