@@ -679,6 +679,7 @@ MonoBehaviour:
     m_TypeOfAction: 0
     m_CloseAction:
       m_DisplayName: "Tout cass\xE9!!!!"
+      m_TypeOfReaction: 1
       m_AnimTrigRunState: GoToWalk
       m_AnimTrigAttackState: GoToAttack
       m_AnimStateAttackName: Attack
@@ -743,6 +744,8 @@ MonoBehaviour:
   m_AnimStateNameNothing: Nothing
   m_TriggerNormalHitState: GoToNormalHit
   m_AnimStateNameNormalHit: NormalHit
+  m_TriggerReactionToSlow: GoToReactionToHit
+  m_AnimStateReactionToSlow: ReactionToHit
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

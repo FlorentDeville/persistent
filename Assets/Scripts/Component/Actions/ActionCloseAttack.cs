@@ -197,14 +197,14 @@ namespace Assets.Scripts.Component.Actions
                 {
                     m_State = CloseUpAttackState.StartComeBack;
                     m_TimeStartTravel = Time.fixedTime;
-                    Enemy_NormalHit();
+                    PlayReaction();
                 }
             }
             else
             {
                 m_State = CloseUpAttackState.StartComeBack;
                 m_TimeStartTravel = Time.fixedTime;
-                Enemy_NormalHit();
+                PlayReaction();
             }
 
             m_Pawn.transform.forward = (m_AttackPosition - m_InitialPosition).normalized;
@@ -256,9 +256,21 @@ namespace Assets.Scripts.Component.Actions
             return Result.Over;
         }
 
-        private void Enemy_NormalHit()
+        private void PlayReaction()
         {
-            m_Target.GetComponent<PawnBehavior>().SetNormalHitState();
+            switch(m_TypeOfReaction)
+            {
+                case ReactionType.Slow:
+                    m_Target.GetComponent<PawnBehavior>().SetStateReactionSlow();
+                    break;
+
+                case ReactionType.NormalHit:
+                    m_Target.GetComponent<PawnBehavior>().SetNormalHitState();
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 }

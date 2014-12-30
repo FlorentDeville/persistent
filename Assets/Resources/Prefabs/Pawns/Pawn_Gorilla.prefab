@@ -541,6 +541,8 @@ MonoBehaviour:
   m_AnimStateNameNothing: Nothing
   m_TriggerNormalHitState: GoToNormalHit
   m_AnimStateNameNormalHit: NormalHit
+  m_TriggerReactionToSlow: GoToReactionToSlow
+  m_AnimStateReactionToSlow: ReactionToSlow
 --- !u!114 &11420122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -569,6 +571,7 @@ MonoBehaviour:
     m_TypeOfAction: 0
     m_CloseAction:
       m_DisplayName: Mandale
+      m_TypeOfReaction: 1
       m_AnimTrigRunState: GoToWalk
       m_AnimTrigAttackState: GoToAttack
       m_AnimStateAttackName: Attack

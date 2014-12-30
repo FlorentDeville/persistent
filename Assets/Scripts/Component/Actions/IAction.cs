@@ -8,10 +8,20 @@ namespace Assets.Scripts.Component.Actions
         NoAction
     }
 
+    public enum ReactionType
+    {
+        None,
+        NormalHit,
+        BigHit,
+        Slow
+    }
+
     [System.Serializable]
     public class IAction
     {
         public string m_DisplayName;
+
+        public ReactionType m_TypeOfReaction = ReactionType.None;
 
         public enum Result
         {

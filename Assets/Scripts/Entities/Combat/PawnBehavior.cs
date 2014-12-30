@@ -28,6 +28,10 @@ namespace Assets.Scripts.Entities.Combat
         public string m_TriggerNormalHitState;
         public string m_AnimStateNameNormalHit;
 
+        [Header("Animation State Reaction Slow")]
+        public string m_TriggerReactionToSlow;
+        public string m_AnimStateReactionToSlow;
+
         private Vector3 m_InitialPosition;
         private Animator m_Mecanim;
 
@@ -89,6 +93,14 @@ namespace Assets.Scripts.Entities.Combat
                 return;
             m_State = PawnState.NormalHit;
             TriggerAnimState(m_TriggerNormalHitState);
+        }
+
+        public void SetStateReactionSlow()
+        {
+            if (IsInState(m_AnimStateReactionToSlow))
+                return;
+            m_State = PawnState.NormalHit;
+            TriggerAnimState(m_TriggerReactionToSlow);
         }
 
         private void TriggerAnimState(string _triggerName)

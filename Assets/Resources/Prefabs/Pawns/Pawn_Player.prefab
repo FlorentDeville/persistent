@@ -168,6 +168,7 @@ MonoBehaviour:
     m_TypeOfAction: 0
     m_CloseAction:
       m_DisplayName: Makenkosajo
+      m_TypeOfReaction: 1
       m_AnimTrigRunState: 
       m_AnimTrigAttackState: 
       m_AnimStateAttackName: 
@@ -178,6 +179,7 @@ MonoBehaviour:
     m_TypeOfAction: 0
     m_CloseAction:
       m_DisplayName: FireStorm
+      m_TypeOfReaction: 1
       m_AnimTrigRunState: 
       m_AnimTrigAttackState: GoToFire1
       m_AnimStateAttackName: Fire1
@@ -188,6 +190,7 @@ MonoBehaviour:
     m_TypeOfAction: 0
     m_CloseAction:
       m_DisplayName: Chill Out
+      m_TypeOfReaction: 3
       m_AnimTrigRunState: 
       m_AnimTrigAttackState: GoToSlow1
       m_AnimStateAttackName: Slow1
@@ -216,6 +219,8 @@ MonoBehaviour:
   m_AnimStateNameNothing: 
   m_TriggerNormalHitState: GoToNormalHit
   m_AnimStateNameNormalHit: NormalHit
+  m_TriggerReactionToSlow: 
+  m_AnimStateReactionToSlow: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
