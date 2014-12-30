@@ -13,9 +13,6 @@ namespace Assets.Scripts.Component.MarkerEvent
         GameObject m_ParticleSystem;
 
         [SerializeField]
-        DisplacementMode m_Mode;
-
-        [SerializeField]
         [Tooltip("Duration of the particle system in second")]
         float m_LifeTime;
 

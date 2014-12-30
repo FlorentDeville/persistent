@@ -184,6 +184,16 @@ MonoBehaviour:
       m_AnimTrigIdleState: 
       m_Speed: 10
       m_AttackDistance: 10
+  - m_Action: 3
+    m_TypeOfAction: 0
+    m_CloseAction:
+      m_DisplayName: Chill Out
+      m_AnimTrigRunState: 
+      m_AnimTrigAttackState: GoToSlow1
+      m_AnimStateAttackName: Slow1
+      m_AnimTrigIdleState: 
+      m_Speed: 10
+      m_AttackDistance: 10
 --- !u!114 &11487076
 MonoBehaviour:
   m_ObjectHideFlags: 1

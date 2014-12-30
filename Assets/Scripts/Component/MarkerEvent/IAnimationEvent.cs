@@ -4,6 +4,9 @@ namespace Assets.Scripts.Component.MarkerEvent
 {
     public abstract class IAnimationEvent : MonoBehaviour
     {
+        [SerializeField]
+        protected DisplacementMode m_Mode;
+
         public abstract void StartEvent();
 
         public abstract void StopEvent();
