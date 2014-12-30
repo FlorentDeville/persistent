@@ -26,8 +26,6 @@ namespace Assets.Scripts.Component.Actions
 
         private float m_TimeStartTravel;
 
-        private float m_OffsetToGround;
-
         private enum CloseUpAttackState
         {
             StartMoveToEnemy,
