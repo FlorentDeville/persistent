@@ -3,6 +3,8 @@ using Assets.Scripts.UI;
 using Assets.Scripts.Manager;
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -75,8 +77,7 @@ namespace Assets.Scripts.Entities.UI
                 btn.onSelect.RemoveAllListeners();
                 btn.onSelect.AddListener(() =>
                     {
-                        Vector3 camPosition = Camera.main.WorldToScreenPoint(objPawn.transform.position);
-                        m_Cursor.transform.position = camPosition;
+                        m_Cursor.transform.position = GetCursorPosition(objPawn);
                     });
 
                 btn.Send(WidgetEvent.Unselect);
@@ -96,7 +97,6 @@ namespace Assets.Scripts.Entities.UI
 
         public void Show()
         {
-           // WidgetManager.GetInstance().Show(gameObject, false, false);
         }
 
         public void SetCursorPosition(ref GameObject _obj)
@@ -115,6 +115,19 @@ namespace Assets.Scripts.Entities.UI
                 pos.x = x;
                 btn.GetComponent<RectTransform>().anchoredPosition = pos;
             }
+        }
+
+        private Vector3 GetCursorPosition(GameObject _obj)
+        {
+            Renderer[] allRenderers = _obj.GetComponentsInChildren<Renderer>();
+
+            float maxY = allRenderers.ToList().Max(item => item.bounds.max.y);
+            float minY = allRenderers.ToList().Min(item => item.bounds.min.y);
+
+            Vector3 worldPosition = _obj.transform.position;
+            worldPosition.y = (maxY + minY) * 0.5f;
+
+            return Camera.main.WorldToScreenPoint(worldPosition);
         }
     }
 }
