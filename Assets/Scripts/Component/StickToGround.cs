@@ -19,13 +19,7 @@ public class StickToGround : MonoBehaviour
 
     public static void Apply(GameObject _obj)
     {
-        Renderer[] renderers = _obj.GetComponentsInChildren<Renderer>();
-        if (renderers == null || renderers.Length == 0)
-            return;
-
-        List<Renderer> listRenderers = new List<Renderer>(renderers);
-        float min = listRenderers.Min(item => item.bounds.min.y);
-        float offset = _obj.transform.position.y - min;
+        float extend = StickToGround.GetExtend(_obj);
 
         //Start a cast to the ground
         RaycastHit hit;
@@ -34,8 +28,21 @@ public class StickToGround : MonoBehaviour
             //In here, the raycast got a result
             //Compute how much we went through the ground and move the entity up of this amount.
             Vector3 oldPos = _obj.transform.position;
-            oldPos.y += offset - hit.distance;
+            oldPos.y += extend - hit.distance;
             _obj.transform.position = oldPos;
         }
     }
+
+    public static float GetExtend(GameObject _obj)
+    {
+        Renderer[] renderers = _obj.GetComponentsInChildren<Renderer>();
+        if (renderers == null || renderers.Length == 0)
+            return 0;
+
+        List<Renderer> listRenderers = new List<Renderer>(renderers);
+        float min = listRenderers.Min(item => item.bounds.min.y);
+        float offset = _obj.transform.position.y - min;
+        return offset;
+    }
+
 }

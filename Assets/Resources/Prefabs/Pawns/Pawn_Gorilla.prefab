@@ -570,6 +570,7 @@ MonoBehaviour:
     m_CloseAction:
       m_AnimTrigRunState: GoToWalk
       m_AnimTrigAttackState: GoToAttack
+      m_AnimStateAttackName: Attack
       m_AnimTrigIdleState: GoToIdle
       m_Speed: 10
       m_AttackDistance: 0

@@ -26,8 +26,6 @@ namespace Assets.Scripts.Entities.UI
 
         private Vector3 m_EnemyListPositionSave;
 
-        const float OFFSET_ENEMYLIST_POSITION = 170;
-
         void Awake()
         {
             m_EnemyListPositionSave = m_CanvasEnemyList.transform.position;    

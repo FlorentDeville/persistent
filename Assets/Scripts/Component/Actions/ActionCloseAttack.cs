@@ -10,6 +10,7 @@ namespace Assets.Scripts.Component.Actions
         public string m_AnimTrigRunState;
 
         public string m_AnimTrigAttackState;
+        public string m_AnimStateAttackName;
 
         public string m_AnimTrigIdleState;
 
@@ -24,6 +25,8 @@ namespace Assets.Scripts.Component.Actions
         private float m_TravelTime;
 
         private float m_TimeStartTravel;
+
+        private float m_OffsetToGround;
 
         private enum CloseUpAttackState
         {
@@ -41,6 +44,7 @@ namespace Assets.Scripts.Component.Actions
             m_InitialOrientation = m_Pawn.transform.localRotation;
             m_InitialPosition = m_Pawn.transform.position;
             m_TargetPosition = m_Target.transform.position;
+            m_TargetPosition.y = m_InitialPosition.y;
 
             Vector3 direction = m_TargetPosition - m_InitialPosition;
 
@@ -89,7 +93,7 @@ namespace Assets.Scripts.Component.Actions
                     Debug.LogError(string.Format("unknown state {0}", m_State));
                     break;
             }
-            StickToGround.Apply(m_Pawn);
+
             return res;
         }
 
@@ -154,7 +158,6 @@ namespace Assets.Scripts.Component.Actions
                     anim.SetTrigger(m_AnimTrigAttackState);
                     m_State = CloseUpAttackState.WaitForAttackToStart;
                 }
-                //get anim graph and go to the next state.
             }
 
             m_Pawn.transform.forward = (m_AttackPosition - m_InitialPosition).normalized;
@@ -167,10 +170,7 @@ namespace Assets.Scripts.Component.Actions
             Animator anim = m_Pawn.GetComponentInChildren<Animator>();
             if (anim != null)
             {
-                int AttackHash = Animator.StringToHash("Base Layer.Attack");
-                int IdleHash = Animator.StringToHash("Base Layer.Idle");
-                int NothingHash = Animator.StringToHash("Base Layer.Nothing");
-                int DeadHash = Animator.StringToHash("Base Layer.Dead");
+                int AttackHash = Animator.StringToHash(string.Format("Base Layer.{0}", m_AnimStateAttackName));
                 AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
                 if (info.nameHash == AttackHash)
                 {
@@ -193,10 +193,7 @@ namespace Assets.Scripts.Component.Actions
             Animator anim = m_Pawn.GetComponentInChildren<Animator>();
             if (anim != null)
             {
-                int AttackHash = Animator.StringToHash("Base Layer.Attack");
-                int IdleHash = Animator.StringToHash("Base Layer.Idle");
-                int NothingHash = Animator.StringToHash("Base Layer.Nothing");
-                int DeadHash = Animator.StringToHash("Base Layer.Dead");
+                int AttackHash = Animator.StringToHash(string.Format("Base Layer.{0}", m_AnimStateAttackName));
                 AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
                 if (info.nameHash != AttackHash)
                 {

@@ -38,6 +38,7 @@ namespace Assets.Scripts.Entities.Combat
 
         public void Start()
         {
+            StickToGround.Apply(gameObject);
             m_InitialPosition = gameObject.transform.position;
             switch (m_State)
             {
