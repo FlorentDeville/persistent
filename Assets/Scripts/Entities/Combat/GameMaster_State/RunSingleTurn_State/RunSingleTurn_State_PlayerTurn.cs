@@ -27,7 +27,6 @@ public partial class GameMaster : MonoBehaviour
 
             public override void OnExit()
             {
-                //m_Behavior.HideActionsMenu();
                 WidgetManager.GetInstance().HideAll();
             }
 

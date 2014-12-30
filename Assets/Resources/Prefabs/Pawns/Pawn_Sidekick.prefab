@@ -178,8 +178,10 @@ MonoBehaviour:
   - m_Action: 1
     m_TypeOfAction: 0
     m_CloseAction:
+      m_DisplayName: Hokuto de Cuisine
       m_AnimTrigRunState: 
       m_AnimTrigAttackState: 
+      m_AnimStateAttackName: 
       m_AnimTrigIdleState: 
       m_Speed: 10
       m_AttackDistance: 2

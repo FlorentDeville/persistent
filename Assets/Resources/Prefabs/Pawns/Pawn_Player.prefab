@@ -167,6 +167,7 @@ MonoBehaviour:
   - m_Action: 1
     m_TypeOfAction: 0
     m_CloseAction:
+      m_DisplayName: Makenkosajo
       m_AnimTrigRunState: 
       m_AnimTrigAttackState: 
       m_AnimStateAttackName: 
@@ -176,6 +177,7 @@ MonoBehaviour:
   - m_Action: 2
     m_TypeOfAction: 0
     m_CloseAction:
+      m_DisplayName: FireStorm
       m_AnimTrigRunState: 
       m_AnimTrigAttackState: GoToFire1
       m_AnimStateAttackName: Fire1

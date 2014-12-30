@@ -16,6 +16,7 @@ public partial class GameMaster : MonoBehaviour
             {
                 m_SelectedAction = m_Behavior.GetRunSingleTurnState().GetSelectedAction();
                 m_SelectedAction.Prepare();
+                m_Behavior.m_UIEffects.StartAnimationShowAttackName(m_SelectedAction.m_DisplayName);
             }
 
             public override void OnLateExecute()

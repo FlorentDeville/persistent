@@ -11,6 +11,8 @@ namespace Assets.Scripts.Component.Actions
     [System.Serializable]
     public class IAction
     {
+        public string m_DisplayName;
+
         public enum Result
         {
             Over,       //The action is over
@@ -20,6 +22,8 @@ namespace Assets.Scripts.Component.Actions
         public GameObject m_Pawn { get; set; }
 
         public GameObject m_Target { get; set; }
+
+        
 
         public virtual void Prepare() { }
 

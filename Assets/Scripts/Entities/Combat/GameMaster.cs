@@ -33,6 +33,8 @@ public partial class GameMaster : MonoBehaviour
     public GameObject m_UIGameOverText;
     public GameObject m_UIVictoryText;
 
+    public CombatUI_Effect m_UIEffects;
+
     #region Variable State Init
 
     [Header("State : Init")]

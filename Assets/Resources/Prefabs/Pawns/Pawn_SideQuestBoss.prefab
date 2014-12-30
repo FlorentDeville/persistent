@@ -678,6 +678,7 @@ MonoBehaviour:
   - m_Action: 1
     m_TypeOfAction: 0
     m_CloseAction:
+      m_DisplayName: "Tout cass\xE9!!!!"
       m_AnimTrigRunState: GoToWalk
       m_AnimTrigAttackState: GoToAttack
       m_AnimStateAttackName: Attack

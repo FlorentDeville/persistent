@@ -205,6 +205,7 @@
     <Compile Include="Assets\Scripts\Entities\Menu\CanvasOptionsBehavior.cs" />
     <Compile Include="Assets\Scripts\Entities\Menu\CanvasWeaponSelectionBehavior.cs" />
     <Compile Include="Assets\Scripts\Entities\UI\CombatUI_CanvasActions.cs" />
+    <Compile Include="Assets\Scripts\Entities\UI\CombatUI_Effect.cs" />
     <Compile Include="Assets\Scripts\Entities\UI\CombatUI_EnemyList.cs" />
     <Compile Include="Assets\Scripts\Entities\UI\CombatUI_MagicList.cs" />
     <Compile Include="Assets\Scripts\Entities\UI\CombatUI_PawnState.cs" />
