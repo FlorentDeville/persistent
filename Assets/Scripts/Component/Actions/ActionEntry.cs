@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Entities.World;
-using UnityEditor;
 
 namespace Assets.Scripts.Component.Actions
 {
