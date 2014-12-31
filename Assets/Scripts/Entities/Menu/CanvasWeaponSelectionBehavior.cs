@@ -91,7 +91,8 @@ namespace Assets.Scripts.Entities.Menu
             InitializeWeaponList();
             DeselectAndHandleInputAll();
 
-            m_BtnInventory[0].Send(WidgetEvent.Select);
+            if (m_BtnInventory[0].gameObject.activeInHierarchy)
+                m_BtnInventory[0].Send(WidgetEvent.Select);
         }
 
         void Update()
@@ -133,14 +134,14 @@ namespace Assets.Scripts.Entities.Menu
                 SetComparisonValue(m_RAtkIncrease, _selected.m_AtkR);
                 SetComparisonValue(m_MGAtkIncrease, _selected.m_MGAtk);
                 SetComparisonValue(m_MGRAtkIncrease, _selected.m_MGAtkR);
-                return;
             }
-
-            SetComparison(m_AtkIncrease, _equiped.m_Atk, _selected.m_Atk);
-            SetComparison(m_RAtkIncrease, _equiped.m_AtkR, _selected.m_AtkR);
-            SetComparison(m_MGAtkIncrease, _equiped.m_MGAtk, _selected.m_MGAtk);
-            SetComparison(m_MGRAtkIncrease, _equiped.m_MGAtkR, _selected.m_MGAtkR);
-
+            else
+            {
+                SetComparison(m_AtkIncrease, _equiped.m_Atk, _selected.m_Atk);
+                SetComparison(m_RAtkIncrease, _equiped.m_AtkR, _selected.m_AtkR);
+                SetComparison(m_MGAtkIncrease, _equiped.m_MGAtk, _selected.m_MGAtk);
+                SetComparison(m_MGRAtkIncrease, _equiped.m_MGAtkR, _selected.m_MGAtkR);
+            }
             ActiveComparisonWidget(true);
         }
 
@@ -185,10 +186,10 @@ namespace Assets.Scripts.Entities.Menu
 
         private void ActiveComparisonWidget(bool _active)
         {
-            m_AtkIncrease.gameObject.SetActive(false);
-            m_RAtkIncrease.gameObject.SetActive(false);
-            m_MGAtkIncrease.gameObject.SetActive(false);
-            m_MGRAtkIncrease.gameObject.SetActive(false);
+            m_AtkIncrease.gameObject.SetActive(_active);
+            m_RAtkIncrease.gameObject.SetActive(_active);
+            m_MGAtkIncrease.gameObject.SetActive(_active);
+            m_MGRAtkIncrease.gameObject.SetActive(_active);
         }
     }
 }
