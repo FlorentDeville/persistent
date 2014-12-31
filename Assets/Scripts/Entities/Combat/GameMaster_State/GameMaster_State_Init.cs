@@ -1,6 +1,9 @@
 ﻿using AssemblyCSharp;
+
+using Assets.Scripts.Component.MarkerEvent;
 using Assets.Scripts.Manager;
 using Assets.Scripts.Entities.Combat;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -61,6 +64,8 @@ public partial class GameMaster : MonoBehaviour
             m_FadeWidget.color = m_InitColor;
 
             m_Runner.SetCurrentState((int)GameMasterState.PlayIntro, "Init state over");
+
+            AnimationEventLibrary.InitEventLibrary();
         }
 
         private void InitializePawnStatistics(GameObject _pawn)

@@ -8,6 +8,11 @@ namespace Assets.Scripts.Component.MarkerEvent
     {
         private static Dictionary<string, IAnimationEvent> m_Markers = new Dictionary<string, IAnimationEvent>();
 
+        public static void InitEventLibrary()
+        {
+            m_Markers.Clear();
+        }
+
         public void StartMarker(string _prefabName)
         {
             if(!m_Markers.ContainsKey(_prefabName))
