@@ -129,13 +129,13 @@ namespace Assets.Scripts.Manager
             if (_id == 0)
             {
                 newChar.m_Name = "Player";
-                newChar.m_Statistics.m_Atk = 700;
+                newChar.m_Statistics.m_Atk = 70;
                 newChar.m_AvailableMagic = new MagicId[] { MagicId.Fire_1 };
             }
             else
             {
                 newChar.m_Name = "Sidekick";
-                newChar.m_Statistics.m_Atk = 600;
+                newChar.m_Statistics.m_Atk = 60;
                 newChar.m_AvailableMagic = new MagicId[] { MagicId.Slow };
             }
             newChar.m_Statistics.m_Def = 2;
