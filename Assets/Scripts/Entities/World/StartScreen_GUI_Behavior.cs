@@ -11,13 +11,20 @@ public class StartScreen_GUI_Behavior : MonoBehaviour
         {
             Application.LoadLevel("Sequence_01");
         }
+        const float VerticalOffset = 32f;
+        top += VerticalOffset;
+
+        if (GUI.Button(new Rect(30, top, 150, 30), "Start Game (Skip Intro)"))
+        {
+            Application.LoadLevel("Level_01");
+        }
 
         string path = System.IO.Path.Combine(Application.dataPath, "Data");
         path = System.IO.Path.Combine(path, "Scene");
 
         string[] files = System.IO.Directory.GetFiles(path, "*.unity");
 
-        const float VerticalOffset = 32f;
+        
         top += VerticalOffset;
         foreach(string scene in files)
         {
