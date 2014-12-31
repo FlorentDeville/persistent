@@ -30,6 +30,7 @@ namespace Assets.Scripts.Component.MarkerEvent
         void Awake()
         {
             m_AnimationStarted = false;
+            transform.SetParent(FindObjectOfType<SceneRoot_Behavior>().gameObject.transform);
         }
 
         void Update()
@@ -56,6 +57,7 @@ namespace Assets.Scripts.Component.MarkerEvent
 
         public override void StopEvent()
         {
+            m_Container.transform.position = Vector3.zero;
             m_AnimationStarted = false;
             gameObject.SetActive(false);
         }
@@ -63,7 +65,6 @@ namespace Assets.Scripts.Component.MarkerEvent
         private void StartOnTarget()
         {
             IAction action = GameMaster.GetInstance().GetSelectedAction();
-            transform.SetParent(action.m_Target.transform);
 
             Vector3 initialPosition = action.m_Target.transform.position;
             Vector3 finalPosition = initialPosition + m_OffsetPosition;
