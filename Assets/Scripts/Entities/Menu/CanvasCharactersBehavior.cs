@@ -61,11 +61,11 @@ namespace Assets.Scripts.Entities.Menu
 
         private void InitializeCharactersButtons()
         {
-            if (Debug.isDebugBuild)
-            {
+            //if (Debug.isDebugBuild)
+            //{
                 GameStateManager.GetInstance().GetCharacter(0);
                 GameStateManager.GetInstance().GetCharacter(1);
-            }
+            //}
 
             int btnId = 0;
             foreach (Character chara in GameStateManager.GetInstance().Characters)
