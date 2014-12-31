@@ -73,7 +73,7 @@ namespace Assets.Scripts.Manager
 
         public void LoadDefaultWeaponInventory()
         {
-            //return;
+            return;
             if (m_WeaponInventory.Count != 0)
                 return;
 
@@ -123,18 +123,21 @@ namespace Assets.Scripts.Manager
         {
             Character newChar = new Character();
             newChar.m_Id = _id;
-            if (_id == 0)
-                newChar.m_Name = "Player";
-            else
-                newChar.m_Name = "Sidekick";
-
             newChar.m_EquippedWeapon = null;
             newChar.m_Statistics = new CharacterStatistics();
 
-            if(_id == 0)
-                newChar.m_Statistics.m_Atk = 30;
+            if (_id == 0)
+            {
+                newChar.m_Name = "Player";
+                newChar.m_Statistics.m_Atk = 700;
+                newChar.m_AvailableMagic = new MagicId[] { MagicId.Fire_1 };
+            }
             else
-                newChar.m_Statistics.m_Atk = 20;
+            {
+                newChar.m_Name = "Sidekick";
+                newChar.m_Statistics.m_Atk = 600;
+                newChar.m_AvailableMagic = new MagicId[] { MagicId.Slow };
+            }
             newChar.m_Statistics.m_Def = 2;
             newChar.m_Statistics.m_HP = 100;
             newChar.m_Statistics.m_MaxHP = 100;
@@ -144,12 +147,6 @@ namespace Assets.Scripts.Manager
             newChar.m_Statistics.m_MGDef = 5;
             newChar.m_Statistics.m_Priority = 1;
             newChar.m_Statistics.m_PriorityIncrease = 1;
-
-            newChar.m_AvailableMagic = new MagicId[]
-            {
-                MagicId.Fire_1,
-                MagicId.Slow
-            };
 
             m_Characters.Add(_id, newChar);
         }
