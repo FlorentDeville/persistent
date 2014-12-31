@@ -107,6 +107,11 @@ namespace Assets.Scripts.UI
                 SendToWidgetsWithFocus(WidgetEvent.Cancel);
                 m_InputCooldown.StartCooldown();
             }
+            else if (Input.GetButtonDown("X"))
+            {
+                SendToWidgetsWithFocus(WidgetEvent.ButtonX);
+                m_InputCooldown.StartCooldown();
+            }
         }
 
         void SendToAll(WidgetEvent _event)

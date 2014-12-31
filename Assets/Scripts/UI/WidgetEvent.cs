@@ -15,6 +15,7 @@ namespace Assets.Scripts.UI
         Cancel,
         Select,
         Unselect,
+        ButtonX,
 
         //All new widget event has to be defined before Count.
         Count

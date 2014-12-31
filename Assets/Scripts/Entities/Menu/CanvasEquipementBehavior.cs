@@ -65,6 +65,7 @@ namespace Assets.Scripts.Entities.Menu
                 m_BtnCharacters[btnId].onClick.RemoveAllListeners();
                 m_BtnCharacters[btnId].onClick.AddListener(() => { OnSelectCharacter(charaId); });
 
+                m_BtnCharacters[btnId].Connect(WidgetEvent.ButtonX, () => { OnDeselectWeapon(charaId); });
                 ++btnId;
             }
 
@@ -116,6 +117,12 @@ namespace Assets.Scripts.Entities.Menu
                 if (btn.gameObject.activeInHierarchy)
                     btn.HandleInput = true;
             }
+        }
+
+        private void OnDeselectWeapon(int _charaId)
+        {
+            GameStateManager.GetInstance().GetCharacter(_charaId).m_EquippedWeapon = null;
+            ShowCharacteristics(_charaId);
         }
     }
 }

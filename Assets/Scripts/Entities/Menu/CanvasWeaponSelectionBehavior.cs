@@ -51,6 +51,7 @@ namespace Assets.Scripts.Entities.Menu
                 if (GameStateManager.GetInstance().IsEquipped(wep))
                     continue;
 
+                m_BtnInventory[textFieldId].gameObject.SetActive(true);
                 Text textWidget = m_BtnInventory[textFieldId].GetComponentInChildren<Text>();
                 textWidget.text = wep.m_WeaponName;
 
