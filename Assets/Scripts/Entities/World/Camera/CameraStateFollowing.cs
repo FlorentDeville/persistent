@@ -20,10 +20,7 @@ namespace AssemblyCSharp
 		
 		public override void OnEnter ()
 		{
-			Vector3 WorldPosition = m_Behavior.m_Player_GameObject.transform.position - new Vector3(0, 0, 1) * m_Behavior.m_CameraDistance + new Vector3(0, 1, 0) * m_Behavior.m_CameraHeight;
-			m_GameObject.transform.position = WorldPosition;
-			m_GameObject.transform.LookAt(m_Behavior.m_Player_GameObject.transform);
-			base.OnEnter ();
+            m_angleY = m_Behavior.m_InitialOrientation;
 		}
 		
 		public override void OnExecute ()
@@ -46,8 +43,6 @@ namespace AssemblyCSharp
 
             //Apply transparency to obstacles
             //ApplyAlpha(pos, targetTransform.position);
-
-			base.OnExecute ();
 		}
 
         private void ApplyAlpha(Vector3 _from, Vector3 _to)

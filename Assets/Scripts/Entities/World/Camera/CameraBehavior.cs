@@ -7,6 +7,7 @@ public class CameraBehavior : MonoBehaviour
     public float m_GameObjectAlpha;
 	#region Variables Following
 	
+    [Header("Following a target")]
 	public float m_CameraDistance;
 	public float m_CameraHeight;
 	public float m_CameraRotationSpeed;
@@ -16,17 +17,17 @@ public class CameraBehavior : MonoBehaviour
 	
 	public float m_FollowingStateMinHeight;
 	public float m_FollowingStateMaxHeight;
-	
+
+    public float m_InitialOrientation;
 	#endregion
 	
 	#region Variables Travelling
 	
-	/// <summary>
-	/// The duration of the travelling.
-	/// </summary>
+    [Header("Travelling to a point")]
 	public float m_TravellingDuration;
 	
 	#endregion
+
 	private FSMRunner m_Runner;
 	
 	private CameraStateTravelling m_StateTravelling;
