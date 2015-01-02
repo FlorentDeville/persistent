@@ -11,6 +11,6 @@ namespace Assets.Scripts.Assets.SpecificAction
 
         public ReactionType m_Reaction;
 
-        Transform m_EventMarker;
+        public Transform m_EventMarker;
     }
 }

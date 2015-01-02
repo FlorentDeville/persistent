@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Scripts.Assets.SpecificAction;
+using Assets.Scripts.Component.Actions;
+
+using System.Collections.Generic;
 
 using UnityEngine;
 
@@ -13,30 +16,40 @@ namespace Assets.Scripts.Component.MarkerEvent
             m_Markers.Clear();
         }
 
-        public void StartMarker(string _prefabName)
+        public void StartMarkerFromActionDescription()
         {
-            if(!m_Markers.ContainsKey(_prefabName))
+            ActionRunner runner = GameMaster.GetInstance().GetSelectedAction();
+
+            Transform prefab = runner.ActionDescription.m_EventMarker;
+            if (prefab == null)
+                return;
+
+            if(!m_Markers.ContainsKey(prefab.name))
             {
-                if (!LoadMarker(_prefabName))
+                if (!LoadMarker(prefab.name))
                     return;
             }
 
-            IAnimationEvent marker = m_Markers[_prefabName];
+            IAnimationEvent marker = m_Markers[prefab.name];
             marker.StartEvent();
         }
 
-        public void StopMarker(string _prefabMarker)
+        public void StopMarkerFromActionDescription()
         {
-            if (!m_Markers.ContainsKey(_prefabMarker))
+            ActionRunner runner = GameMaster.GetInstance().GetSelectedAction();
+
+            Transform prefab = runner.ActionDescription.m_EventMarker;
+            if (prefab == null)
                 return;
 
-            m_Markers[_prefabMarker].StopEvent();
+            m_Markers[prefab.name].StopEvent();
         }
 
         private bool LoadMarker(string _prefabName)
         {
-            GameObject prefab = Resources.Load<GameObject>(_prefabName);
-            if(prefab == null)
+            string resourcePath = string.Format("Prefabs/Marker/{0}", _prefabName);
+            GameObject prefab = Resources.Load<GameObject>(resourcePath);
+            if (prefab == null)
             {
                 Debug.LogError(string.Format("Can't load marker name {0}", _prefabName));
                 return false;
@@ -45,7 +58,7 @@ namespace Assets.Scripts.Component.MarkerEvent
             GameObject obj = (GameObject)Instantiate(prefab, Vector3.zero, Quaternion.identity);
 
             IAnimationEvent marker = obj.GetComponent<IAnimationEvent>();
-            if(marker == null)
+            if (marker == null)
             {
                 Debug.LogError(string.Format("The prefab {0} has no IMarker component", _prefabName));
                 return false;

@@ -150,62 +150,6 @@ public partial class GameMaster : MonoBehaviour
         m_Runner.LateUpdate();
     }
 
-    void OnAttackClicked()
-    {
-        //GameTurnManager turnMng = GameTurnManager.GetInstance();
-        //int enemyCount = turnMng.m_EnemiesPawns.Count;
-        //int buttonUsed = 0;
-        //for(int i = 0; i < enemyCount; ++i)
-        //{
-        //    GameObject objPawn = turnMng.m_EnemiesPawns[i];
-        //    PawnBehavior bhv = objPawn.GetComponent<PawnBehavior>();
-        //    if (bhv.m_State == PawnState.Dead)
-        //        continue;
-
-        //    CancelButton btn = m_UIAttackEnemyButtons[buttonUsed];
-        //    btn.gameObject.SetActive(true);
-        //    Text txt = btn.transform.GetComponentInChildren<Text>();
-        //    txt.text = objPawn.GetComponent<PawnStatistics>().m_PawnName;
-        //    btn.onClick.AddListener(() =>
-        //        {
-        //            HideAllAttackEnemiesButtons();
-
-        //            IAction attackAction = turnMng.GetCurrentPawn().GetComponent<PawnActions>().GetAttackAction();
-        //            attackAction.SetTarget(objPawn);
-        //            SetSelectedAction(attackAction);
-
-        //        });
-
-        //    btn.onCancel.AddListener(() =>
-        //        {
-        //            HideAllAttackEnemiesButtons();
-        //            m_AttackButton.Select();
-        //            m_Cursor.SetActive(false);
-        //            m_MagicButton.gameObject.SetActive(true);
-        //            m_ItemsButton.gameObject.SetActive(true);
-        //        });
-
-        //    btn.onSelect.AddListener(() =>
-        //        {
-        //            Vector3 camPosition = Camera.main.WorldToScreenPoint(objPawn.transform.position);
-        //            m_Cursor.transform.position = camPosition;
-        //        });
-
-        //    ++buttonUsed;
-        //}
-
-        //for (int i = buttonUsed; i < m_UIAttackEnemyButtons.Length; ++i)
-        //{
-        //    Button btn = m_UIAttackEnemyButtons[i];
-        //    btn.gameObject.SetActive(false);
-        //}
-
-        //m_UIAttackEnemyButtons[0].Select();
-        //m_Cursor.SetActive(true);
-        //m_MagicButton.gameObject.SetActive(false);
-        //m_ItemsButton.gameObject.SetActive(false);
-    }
-
     public void SetSelectedAction(ActionRunner _act)
     {
         GameMaster_State_RunSingleTurn runSingleTurnState = GetRunSingleTurnState();
