@@ -7,16 +7,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{82C52EEB-7874-BD41-595D-AABCA0FA91F6}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>4.6.1p1</UnityVersion>
@@ -167,16 +165,19 @@
     <Compile Include="Assets\Scripts\Assets\Core_DialogActor.cs" />
     <Compile Include="Assets\Scripts\Assets\Core_XmlDialog.cs" />
     <Compile Include="Assets\Scripts\Assets\Item.cs" />
-    <Compile Include="Assets\Scripts\Assets\MagicDescription.cs" />
+    <Compile Include="Assets\Scripts\Assets\SpecificAction\AttackDescription.cs" />
+    <Compile Include="Assets\Scripts\Assets\SpecificAction\ISpecificActionDescription.cs" />
+    <Compile Include="Assets\Scripts\Assets\SpecificAction\MagicDescription.cs" />
     <Compile Include="Assets\Scripts\Assets\Weapon.cs" />
     <Compile Include="Assets\Scripts\Combat_Entity\Combat_Settings.cs" />
-    <Compile Include="Assets\Scripts\Component\Actions\ActionCloseAttack.cs" />
     <Compile Include="Assets\Scripts\Component\Actions\ActionEntry.cs" />
-    <Compile Include="Assets\Scripts\Component\Actions\IAction.cs" />
-    <Compile Include="Assets\Scripts\Component\MarkerEvent\AnimationEventUIAnim.cs" />
-    <Compile Include="Assets\Scripts\Component\MarkerEvent\IAnimationEvent.cs" />
+    <Compile Include="Assets\Scripts\Component\Actions\ActionHelpers.cs" />
+    <Compile Include="Assets\Scripts\Component\Actions\ActionRunner.cs" />
+    <Compile Include="Assets\Scripts\Component\Actions\PowerDescription.cs" />
     <Compile Include="Assets\Scripts\Component\MarkerEvent\AnimationEventLibrary.cs" />
     <Compile Include="Assets\Scripts\Component\MarkerEvent\AnimationEventParticleSystem.cs" />
+    <Compile Include="Assets\Scripts\Component\MarkerEvent\AnimationEventUIAnim.cs" />
+    <Compile Include="Assets\Scripts\Component\MarkerEvent\IAnimationEvent.cs" />
     <Compile Include="Assets\Scripts\Component\StickToGround.cs" />
     <Compile Include="Assets\Scripts\Debug\Dialog.cs" />
     <Compile Include="Assets\Scripts\Entities\Combat\GameMaster.cs" />
@@ -279,6 +280,5 @@
     <None Include="Assets\Materials\builtin_shaders-4.1.3\DefaultResources\Alpha-VertexLit.shader" />
     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

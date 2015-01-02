@@ -197,6 +197,28 @@ MonoBehaviour:
       m_AnimTrigIdleState: 
       m_Speed: 10
       m_AttackDistance: 10
+  m_DefaultAttack:
+    m_AnimTrigRunState: 
+    m_AnimTrigAttackState: 
+    m_AnimStateAttackName: 
+    m_AnimTrigIdleState: 
+    m_Speed: 10
+    m_AttackDistance: 0
+  m_DefaultMagic:
+    m_AnimTrigRunState: 
+    m_AnimTrigAttackState: GoToFire1
+    m_AnimStateAttackName: Fire1
+    m_AnimTrigIdleState: 
+    m_Speed: 10
+    m_AttackDistance: 10
+  m_DefaultItem:
+    m_AnimTrigRunState: 
+    m_AnimTrigAttackState: 
+    m_AnimStateAttackName: 
+    m_AnimTrigIdleState: 
+    m_Speed: 0
+    m_AttackDistance: 0
+  m_OverrideMagic: []
 --- !u!114 &11487076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -210,6 +232,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CharacterId: 0
   m_State: 0
+  m_AttackDescription: {fileID: 11400000, guid: a6114576f337bd8438e89e6b06f2c0a1,
+    type: 2}
   m_AttackAnchorRadius: 1
   m_TriggerIdleState: 
   m_AnimStateNameIdle: 

@@ -532,6 +532,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CharacterId: 0
   m_State: 0
+  m_AttackDescription: {fileID: 11400000, guid: 43309f6a81425bc489e864bfa2db0af6,
+    type: 2}
   m_AttackAnchorRadius: 1
   m_TriggerIdleState: GoToIdle
   m_AnimStateNameIdle: Idle
@@ -578,6 +580,28 @@ MonoBehaviour:
       m_AnimTrigIdleState: GoToIdle
       m_Speed: 10
       m_AttackDistance: 0
+  m_DefaultAttack:
+    m_AnimTrigRunState: GoToWalk
+    m_AnimTrigAttackState: GoToAttack
+    m_AnimStateAttackName: Attack
+    m_AnimTrigIdleState: GoToIdle
+    m_Speed: 10
+    m_AttackDistance: 0
+  m_DefaultMagic:
+    m_AnimTrigRunState: 
+    m_AnimTrigAttackState: 
+    m_AnimStateAttackName: 
+    m_AnimTrigIdleState: 
+    m_Speed: 0
+    m_AttackDistance: 0
+  m_DefaultItem:
+    m_AnimTrigRunState: 
+    m_AnimTrigAttackState: 
+    m_AnimStateAttackName: 
+    m_AnimTrigIdleState: 
+    m_Speed: 0
+    m_AttackDistance: 0
+  m_OverrideMagic: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

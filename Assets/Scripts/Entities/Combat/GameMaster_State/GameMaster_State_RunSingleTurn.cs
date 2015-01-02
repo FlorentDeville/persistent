@@ -8,7 +8,7 @@ public partial class GameMaster : MonoBehaviour
     {
         private FSMRunner m_InnerRunner;
 
-        private IAction m_SelectedAction;
+        private ActionRunner m_SelectedAction;
 
         public enum RunSingleTurnState
         {
@@ -52,10 +52,8 @@ public partial class GameMaster : MonoBehaviour
             m_InnerRunner.LateUpdate();
         }
 
-        public void SetSelectedAction(IAction _act)
+        public void SetSelectedAction(ActionRunner _act)
         {
-            //RunSingleTurn_State_PlayerTurn playerTurn = GetStateObject<RunSingleTurn_State_PlayerTurn>(RunSingleTurnState.PlayerTurn);
-            //playerTurn.SetSelectedAction();
             m_SelectedAction = _act;
         }
 
@@ -65,7 +63,7 @@ public partial class GameMaster : MonoBehaviour
             playerTurn.SetSelectedAction();
         }
 
-        public IAction GetSelectedAction()
+        public ActionRunner GetSelectedAction()
         {
             return m_SelectedAction;
         }

@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Assets;
+using Assets.Scripts.Assets.SpecificAction;
 using Assets.Editor.Utilities;
 
 using UnityEditor;
@@ -13,6 +14,18 @@ namespace Assets.Editor.CreateAssets
         {
             MagicDescription newAsset = ScriptableObject.CreateInstance<MagicDescription>();
             AssetDatabase.CreateAsset(newAsset, Helper.GetSelectedPathOrFallback() + "/magicdesc.asset");
+            EditorUtility.FocusProjectWindow();
+            Selection.activeObject = newAsset;
+        }
+    }
+
+    public class CreateAsset_AttackDescription
+    {
+        [MenuItem("Persistent/Create/Attack Description")]
+        public static void CreateAsset()
+        {
+            AttackDescription newAsset = ScriptableObject.CreateInstance<AttackDescription>();
+            AssetDatabase.CreateAsset(newAsset, Helper.GetSelectedPathOrFallback() + "/attackdesc.asset");
             EditorUtility.FocusProjectWindow();
             Selection.activeObject = newAsset;
         }

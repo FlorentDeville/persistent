@@ -30,7 +30,7 @@ public partial class GameMaster : MonoBehaviour
             public override void OnEnter()
             {
                 //compute damage
-                IAction act = m_Behavior.GetRunSingleTurnState().GetSelectedAction();
+                ActionRunner act = m_Behavior.GetRunSingleTurnState().GetSelectedAction();
                 ResolveResult result = new ResolveResult();
                 act.Resolve(result);
 

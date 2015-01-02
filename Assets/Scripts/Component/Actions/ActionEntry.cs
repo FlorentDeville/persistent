@@ -3,26 +3,9 @@
 namespace Assets.Scripts.Component.Actions
 {
     [System.Serializable]
-    public class ActionEntry
+    public class NewMagicActionOverrideEntry
     {
-        public ActionId m_Action;
-
-        public ActionType m_TypeOfAction;
-
-        public ActionCloseAttack m_CloseAction;
-
-        public IAction GetAction()
-        {
-            switch(m_TypeOfAction)
-            {
-                case ActionType.CloseAction:
-                    return m_CloseAction;
-                   
-                case ActionType.NoAction:
-                    return null;
-            }
-
-            return null;
-        }
+        public MagicId m_Magic;
+        public Actions.ActionRunner m_Action;
     }
 }

@@ -70,8 +70,10 @@ namespace Assets.Scripts.Entities.UI
 
         private void OnAttackEnemySelected(GameObject _enemy)
         {
-            IAction attackAction = GameTurnManager.GetInstance().GetCurrentPawn().GetComponent<PawnActions>().GetAttackAction();
-            attackAction.SetTarget(_enemy);
+            ActionRunner attackAction = GameTurnManager.GetInstance().GetCurrentPawn().GetComponent<PawnActions>().m_DefaultAttack;
+            attackAction.m_Target = _enemy;
+            attackAction.ActionDescription = GameTurnManager.GetInstance().GetCurrentPawn().GetComponent<PawnBehavior>().m_AttackDescription;
+            
             GameMaster.GetInstance().SetSelectedAction(attackAction);
             GameMaster.GetInstance().ActionReady();
         }
@@ -80,8 +82,9 @@ namespace Assets.Scripts.Entities.UI
         {
             //get the action
             MagicDescription desc = MagicManager.GetInstance().GetDescription(_id);
-            IAction magicAction = GameTurnManager.GetInstance().GetCurrentPawn().GetComponent<PawnActions>().GetAction(desc.m_ActionId);
-            
+            ActionRunner magicAction = GameTurnManager.GetInstance().GetCurrentPawn().GetComponent<PawnActions>().GetAction(_id);
+            magicAction.ActionDescription = desc;
+
             //set the action in the game master
             GameMaster.GetInstance().SetSelectedAction(magicAction);
 
@@ -96,8 +99,8 @@ namespace Assets.Scripts.Entities.UI
         private void OnMagicEnemySelected(GameObject _enemy)
         {
             //Set the enemy in the action
-            IAction act = GameMaster.GetInstance().GetSelectedAction();
-            act.SetTarget(_enemy);
+            ActionRunner act = GameMaster.GetInstance().GetSelectedAction();
+            act.m_Target = _enemy;
 
             GameMaster.GetInstance().ActionReady();
         }

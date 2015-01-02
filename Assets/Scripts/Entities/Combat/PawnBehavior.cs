@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Component.Actions;
+﻿using Assets.Scripts.Assets.SpecificAction;
+using Assets.Scripts.Component.Actions;
+
 using UnityEngine;
 
 namespace Assets.Scripts.Entities.Combat
@@ -8,6 +10,8 @@ namespace Assets.Scripts.Entities.Combat
         public int m_CharacterId; //make it an enum or something!!
 
         public PawnState m_State;
+
+        public AttackDescription m_AttackDescription;
 
         [Tooltip("Radius of a sphere containing the mesh. It is used to compute the displacement for an action so the action will never move a pawn into another one.")]
         public float m_AttackAnchorRadius;

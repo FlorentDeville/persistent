@@ -21,12 +21,13 @@ public partial class GameMaster : MonoBehaviour
             {
                 GameTurnManager turnMng = GameTurnManager.GetInstance();
                 PawnActions actions = turnMng.GetCurrentPawn().GetComponent<PawnActions>();
-                IAction selectedAction = actions.GetAttackAction();
+                ActionRunner selectedAction = actions.m_DefaultAttack;
 
                 //Set target
                 int id = Random.Range(0, turnMng.m_PlayerPawns.Count);
                 GameObject obj = turnMng.m_PlayerPawns[id];
-                selectedAction.SetTarget(obj);
+                selectedAction.m_Target = obj;
+                selectedAction.ActionDescription = turnMng.GetCurrentPawn().GetComponent<PawnBehavior>().m_AttackDescription;
 
                 //Set the action to run and go to next state
                 m_Behavior.SetSelectedAction(selectedAction);

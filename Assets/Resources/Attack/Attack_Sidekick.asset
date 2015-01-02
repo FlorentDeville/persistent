@@ -8,9 +8,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c00c0ee6dbdfa01439429f464585e214, type: 3}
-  m_Name: Slow
+  m_Script: {fileID: 11500000, guid: f28441908f9810248954c32bffb0494a, type: 3}
+  m_Name: Attack_Sidekick
   m_EditorClassIdentifier: 
-  m_Id: 6
-  m_ActionId: 3
-  m_DisplayName: Slow
+  m_DisplayName: Hokuto de Cuisine
+  m_Power:
+    m_DamageTarget: 2
+    m_DamageFactor: 1
+    m_CostTarget: 5
+    m_Cost: 0
+  m_Reaction: 1

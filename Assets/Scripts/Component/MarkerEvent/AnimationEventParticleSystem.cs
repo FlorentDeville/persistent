@@ -61,7 +61,7 @@ namespace Assets.Scripts.Component.MarkerEvent
 
         void StartOnTarget()
         {
-            IAction action = GameMaster.GetInstance().GetSelectedAction();
+            Actions.ActionRunner action = GameMaster.GetInstance().GetSelectedAction();
             transform.parent = action.m_Target.transform;
             transform.localPosition = Vector3.zero;
             StartParticleSystem();

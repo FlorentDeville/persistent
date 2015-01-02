@@ -2,13 +2,13 @@
 using UnityEngine.UI;
 using System.Collections.Generic;
 
+using Assets.Scripts.Component.Actions;
 using Assets.Scripts.Manager.Parameter;
 using Assets.Scripts.Manager;
 using Assets.Scripts.Entities.Combat;
 
 using AssemblyCSharp;
 using Assets.Scripts.Entities.UI;
-using Assets.Scripts.Component.Actions;
 using Assets.Scripts.UI;
 
 #pragma warning disable 649
@@ -206,7 +206,7 @@ public partial class GameMaster : MonoBehaviour
         //m_ItemsButton.gameObject.SetActive(false);
     }
 
-    public void SetSelectedAction(IAction _act)
+    public void SetSelectedAction(ActionRunner _act)
     {
         GameMaster_State_RunSingleTurn runSingleTurnState = GetRunSingleTurnState();
         runSingleTurnState.SetSelectedAction(_act);
@@ -218,7 +218,7 @@ public partial class GameMaster : MonoBehaviour
         runSingleTurnState.ActionReady();
     }
 
-    public IAction GetSelectedAction()
+    public ActionRunner GetSelectedAction()
     {
         GameMaster_State_RunSingleTurn runSingleTurnState = GetRunSingleTurnState();
         return runSingleTurnState.GetSelectedAction();

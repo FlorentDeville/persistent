@@ -8,9 +8,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c00c0ee6dbdfa01439429f464585e214, type: 3}
-  m_Name: Fire_1
+  m_Script: {fileID: 11500000, guid: ec9b59ed8eb7c8041932a4fc02d35922, type: 3}
+  m_Name: Magic_Slow
   m_EditorClassIdentifier: 
-  m_Id: 0
-  m_ActionId: 2
-  m_DisplayName: Fire
+  m_DisplayName: Slow
+  m_Power:
+    m_DamageTarget: 4
+    m_DamageFactor: .5
+    m_CostTarget: 1
+    m_Cost: 20
+  m_Reaction: 3
+  m_Id: 6

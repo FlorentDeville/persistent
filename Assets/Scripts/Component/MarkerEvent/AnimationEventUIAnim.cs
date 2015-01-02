@@ -64,7 +64,7 @@ namespace Assets.Scripts.Component.MarkerEvent
 
         private void StartOnTarget()
         {
-            IAction action = GameMaster.GetInstance().GetSelectedAction();
+            ActionRunner action = GameMaster.GetInstance().GetSelectedAction();
 
             Vector3 initialPosition = action.m_Target.transform.position;
             Vector3 finalPosition = initialPosition + m_OffsetPosition;

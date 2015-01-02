@@ -1,12 +1,17 @@
 ﻿using UnityEngine;
 using Assets.Scripts.Assets;
+using Assets.Scripts.Assets.SpecificAction;
 using Assets.Scripts.Entities.Combat;
 
 namespace Assets.Scripts.Component.Actions
 {
     [System.Serializable]
-    public class ActionCloseAttack : IAction
+    public class ActionRunner
     {
+        public GameObject m_Pawn { get; set; }
+
+        public GameObject m_Target { get; set; }
+
         public string m_AnimTrigRunState;
 
         public string m_AnimTrigAttackState;
@@ -17,6 +22,8 @@ namespace Assets.Scripts.Component.Actions
         public float m_Speed;
 
         public float m_AttackDistance;
+
+        public ISpecificActionDescription ActionDescription { get; set; }
 
         private Quaternion m_InitialOrientation;
         private Vector3 m_InitialPosition;
@@ -37,7 +44,7 @@ namespace Assets.Scripts.Component.Actions
         }
         private CloseUpAttackState m_State;
 
-        public override void Prepare()
+        public void Prepare()
         {
             m_InitialOrientation = m_Pawn.transform.localRotation;
             m_InitialPosition = m_Pawn.transform.position;
@@ -58,11 +65,11 @@ namespace Assets.Scripts.Component.Actions
             m_TimeStartTravel = Time.fixedTime;
         }
 
-        public override Result Execute()
+        public Result Execute()
         {
             Result res = Result.Continue;
-            switch(m_State)
-            { 
+            switch (m_State)
+            {
                 case CloseUpAttackState.StartMoveToEnemy:
                     res = Execute_StartMoveToEnemy();
                     break;
@@ -95,20 +102,20 @@ namespace Assets.Scripts.Component.Actions
             return res;
         }
 
-        public override void Resolve(ResolveResult _result)
+        public void Resolve(ResolveResult _result)
         {
             PawnStatistics pawnStats = m_Pawn.GetComponent<PawnStatistics>();
             PawnStatistics targetStats = m_Target.GetComponent<PawnStatistics>();
 
             float weaponBonus = 0;
-            if(pawnStats.m_EquippedWeapon != null)
+            if (pawnStats.m_EquippedWeapon != null)
             {
                 Weapon wpn = pawnStats.m_EquippedWeapon;
                 weaponBonus = wpn.m_Atk + Random.Range(-wpn.m_AtkR, wpn.m_AtkR);
             }
 
             float dmg = pawnStats.m_Atk + weaponBonus - targetStats.m_Def;
-            if(dmg < 0) dmg = 0;
+            if (dmg < 0) dmg = 0;
             int realDamage = (int)dmg;
 
             targetStats.m_HP -= realDamage;
@@ -124,10 +131,10 @@ namespace Assets.Scripts.Component.Actions
 
         private Result Execute_StartMoveToEnemy()
         {
-            if(!string.IsNullOrEmpty(m_AnimTrigRunState))
+            if (!string.IsNullOrEmpty(m_AnimTrigRunState))
             {
                 Animator anim = m_Pawn.GetComponentInChildren<Animator>();
-                if(anim != null)
+                if (anim != null)
                 {
                     anim.SetTrigger(m_AnimTrigRunState);
                 }
@@ -258,7 +265,7 @@ namespace Assets.Scripts.Component.Actions
 
         private void PlayReaction()
         {
-            switch(m_TypeOfReaction)
+            switch (ActionDescription.m_Reaction)
             {
                 case ReactionType.Slow:
                     m_Target.GetComponent<PawnBehavior>().SetStateReactionSlow();
@@ -274,3 +281,4 @@ namespace Assets.Scripts.Component.Actions
         }
     }
 }
+
