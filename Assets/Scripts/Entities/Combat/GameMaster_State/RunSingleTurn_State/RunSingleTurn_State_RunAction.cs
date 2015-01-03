@@ -14,9 +14,15 @@ public partial class GameMaster : MonoBehaviour
 
             public override void OnEnter()
             {
+                //prepare the action
                 m_SelectedAction = m_Behavior.GetRunSingleTurnState().GetSelectedAction();
                 m_SelectedAction.Prepare();
+
+                //show the attack name
                 m_Behavior.m_UIEffects.StartAnimationShowAttackName(m_SelectedAction.ActionDescription.m_DisplayName);
+
+                //apply attack cost
+                m_SelectedAction.ActionDescription.m_Power.ApplyCost(m_SelectedAction.m_Pawn.GetComponent<PawnStatistics>());
             }
 
             public override void OnLateExecute()

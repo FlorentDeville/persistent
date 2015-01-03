@@ -31,8 +31,11 @@ public partial class GameMaster : MonoBehaviour
             {
                 //compute damage
                 ActionRunner act = m_Behavior.GetRunSingleTurnState().GetSelectedAction();
+
+                PawnStatistics src = act.m_Pawn.GetComponent<PawnStatistics>();
+                PawnStatistics target = act.m_Target.GetComponent<PawnStatistics>();
                 ResolveResult result = new ResolveResult();
-                act.Resolve(result);
+                act.ActionDescription.m_Power.Resolve(src, target, result);
 
                 //write damage in UI widget
                 UnityEngine.UI.Text UIText = m_Behavior.m_UIDamageText.GetComponent<UnityEngine.UI.Text>();

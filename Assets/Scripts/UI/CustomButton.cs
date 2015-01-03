@@ -23,16 +23,20 @@ namespace Assets.Scripts.UI
 
         public Color m_Pressed;
 
+        public Color m_UnselectableNormal;
+
+        public Color m_UnselectableHighlighted;
+
         [SerializeField]
-        private bool m_HandleInput;
-        public bool HandleInput
+        private bool m_IsUnselectable;
+        public bool IsUnselectable
         {
-            get { return m_HandleInput; }
+            get { return m_IsUnselectable; }
             set
             {
-                m_HandleInput = value;
-                if (m_HandleInput)
-                    m_InputCooldown.StartCooldown();
+                if (m_IsUnselectable == value) return;
+
+                OnIsUnselectableChanged(value);
             }
         }
 
@@ -84,8 +88,7 @@ namespace Assets.Scripts.UI
         {
             m_HasFocus = true;
             m_State = CustomButtonState.Selected;
-            if (m_ImageWidget != null)
-                m_ImageWidget.color = m_Highlighted;
+            UpdateColor();
             onSelect.Invoke();
             m_InputCooldown.StartCooldown();
         }
@@ -94,8 +97,7 @@ namespace Assets.Scripts.UI
         {
             m_HasFocus = false;
             m_State = CustomButtonState.Unselected;
-            if(m_ImageWidget != null)
-                m_ImageWidget.color = m_Normal;
+            UpdateColor();
             onDeselect.Invoke();
         }
 
@@ -113,11 +115,13 @@ namespace Assets.Scripts.UI
 
         private void OnSumbit()
         {
-            if (m_State != CustomButtonState.Selected)
+            if (m_State != CustomButtonState.Selected 
+                || m_IsUnselectable
+                )
                 return;
 
             m_State = CustomButtonState.Pressed;
-            m_ImageWidget.color = m_Pressed;
+            UpdateColor();
             m_InputCooldown.StartCooldown();
             onClick.Invoke();
         }
@@ -130,6 +134,39 @@ namespace Assets.Scripts.UI
             onCancel.Invoke();
         }
 
+        private void OnIsUnselectableChanged(bool _value)
+        {
+            m_IsUnselectable = _value;
+            UpdateColor();
+        }
+
+        private void UpdateColor()
+        {
+            if (m_ImageWidget == null) return;
+            switch(m_State)
+            {
+                case CustomButtonState.Pressed:
+                    m_ImageWidget.color = m_Pressed;
+                    break;
+
+                case CustomButtonState.Selected:
+                    if (m_IsUnselectable)
+                        m_ImageWidget.color = m_UnselectableHighlighted;
+                    else
+                        m_ImageWidget.color = m_Highlighted;
+                    break;
+
+                case CustomButtonState.Unselected:
+                    if (m_IsUnselectable)
+                        m_ImageWidget.color = m_UnselectableNormal;
+                    else
+                        m_ImageWidget.color = m_Normal;
+                    break;
+
+                default: 
+                    break;
+            }
+        }
         void Update()
         {
             if (m_State == CustomButtonState.Pressed && m_InputCooldown.IsCooldownElapsed())
@@ -138,72 +175,6 @@ namespace Assets.Scripts.UI
                     m_ImageWidget.color = m_Highlighted;
                     return;
             }
-            //if (m_HandleInput)
-            //    UpdateInput();
-        }
-
-        private void UpdateInput()
-        {
-            //if (m_State == CustomButtonState.Unselected)
-            //    return;
-
-            //if(m_State == CustomButtonState.Pressed)
-            //{
-            //    if(m_InputCooldown.IsCooldownElapsed())
-            //    {
-            //        m_State = CustomButtonState.Selected;
-            //        m_ImageWidget.color = m_Highlighted;
-            //        return;
-            //    }
-            //}
-
-            //if (!m_InputCooldown.IsCooldownElapsed())
-            //    return;
-
-            //if(Input.GetAxis("Vertical") > 0.9f)
-            //{
-            //    if(m_Top != null && m_Top.enabled && m_Top.gameObject.activeInHierarchy)
-            //    {
-            //        Deselect();
-            //        m_Top.Select();
-            //    }
-            //}
-            //else if(Input.GetAxis("Vertical") < -0.9f)
-            //{
-            //    if(m_Bottom != null && m_Bottom.enabled && m_Bottom.gameObject.activeInHierarchy)
-            //    {
-            //        Deselect();
-            //        m_Bottom.Select();
-            //    }
-            //}
-            //else if(Input.GetAxis("Horizontal") > 0.9f)
-            //{
-            //    if (m_Right != null && m_Right.enabled && m_Right.gameObject.activeInHierarchy)
-            //    {
-            //        Deselect();
-            //        m_Right.Select();
-            //    }
-            //}
-            //else if (Input.GetAxis("Horizontal") < -0.9f)
-            //{
-            //    if (m_Left != null && m_Left.enabled && m_Left.gameObject.activeInHierarchy)
-            //    {
-            //        Deselect();
-            //        m_Left.Select();
-            //    }
-            //}
-            //else if(Input.GetButton("Submit") && m_State == CustomButtonState.Selected)
-            //{
-            //    m_State = CustomButtonState.Pressed;
-            //    m_ImageWidget.color = m_Pressed;
-            //    m_InputCooldown.StartCooldown();
-            //    onClick.Invoke();
-            //}
-            //else if(Input.GetButton("Cancel") && m_State == CustomButtonState.Selected)
-            //{
-            //    m_InputCooldown.StartCooldown();
-            //    onCancel.Invoke();
-            //}
         }
     }
 }

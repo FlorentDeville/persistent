@@ -74,6 +74,13 @@ namespace Assets.Scripts.Entities.UI
                 btn.onClick.AddListener(() => { Clicked(capturedId); });
 
                 btn.gameObject.SetActive(true);
+
+                PawnStatistics stats = GameTurnManager.GetInstance().GetCurrentPawnStatistics();
+                if (desc.m_Power.CanBeUsed(stats))
+                    btn.IsUnselectable = false;
+                else
+                    btn.IsUnselectable = true;
+                
                 btn.Send(WidgetEvent.Unselect);
                 ++btnId;
             }

@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Assets;
+using Assets.Scripts.Entities.Combat;
 
 using System;
 
@@ -54,17 +55,55 @@ namespace Assets.Scripts.Component.Actions
             }
         }
 
+        public void ApplyCost(PawnStatistics _pawn)
+        {
+            switch(m_CostTarget)
+            {
+                case PawnTag.HP:
+                    {
+                        _pawn.m_HP -= m_Cost;
+                        if (_pawn.m_HP < 0) _pawn.m_HP = 0;
+                    }
+                    break;
+
+                case PawnTag.MP:
+                    {
+                        _pawn.m_MP -= m_Cost;
+                        if (_pawn.m_MP < 0) _pawn.m_MP = 0;
+                    }
+                    break;
+
+                case PawnTag.PriorityIncrease:
+                    {
+                        _pawn.m_PriorityIncrease -= m_Cost;
+                        if (_pawn.m_PriorityIncrease < 0) _pawn.m_PriorityIncrease = 0;
+                    }
+                    break;
+
+                case PawnTag.Priority:
+                    {
+                        _pawn.m_Priority -= m_Cost;
+                        if (_pawn.m_Priority < 0) _pawn.m_Priority = 0;
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
         public void Resolve(PawnStatistics _src, PawnStatistics _target, ResolveResult _result)
         {
             switch(m_DamageTarget)
             {
-                case PawnTag.HP:
+                //case PawnTag.HP:
+                default:
                     ResolveHP(_src, _target, _result);
                     break;
 
-                default:
-                    Debug.LogError(string.Format("Can't resolve damage target {0}", m_DamageTarget));
-                    break;
+                //default:
+                //    Debug.LogError(string.Format("Can't resolve damage target {0}", m_DamageTarget));
+                //    break;
             }
         }
 

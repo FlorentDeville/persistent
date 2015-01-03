@@ -16,7 +16,7 @@ MonoBehaviour:
     m_DamageTarget: 4
     m_DamageFactor: .5
     m_CostTarget: 1
-    m_Cost: 20
+    m_Cost: 15
   m_Reaction: 3
   m_EventMarker: {fileID: 22439332, guid: c58bba1bc72b6744a9c2aad00720f143, type: 2}
   m_Id: 6

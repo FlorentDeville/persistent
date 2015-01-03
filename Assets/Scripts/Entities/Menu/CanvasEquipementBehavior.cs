@@ -112,11 +112,11 @@ namespace Assets.Scripts.Entities.Menu
 
         private void OnCanvasWeaponsClose()
         {
-            foreach (CustomButton btn in m_BtnCharacters)
-            {
-                if (btn.gameObject.activeInHierarchy)
-                    btn.HandleInput = true;
-            }
+            //foreach (CustomButton btn in m_BtnCharacters)
+            //{
+            //    if (btn.gameObject.activeInHierarchy)
+            //        btn.HandleInput = true;
+            //}
         }
 
         private void OnDeselectWeapon(int _charaId)

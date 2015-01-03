@@ -121,7 +121,7 @@ namespace Assets.Scripts.Entities.Menu
                 if(btn.gameObject.activeInHierarchy)
                 {
                     btn.Send(WidgetEvent.Unselect);
-                    btn.HandleInput = true;
+                   // btn.HandleInput = true;
                 }
             }
         }

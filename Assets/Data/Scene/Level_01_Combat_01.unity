@@ -281,7 +281,9 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .80689621, a: 1}
   m_Pressed: {r: 0, g: .172413826, b: 1, a: 1}
-  m_HandleInput: 0
+  m_UnselectableNormal: {r: 0, g: 0, b: 0, a: 0}
+  m_UnselectableHighlighted: {r: 0, g: 0, b: 0, a: 0}
+  m_IsUnselectable: 0
   onSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -789,7 +791,9 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .682758331, a: 1}
   m_Pressed: {r: 0, g: 0, b: 0, a: 0}
-  m_HandleInput: 0
+  m_UnselectableNormal: {r: .627451003, g: .627451003, b: .627451003, a: 1}
+  m_UnselectableHighlighted: {r: .627451003, g: 0, b: .429952592, a: 1}
+  m_IsUnselectable: 0
   onSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -1666,7 +1670,9 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .80689621, a: 1}
   m_Pressed: {r: 0, g: .172413826, b: 1, a: 1}
-  m_HandleInput: 0
+  m_UnselectableNormal: {r: 0, g: 0, b: 0, a: 0}
+  m_UnselectableHighlighted: {r: 0, g: 0, b: 0, a: 0}
+  m_IsUnselectable: 0
   onSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -2196,7 +2202,9 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .682758331, a: 1}
   m_Pressed: {r: 0, g: 0, b: 0, a: 0}
-  m_HandleInput: 0
+  m_UnselectableNormal: {r: .627451003, g: .627451003, b: .627451003, a: 1}
+  m_UnselectableHighlighted: {r: .627451003, g: 0, b: .429952592, a: 1}
+  m_IsUnselectable: 0
   onSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -3037,7 +3045,9 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .682758331, a: 1}
   m_Pressed: {r: 0, g: 0, b: 0, a: 0}
-  m_HandleInput: 0
+  m_UnselectableNormal: {r: .627451003, g: .627451003, b: .627451003, a: 1}
+  m_UnselectableHighlighted: {r: .627451003, g: 0, b: .429952592, a: 1}
+  m_IsUnselectable: 0
   onSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -4999,7 +5009,9 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .724137783, a: 1}
   m_Pressed: {r: .282758713, g: 0, b: 1, a: 1}
-  m_HandleInput: 0
+  m_UnselectableNormal: {r: 0, g: 0, b: 0, a: 0}
+  m_UnselectableHighlighted: {r: 0, g: 0, b: 0, a: 0}
+  m_IsUnselectable: 0
   onSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -6022,7 +6034,9 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .724137783, a: 1}
   m_Pressed: {r: .282758713, g: 0, b: 1, a: 1}
-  m_HandleInput: 0
+  m_UnselectableNormal: {r: 0, g: 0, b: 0, a: 0}
+  m_UnselectableHighlighted: {r: 0, g: 0, b: 0, a: 0}
+  m_IsUnselectable: 0
   onSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -11011,7 +11025,9 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .682758331, a: 1}
   m_Pressed: {r: 0, g: 0, b: 0, a: 0}
-  m_HandleInput: 0
+  m_UnselectableNormal: {r: .627451003, g: .627451003, b: .627451003, a: 1}
+  m_UnselectableHighlighted: {r: .627451003, g: 0, b: .429952592, a: 1}
+  m_IsUnselectable: 0
   onSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -11565,7 +11581,9 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .682758331, a: 1}
   m_Pressed: {r: 0, g: 0, b: 0, a: 0}
-  m_HandleInput: 0
+  m_UnselectableNormal: {r: .627451003, g: .627451003, b: .627451003, a: 1}
+  m_UnselectableHighlighted: {r: .627451003, g: 0, b: .429952592, a: 1}
+  m_IsUnselectable: 0
   onSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -11843,7 +11861,9 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .682758331, a: 1}
   m_Pressed: {r: 0, g: 0, b: 0, a: 0}
-  m_HandleInput: 0
+  m_UnselectableNormal: {r: .627451003, g: .627451003, b: .627451003, a: 1}
+  m_UnselectableHighlighted: {r: .627451003, g: 0, b: .429952592, a: 1}
+  m_IsUnselectable: 0
   onSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -12698,7 +12718,9 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .682758331, a: 1}
   m_Pressed: {r: 0, g: 0, b: 0, a: 0}
-  m_HandleInput: 0
+  m_UnselectableNormal: {r: .627451003, g: .627451003, b: .627451003, a: 1}
+  m_UnselectableHighlighted: {r: .627451003, g: 0, b: .429952592, a: 1}
+  m_IsUnselectable: 0
   onSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -13315,7 +13337,9 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .682758331, a: 1}
   m_Pressed: {r: 0, g: 0, b: 0, a: 0}
-  m_HandleInput: 0
+  m_UnselectableNormal: {r: .627451003, g: .627451003, b: .627451003, a: 1}
+  m_UnselectableHighlighted: {r: .627451003, g: 0, b: .429952592, a: 1}
+  m_IsUnselectable: 0
   onSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -14746,7 +14770,9 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .80689621, a: 1}
   m_Pressed: {r: 0, g: .172413826, b: 1, a: 1}
-  m_HandleInput: 0
+  m_UnselectableNormal: {r: 0, g: 0, b: 0, a: 0}
+  m_UnselectableHighlighted: {r: 0, g: 0, b: 0, a: 0}
+  m_IsUnselectable: 0
   onSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -16464,7 +16490,9 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .682758331, a: 1}
   m_Pressed: {r: 0, g: 0, b: 0, a: 0}
-  m_HandleInput: 0
+  m_UnselectableNormal: {r: .627451003, g: .627451003, b: .627451003, a: 1}
+  m_UnselectableHighlighted: {r: .627451003, g: 0, b: .429952592, a: 1}
+  m_IsUnselectable: 0
   onSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -17486,7 +17514,9 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .724137783, a: 1}
   m_Pressed: {r: .282758713, g: 0, b: 1, a: 1}
-  m_HandleInput: 0
+  m_UnselectableNormal: {r: 0, g: 0, b: 0, a: 0}
+  m_UnselectableHighlighted: {r: 0, g: 0, b: 0, a: 0}
+  m_IsUnselectable: 0
   onSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -17851,7 +17881,9 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .682758331, a: 1}
   m_Pressed: {r: 0, g: 0, b: 0, a: 0}
-  m_HandleInput: 0
+  m_UnselectableNormal: {r: .627451003, g: .627451003, b: .627451003, a: 1}
+  m_UnselectableHighlighted: {r: .627451003, g: 0, b: .429952592, a: 1}
+  m_IsUnselectable: 0
   onSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -18079,7 +18111,9 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .682758331, a: 1}
   m_Pressed: {r: 0, g: 0, b: 0, a: 0}
-  m_HandleInput: 0
+  m_UnselectableNormal: {r: .627451003, g: .627451003, b: .627451003, a: 1}
+  m_UnselectableHighlighted: {r: .627451003, g: 0, b: .429952592, a: 1}
+  m_IsUnselectable: 0
   onSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -18926,7 +18960,9 @@ MonoBehaviour:
   m_Normal: {r: 1, g: 1, b: 1, a: 1}
   m_Highlighted: {r: 1, g: 0, b: .682758331, a: 1}
   m_Pressed: {r: 0, g: 0, b: 0, a: 0}
-  m_HandleInput: 0
+  m_UnselectableNormal: {r: .627451003, g: .627451003, b: .627451003, a: 1}
+  m_UnselectableHighlighted: {r: .627451003, g: 0, b: .429952592, a: 1}
+  m_IsUnselectable: 0
   onSelect:
     m_PersistentCalls:
       m_Calls: []
