@@ -121,6 +121,15 @@ namespace Assets.Scripts.Component.Actions
             int realDamage = (int)dmg;
 
             _result.m_Damage = realDamage;
+
+            _target.m_HP -= realDamage;
+
+            if (_target.m_HP <= 0)
+            {
+                _target.m_HP = 0;
+                PawnBehavior behavior = _target.GetComponent<PawnBehavior>();
+                behavior.SetDeadState();
+            }
         }
     }
 }
