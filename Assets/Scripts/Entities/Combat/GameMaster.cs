@@ -184,4 +184,14 @@ public partial class GameMaster : MonoBehaviour
         WidgetManager.GetInstance().Hide();
         m_ActionsMenu.Hide();
     }
+
+    public void TurnHistory_HighlightEnemy(GameObject _pawn)
+    {
+        m_UITurnHistory.HighlightEnemy(_pawn);
+    }
+
+    public void TurnHistory_RemoveHighlightedEnemies()
+    {
+        m_UITurnHistory.RemoveHighlightedEnemies();
+    }
 }

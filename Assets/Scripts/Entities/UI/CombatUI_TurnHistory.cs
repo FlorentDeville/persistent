@@ -1,11 +1,25 @@
 ﻿using Assets.Scripts.Entities.Combat;
 using Assets.Scripts.Manager;
+
+using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CombatUI_TurnHistory : MonoBehaviour
 {
     public GameObject[] m_HistoryTurnImages;
+
+    public string m_TriggerHighlight;
+
+    public string m_TriggerNormal;
+
+    private List<GameObject> m_HighlightedTurnItem;
+
+    void Awake()
+    {
+        m_HighlightedTurnItem = new List<GameObject>();
+    }
 
     public void UpdateTurnHistory(GameTurnManager _manager)
     {
@@ -46,6 +60,29 @@ public class CombatUI_TurnHistory : MonoBehaviour
         
     }
 
+    public void HighlightEnemy(GameObject _pawnToHighlight)
+    {
+        GameTurn currentTurn = GameTurnManager.GetInstance().m_currentTurn;
+        HighlightEnemyFromGameTurn(_pawnToHighlight, currentTurn, -GameTurnManager.GetInstance().m_PlayingPawnIdInCurrentTurn);
+
+        int offset = currentTurn.m_Pawns.Count - GameTurnManager.GetInstance().m_PlayingPawnIdInCurrentTurn;
+        foreach (GameTurn turn in GameTurnManager.GetInstance().m_TurnPredictions)
+        {
+            HighlightEnemyFromGameTurn(_pawnToHighlight, turn, offset);
+            offset += turn.m_Pawns.Count;
+        }
+    }
+
+    public void RemoveHighlightedEnemies()
+    {
+        foreach(GameObject obj in m_HighlightedTurnItem)
+        {
+            Animator anim = obj.GetComponentInChildren<Animator>();
+            anim.SetTrigger(m_TriggerNormal);
+        }
+        m_HighlightedTurnItem.Clear();
+    }
+
     private void SetHistorySprite(int _turnId, GameObject _pawn)
     {
         PawnUI pawnUIComponent = _pawn.GetComponent<PawnUI>();
@@ -55,7 +92,7 @@ public class CombatUI_TurnHistory : MonoBehaviour
             return;
         }
 
-        Image img = m_HistoryTurnImages[_turnId].GetComponent<Image>();
+        Image img = m_HistoryTurnImages[_turnId].GetComponentInChildren<Image>();
         if (img == null)
         {
             Debug.LogError("The game object " + m_HistoryTurnImages[_turnId].name + " has no Image component.");
@@ -67,7 +104,7 @@ public class CombatUI_TurnHistory : MonoBehaviour
 
     private void SetHistorySpriteToNull(int _turnId)
     {
-        Image img = m_HistoryTurnImages[_turnId].GetComponent<Image>();
+        Image img = m_HistoryTurnImages[_turnId].GetComponentInChildren<Image>();
         if (img == null)
         {
             Debug.LogError("The game object " + m_HistoryTurnImages[_turnId].name + " has no Image component.");
@@ -75,6 +112,24 @@ public class CombatUI_TurnHistory : MonoBehaviour
         }
 
         img.sprite = null;
+    }
+
+    private void HighlightEnemyFromGameTurn(GameObject _pawnToHighlight, GameTurn _turn, int _offset)
+    {
+        for (int i = 0; i < _turn.m_Pawns.Count; ++i)
+        {
+            GameObject obj = _turn.m_Pawns[i];
+            if (obj == _pawnToHighlight)
+            {
+                int id = i + _offset;
+                if (id < m_HistoryTurnImages.Length && id > 0)
+                {
+                    Animator anim = m_HistoryTurnImages[id].GetComponentInChildren<Animator>();
+                    anim.SetTrigger(m_TriggerHighlight);
+                    m_HighlightedTurnItem.Add(m_HistoryTurnImages[id]);
+                }
+            }
+        }
     }
 }
 

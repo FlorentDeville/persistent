@@ -64,6 +64,8 @@ namespace Assets.Scripts.Entities.UI
                     {
                         if (OnEnemySelected != null)
                             OnEnemySelected(objPawn);
+
+                        GameMaster.GetInstance().TurnHistory_RemoveHighlightedEnemies();
                     });
 
                 btn.onCancel.RemoveAllListeners();
@@ -72,12 +74,16 @@ namespace Assets.Scripts.Entities.UI
                         WidgetManager.GetInstance().Hide();
                         if (OnCanvasClosed != null)
                             OnCanvasClosed();
+
+                        GameMaster.GetInstance().TurnHistory_RemoveHighlightedEnemies();
                     });
 
                 btn.onSelect.RemoveAllListeners();
                 btn.onSelect.AddListener(() =>
                     {
                         m_Cursor.transform.position = GetCursorPosition(objPawn);
+                        GameMaster.GetInstance().TurnHistory_RemoveHighlightedEnemies();
+                        GameMaster.GetInstance().TurnHistory_HighlightEnemy(objPawn);
                     });
 
                 btn.Send(WidgetEvent.Unselect);
