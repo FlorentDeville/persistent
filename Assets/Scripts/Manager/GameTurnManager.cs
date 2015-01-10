@@ -42,15 +42,13 @@ namespace Assets.Scripts.Manager
     {
         private static GameTurnManager m_Instance = null;
 
-        public GameIteration m_currentTurn;
-        public int m_PlayingPawnIdInCurrentTurn;
+        public GameIteration m_CurrentIteration;
 
-        public List<GameIteration> m_TurnPredictions;
-        public int m_TurnPredictionCount;
+        public List<GameIteration> m_NextIterations;
         
-        private List<GameObject> m_Pawns;
         public List<GameObject> m_PlayerPawns;
         public List<GameObject> m_EnemiesPawns;
+
         private List<GameObject> m_OrderedPawns;
 
         public static GameTurnManager GetInstance()
@@ -63,56 +61,62 @@ namespace Assets.Scripts.Manager
 
         private GameTurnManager()
         {
-            m_TurnPredictions = new List<GameIteration>();
+            m_NextIterations = new List<GameIteration>();
             m_OrderedPawns = new List<GameObject>();
         }
 
         public void Init(List<GameObject> _pawns)
         {
-            m_TurnPredictionCount = 2;
-            m_TurnPredictions.Clear();
-            m_TurnPredictions.Capacity = 2;
+            m_NextIterations.Clear();
+            m_NextIterations.Capacity = 3;
 
-            m_Pawns = _pawns;
             m_PlayerPawns = _pawns.FindAll(item => item.GetComponent<PawnStatistics>().m_IsControlledByPlayer);
             m_EnemiesPawns = _pawns.FindAll(item => !item.GetComponent<PawnStatistics>().m_IsControlledByPlayer);
 
             ComputeOrderedPawn();
 
-            m_currentTurn = ComputeTurn();
-            m_PlayingPawnIdInCurrentTurn = 0;
-
-            ComputePredictionTurns();
+            Update();
         }
 
         public void NextTurn()
         {
-            ++m_PlayingPawnIdInCurrentTurn;
+            PawnStatistics stats = GetCurrentPawnStatistics();
+            stats.m_Priority -= 1;
+
             Update();
         }
 
         public void Update()
         {
-            if (m_PlayingPawnIdInCurrentTurn >= m_currentTurn.GetCount())
-            {
-                m_currentTurn = ComputeTurn();
-                m_PlayingPawnIdInCurrentTurn = 0;                
-            }
-            else
-            {
-                m_currentTurn.CleanDeadPawn();
-                if (m_PlayingPawnIdInCurrentTurn >= m_currentTurn.GetCount())
-                    m_PlayingPawnIdInCurrentTurn = m_currentTurn.GetCount() - 1;
-            }
-
             CleanUpDeadPawns();
-            ComputeOrderedPawn();
-            ComputePredictionTurns();
+
+            if (m_OrderedPawns.TrueForAll(item => item.GetComponent<PawnStatistics>().m_Priority < 1))
+                ApplyPriorityRestore();
+
+            List<float> priorityWorkingCopy = new List<float>();
+            foreach(GameObject obj in m_OrderedPawns)
+                priorityWorkingCopy.Add(obj.GetComponent<PawnStatistics>().m_Priority);
+
+            m_CurrentIteration = ComputeIteration(0, priorityWorkingCopy);
+
+            m_NextIterations.Clear();
+            int turnCount = m_CurrentIteration.GetCount();
+            const int MAX_TURN_COUNT = 10;
+            while (turnCount < MAX_TURN_COUNT)
+            {
+                for (int i = 0; i < m_OrderedPawns.Count; ++i)
+                    priorityWorkingCopy[i] += m_OrderedPawns[i].GetComponent<PawnStatistics>().m_PriorityIncrease;
+                
+                GameIteration iteration = ComputeIteration(0, priorityWorkingCopy);
+                m_NextIterations.Add(iteration);
+
+                turnCount += iteration.GetCount();
+            }
         }
 
         public GameObject GetCurrentPawn()
         {
-            return m_currentTurn.GetPawn(m_PlayingPawnIdInCurrentTurn);
+            return m_CurrentIteration.GetPawn(0);
         }
 
         public PawnStatistics GetCurrentPawnStatistics()
@@ -120,49 +124,6 @@ namespace Assets.Scripts.Manager
             GameObject obj = GetCurrentPawn();
 
             return obj.GetComponent<PawnStatistics>();
-        }
-
-        public bool IsLastPawnInCurrentTurn()
-        {
-            return m_currentTurn.GetCount() - 1 == m_PlayingPawnIdInCurrentTurn;
-        }
-
-        private void ComputePredictionTurns()
-        {
-            for(int turnPredictionId = 0; turnPredictionId < m_TurnPredictionCount; ++turnPredictionId)
-            {
-                GameIteration turn = ComputeTurn();
-
-                if(m_TurnPredictions.Count <= turnPredictionId)
-                    m_TurnPredictions.Add(turn);
-                else
-                    m_TurnPredictions[turnPredictionId] = turn; 
-            }
-        }
-
-        private GameIteration ComputeTurn()
-        {
-            const int PRIORITY_THRESHOLD = 1;
-
-            GameIteration turn = new GameIteration();
-            for (int pawnId = 0; pawnId < m_OrderedPawns.Count; ++pawnId)
-            {
-                PawnBehavior bhv = m_OrderedPawns[pawnId].GetComponent<PawnBehavior>();
-                if (bhv.m_State == PawnState.Dead)
-                    continue;
-
-                PawnStatistics stat = m_OrderedPawns[pawnId].GetComponent<PawnStatistics>();
-                if (stat.m_Priority >= PRIORITY_THRESHOLD) // if the priority is above threshold, add turn
-                {
-                    turn.AddTurn(m_OrderedPawns[pawnId]);
-                    stat.m_Priority -= PRIORITY_THRESHOLD;
-                }
-
-                //increase priority.
-                stat.m_Priority += stat.m_PriorityIncrease;
-            }
-
-            return turn;
         }
 
         private void ComputeOrderedPawn()
@@ -190,6 +151,43 @@ namespace Assets.Scripts.Manager
             {
                 return item.GetComponent<PawnBehavior>().m_State == PawnState.Dead;
             });
+
+            m_OrderedPawns.RemoveAll(item =>
+            {
+                return item.GetComponent<PawnBehavior>().m_State == PawnState.Dead;
+            });
+        }
+
+        private void ApplyPriorityRestore()
+        {
+            foreach(GameObject obj in m_OrderedPawns)
+            {
+                PawnStatistics stats = obj.GetComponent<PawnStatistics>();
+                stats.m_Priority += stats.m_PriorityIncrease;
+            }
+        }
+
+        private GameIteration ComputeIteration(int _startPawnId, List<float> _priorityBase)
+        {
+            const int PRIORITY_THRESHOLD = 1;
+
+            GameIteration iteration = new GameIteration();
+            bool atLeastOneTurnAdded = true;
+            while(atLeastOneTurnAdded)
+            {
+                atLeastOneTurnAdded = false;
+                for (int i = _startPawnId; i < m_OrderedPawns.Count; ++i)
+                {
+                    if(_priorityBase[i] >= PRIORITY_THRESHOLD)
+                    {
+                        iteration.AddTurn(m_OrderedPawns[i]);
+                        _priorityBase[i] -= PRIORITY_THRESHOLD;
+                        atLeastOneTurnAdded = true;
+                    }
+                }
+            }
+
+            return iteration;
         }
     }
 }

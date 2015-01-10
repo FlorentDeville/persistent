@@ -26,9 +26,9 @@ public class CombatUI_TurnHistory : MonoBehaviour
         int historyCount = m_HistoryTurnImages.Length;
 
         //Set the current turn
-        GameIteration currentTurn = _manager.m_currentTurn;
+        GameIteration currentTurn = _manager.m_CurrentIteration;
         int currentTurnId = 0;
-        for (int i = _manager.m_PlayingPawnIdInCurrentTurn; i < currentTurn.GetCount(); ++i)
+        for (int i = 0; i < currentTurn.GetCount(); ++i)
         {
             GameObject pawnGameObject = currentTurn.GetPawn(i);
             if (currentTurnId >= historyCount)
@@ -39,7 +39,7 @@ public class CombatUI_TurnHistory : MonoBehaviour
         }
 
         //Set the prediction turn
-        foreach(GameIteration turnPrediction in _manager.m_TurnPredictions)
+        foreach(GameIteration turnPrediction in _manager.m_NextIterations)
         {
             for (int i = 0; i < turnPrediction.GetCount(); ++i)
             {
@@ -63,11 +63,11 @@ public class CombatUI_TurnHistory : MonoBehaviour
 
     public void HighlightEnemy(GameObject _pawnToHighlight)
     {
-        GameIteration currentTurn = GameTurnManager.GetInstance().m_currentTurn;
-        HighlightEnemyFromGameTurn(_pawnToHighlight, currentTurn, -GameTurnManager.GetInstance().m_PlayingPawnIdInCurrentTurn);
+        GameIteration currentTurn = GameTurnManager.GetInstance().m_CurrentIteration;
+        HighlightEnemyFromGameTurn(_pawnToHighlight, currentTurn, 0);
 
-        int offset = currentTurn.GetCount() - GameTurnManager.GetInstance().m_PlayingPawnIdInCurrentTurn;
-        foreach (GameIteration turn in GameTurnManager.GetInstance().m_TurnPredictions)
+        int offset = currentTurn.GetCount();// -GameTurnManager.GetInstance().m_CurrentTurnIdInCurrentIteration;
+        foreach (GameIteration turn in GameTurnManager.GetInstance().m_NextIterations)
         {
             HighlightEnemyFromGameTurn(_pawnToHighlight, turn, offset);
             offset += turn.GetCount();
