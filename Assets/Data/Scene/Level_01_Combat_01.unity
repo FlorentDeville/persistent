@@ -5573,7 +5573,7 @@ MonoBehaviour:
   m_DamageWrapper: {fileID: 1893517790}
   m_DamageText: {fileID: 1471418150}
   m_DamageStartTrigger: GoToShowDamage
-  m_DamageEndState: Empty
+  m_DamageEndState: Base Layer.Empty
 --- !u!1001 &701165732
 Prefab:
   m_ObjectHideFlags: 0
