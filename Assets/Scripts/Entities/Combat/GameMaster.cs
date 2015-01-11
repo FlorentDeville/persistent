@@ -25,13 +25,8 @@ public partial class GameMaster : MonoBehaviour
     [SerializeField]
     private CombatUI_CanvasActions m_ActionsMenu;
 
-    public CancelButton[] m_UIAttackEnemyButtons;
-
-    public GameObject m_Cursor;
-
     public GameObject m_UIDamageText;
     public GameObject m_UIGameOverText;
-    public GameObject m_UIVictoryText;
 
     public CombatUI_Effect m_UIEffects;
 
@@ -136,7 +131,7 @@ public partial class GameMaster : MonoBehaviour
 
         m_UIDamageText.SetActive(false);
         m_UIGameOverText.SetActive(false);
-        m_UIVictoryText.SetActive(false);
+        m_UIEffects.HideVictoryEffect();
 	}
 	
 	// Update is called once per frame

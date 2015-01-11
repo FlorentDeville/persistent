@@ -5568,6 +5568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShowAttackControl: {fileID: 2104083652}
   m_TriggerShowAttack: GoToShowAttackName
+  m_Victory: {fileID: 242373299}
 --- !u!1001 &701165732
 Prefab:
   m_ObjectHideFlags: 0
@@ -9618,14 +9619,8 @@ MonoBehaviour:
   - {fileID: 1739209876}
   - {fileID: 860906009}
   m_ActionsMenu: {fileID: 1682719757}
-  m_UIAttackEnemyButtons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  m_Cursor: {fileID: 0}
   m_UIDamageText: {fileID: 1471418148}
   m_UIGameOverText: {fileID: 1388035048}
-  m_UIVictoryText: {fileID: 242373299}
   m_UIEffects: {fileID: 699773927}
   m_InitFadeWidget: {fileID: 145313382}
   m_InitColor: {r: 0, g: 0, b: 0, a: 1}
