@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Entities.Combat;
+﻿using Assets.Scripts.Assets.SpecificAction;
+using Assets.Scripts.Component.Actions;
+using Assets.Scripts.Entities.Combat;
 using Assets.Scripts.UI;
 using Assets.Scripts.Manager;
 
@@ -60,31 +62,16 @@ namespace Assets.Scripts.Entities.UI
                 txt.text = objPawn.GetComponent<PawnStatistics>().m_PawnName;
 
                 btn.onClick.RemoveAllListeners();
-                btn.onClick.AddListener(() =>
-                    {
-                        if (OnEnemySelected != null)
-                            OnEnemySelected(objPawn);
-
-                        GameMaster.GetInstance().TurnHistory_RemoveHighlightedEnemies();
-                    });
+                btn.onClick.AddListener(() => { Click(objPawn); });
 
                 btn.onCancel.RemoveAllListeners();
-                btn.onCancel.AddListener(() =>
-                    {
-                        WidgetManager.GetInstance().Hide();
-                        if (OnCanvasClosed != null)
-                            OnCanvasClosed();
-
-                        GameMaster.GetInstance().TurnHistory_RemoveHighlightedEnemies();
-                    });
+                btn.onCancel.AddListener(() => { Cancel(); });
 
                 btn.onSelect.RemoveAllListeners();
-                btn.onSelect.AddListener(() =>
-                    {
-                        m_Cursor.transform.position = GetCursorPosition(objPawn);
-                        GameMaster.GetInstance().TurnHistory_RemoveHighlightedEnemies();
-                        GameMaster.GetInstance().TurnHistory_HighlightEnemy(objPawn);
-                    });
+                btn.onSelect.AddListener(() => { Select(objPawn); });
+
+                btn.onDeselect.RemoveAllListeners();
+                btn.onDeselect.AddListener(() => { Deselect(); });
 
                 btn.Send(WidgetEvent.Unselect);
 
@@ -134,6 +121,56 @@ namespace Assets.Scripts.Entities.UI
             worldPosition.y = (maxY + minY) * 0.5f;
 
             return Camera.main.WorldToScreenPoint(worldPosition);
+        }
+
+        private void Select(GameObject _selectedPawn)
+        {
+            m_Cursor.transform.position = GetCursorPosition(_selectedPawn);
+            GameMaster.GetInstance().TurnHistory_RemoveHighlightedEnemies();
+            GameMaster.GetInstance().TurnHistory_HighlightEnemy(_selectedPawn);
+
+            ActionRunner runner = GameMaster.GetInstance().GetSelectedAction();
+            if (runner != null && runner.ActionDescription != null)
+            {
+                ISpecificActionDescription desc = runner.ActionDescription;
+                if (desc.m_ShowHistoryPreview)
+                {
+                    //preview the damages
+                    PawnStatistics targetStats = new PawnStatistics(_selectedPawn.GetComponent<PawnStatistics>());
+                    PawnStatistics sourceStats = new PawnStatistics(GameTurnManager.GetInstance().GetCurrentPawnStatistics());
+                    ResolveResult result = new ResolveResult();
+                    desc.m_Power.Resolve(sourceStats, targetStats, result);
+
+                    //preview turn history
+                    List<GameObject> preview = GameTurnManager.GetInstance().Preview(_selectedPawn, targetStats, 10);
+
+                    GameMaster.GetInstance().m_UITurnHistory.ShowPreview(preview.ToArray());
+                }
+            }
+        }
+
+        private void Click(GameObject _selectedPawn)
+        {
+            if (OnEnemySelected != null)
+                OnEnemySelected(_selectedPawn);
+
+            GameMaster.GetInstance().TurnHistory_RemoveHighlightedEnemies();
+            GameMaster.GetInstance().m_UITurnHistory.HidePreview();
+        }
+
+        private void Cancel()
+        {
+            WidgetManager.GetInstance().Hide();
+            if (OnCanvasClosed != null)
+                OnCanvasClosed();
+
+            GameMaster.GetInstance().TurnHistory_RemoveHighlightedEnemies();
+            GameMaster.GetInstance().m_UITurnHistory.HidePreview();
+        }
+
+        private void Deselect()
+        {
+            GameMaster.GetInstance().m_UITurnHistory.HidePreview();
         }
     }
 }

@@ -20,3 +20,4 @@ MonoBehaviour:
   m_Reaction: 3
   m_EventMarker: {fileID: 22439332, guid: c58bba1bc72b6744a9c2aad00720f143, type: 2}
   m_Id: 6
+  m_ShowHistoryPreview: 1

@@ -126,6 +126,39 @@ namespace Assets.Scripts.Manager
             return obj.GetComponent<PawnStatistics>();
         }
 
+        public List<GameObject> Preview(GameObject _previewPawn, PawnStatistics _previewStatistics, int _count)
+        {
+            Dictionary<GameObject, PawnStatistics> statistics = new Dictionary<GameObject, PawnStatistics>();
+            foreach(GameObject obj in m_OrderedPawns)
+            {
+                if (obj == _previewPawn)
+                    statistics.Add(obj, _previewStatistics);
+                else
+                    statistics.Add(obj, obj.GetComponent<PawnStatistics>());
+            }
+
+            List<GameObject> ret = new List<GameObject>();
+
+            List<float> priorityBase = new List<float>();
+            foreach (GameObject obj in m_OrderedPawns)
+                priorityBase.Add(statistics[obj].m_Priority);
+
+            int turnCount = 0;
+            while(turnCount < _count)
+            {
+                GameIteration iter = ComputeIteration(0, priorityBase);
+                for (int i = 0; i < iter.GetCount(); ++i)
+                    ret.Add(iter.GetPawn(i));
+
+                turnCount += iter.GetCount();
+
+                for (int i = 0; i < m_OrderedPawns.Count; ++i )
+                    priorityBase[i] += statistics[m_OrderedPawns[i]].m_PriorityIncrease;
+            }
+
+            return ret;
+        }
+
         private void ComputeOrderedPawn()
         {
             int maxSize = m_PlayerPawns.Count > m_EnemiesPawns.Count ? m_PlayerPawns.Count : m_EnemiesPawns.Count;

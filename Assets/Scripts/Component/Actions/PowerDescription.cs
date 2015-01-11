@@ -96,14 +96,17 @@ namespace Assets.Scripts.Component.Actions
         {
             switch(m_DamageTarget)
             {
-                //case PawnTag.HP:
-                default:
+                case PawnTag.HP:
                     ResolveHP(_src, _target, _result);
                     break;
 
-                //default:
-                //    Debug.LogError(string.Format("Can't resolve damage target {0}", m_DamageTarget));
-                //    break;
+                case PawnTag.PriorityIncrease:
+                    ResolvePriorityIncrease(_src, _target, _result);
+                    break;
+
+                default:
+                    Debug.LogError(string.Format("Can't resolve damage target {0}", m_DamageTarget));
+                    break;
             }
         }
 
@@ -130,6 +133,11 @@ namespace Assets.Scripts.Component.Actions
                 PawnBehavior behavior = _target.GetComponent<PawnBehavior>();
                 behavior.SetDeadState();
             }
+        }
+
+        private void ResolvePriorityIncrease(PawnStatistics _src, PawnStatistics _target, ResolveResult _result)
+        {
+            _target.m_PriorityIncrease = _target.m_PriorityIncrease * m_DamageFactor;
         }
     }
 }

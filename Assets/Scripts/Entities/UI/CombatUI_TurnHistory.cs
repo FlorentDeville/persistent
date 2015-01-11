@@ -6,19 +6,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+#pragma warning disable 649
+
 public class CombatUI_TurnHistory : MonoBehaviour
 {
-    public GameObject[] m_HistoryTurnImages;
+    [SerializeField]
+    [Header("History")]
+    private GameObject[] m_HistoryTurnImages;
 
-    public string m_TriggerHighlight;
+    [SerializeField]
+    [Header("Highlighted Selection")]
+    private string m_TriggerHighlight;
 
-    public string m_TriggerNormal;
+    [SerializeField]
+    private string m_TriggerNormal;
+
+    [SerializeField]
+    [Header("Preview")]
+    private GameObject m_PreviewWrapper;
+
+    [SerializeField]
+    private GameObject[] m_PreviewHistory;
 
     private List<GameObject> m_HighlightedTurnItem;
 
     void Awake()
     {
         m_HighlightedTurnItem = new List<GameObject>();
+        HidePreview();
     }
 
     public void UpdateTurnHistory(GameTurnManager _manager)
@@ -82,6 +97,23 @@ public class CombatUI_TurnHistory : MonoBehaviour
             anim.SetTrigger(m_TriggerNormal);
         }
         m_HighlightedTurnItem.Clear();
+    }
+
+    public void ShowPreview(GameObject[] _pawnsList)
+    {
+        m_PreviewWrapper.SetActive(true);
+
+        for (int imgId = 0, pawnId = 1; pawnId < _pawnsList.Length && imgId < m_PreviewHistory.Length; ++imgId, ++pawnId)
+        {
+            PawnUI ui = _pawnsList[pawnId].GetComponent<PawnUI>();
+            Image img = m_PreviewHistory[imgId].GetComponentInChildren<Image>();
+            img.sprite = ui.m_TurnSprite;
+        }
+    }
+
+    public void HidePreview()
+    {
+        m_PreviewWrapper.SetActive(false);
     }
 
     private void SetHistorySprite(int _turnId, GameObject _pawn)

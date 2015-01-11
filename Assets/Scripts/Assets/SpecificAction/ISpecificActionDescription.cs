@@ -12,5 +12,7 @@ namespace Assets.Scripts.Assets.SpecificAction
         public ReactionType m_Reaction;
 
         public Transform m_EventMarker;
+
+        public bool m_ShowHistoryPreview;
     }
 }
