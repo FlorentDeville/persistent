@@ -25,8 +25,6 @@ public partial class GameMaster : MonoBehaviour
     [SerializeField]
     private CombatUI_CanvasActions m_ActionsMenu;
 
-    public GameObject m_UIDamageText;
-
     public CombatUI_Effect m_UIEffects;
 
     #region Variable State Init
@@ -128,7 +126,7 @@ public partial class GameMaster : MonoBehaviour
             StickToGround.Apply(pawn.gameObject);
         }
 
-        m_UIDamageText.SetActive(false);
+        m_UIEffects.HideDamageEffect();
         m_UIEffects.HideGameOverEffect();
         m_UIEffects.HideVictoryEffect();
 	}

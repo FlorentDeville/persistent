@@ -11,19 +11,8 @@ public partial class GameMaster : MonoBehaviour
         {
             public override int State { get { return (int)RunSingleTurnState.Resolve; } }
 
-            public float m_UIAnimationDuration;
-
-            public float m_UIAnimationDisplacement;
-
-            private float m_UIAnimationStartTime;
-
-            private Vector3 m_UIAnimationInitialPosition;
-            private Vector3 m_UIAnimationFinalPosition;
-
             public override void Initialize()
             {
-                m_UIAnimationDuration = 1;
-                m_UIAnimationDisplacement = 20;
                 base.Initialize();
             }
 
@@ -37,39 +26,21 @@ public partial class GameMaster : MonoBehaviour
                 ResolveResult result = new ResolveResult();
                 act.ActionDescription.m_Power.Resolve(src, target, result);
 
-                //write damage in UI widget
-                UnityEngine.UI.Text UIText = m_Behavior.m_UIDamageText.GetComponent<UnityEngine.UI.Text>();
-                UIText.text = result.m_Damage.ToString();
-
-                //Set position of ui widget
-                m_UIAnimationInitialPosition = Camera.main.WorldToScreenPoint(act.m_Target.transform.position);
-                m_Behavior.m_UIDamageText.transform.position = m_UIAnimationInitialPosition;
-
-                //Activate ui widget
-                m_Behavior.m_UIDamageText.SetActive(true);
-
-                //initialize animation variables
-                m_UIAnimationStartTime = Time.fixedTime;
-                m_UIAnimationFinalPosition = m_UIAnimationInitialPosition + Vector3.up * m_UIAnimationDisplacement;
+                //Compute position of damage efect on screen
+                Vector3 effectPosition = Camera.main.WorldToScreenPoint(act.m_Target.transform.position);
+                
+                m_Behavior.m_UIEffects.StartDamageEffect(effectPosition, result.m_Damage.ToString());
             }
 
             public override void OnExecute()
             {
-                //render hit
-                float t = (Time.fixedTime - m_UIAnimationStartTime) / m_UIAnimationDuration;
-
-                if (t >= 1)
-                {
+                if(m_Behavior.m_UIEffects.IsDamageEffectOver())
                     m_Runner.SetCurrentState((int)RunSingleTurnState.Over, "resolve over");
-                    return;
-                }
-
-                m_Behavior.m_UIDamageText.transform.position = Vector3.Lerp(m_UIAnimationInitialPosition, m_UIAnimationFinalPosition, t);
             }
 
             public override void OnExit()
             {
-                m_Behavior.m_UIDamageText.SetActive(false);
+                m_Behavior.m_UIEffects.HideDamageEffect();
                 UpdateUIState();
             }
 

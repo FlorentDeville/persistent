@@ -22,6 +22,19 @@ namespace Assets.Scripts.Entities.UI
         [Header("Game Over")]
         private GameObject m_GameOver;
 
+        [SerializeField]
+        [Header("Damage")]
+        private GameObject m_DamageWrapper;
+
+        [SerializeField]
+        private Text m_DamageText;
+
+        [SerializeField]
+        private string m_DamageStartTrigger;
+
+        [SerializeField]
+        private string m_DamageEndState;
+
         void Awake()
         {
             m_ShowAttackControl.SetActive(false);
@@ -56,6 +69,32 @@ namespace Assets.Scripts.Entities.UI
         public void HideGameOverEffect()
         {
             m_GameOver.SetActive(false);
+        }
+
+        public void StartDamageEffect(Vector3 _screenPosition, string _text)
+        {
+            m_DamageText.text = _text;
+            m_DamageWrapper.transform.position = _screenPosition;
+            m_DamageWrapper.SetActive(true);
+
+            Animator anim = m_DamageWrapper.GetComponentInChildren<Animator>();
+            anim.SetTrigger(m_DamageStartTrigger);
+        }
+
+        public void HideDamageEffect()
+        {
+            m_DamageWrapper.SetActive(false);
+        }
+
+        public bool IsDamageEffectOver()
+        {
+            Animator anim = m_DamageWrapper.GetComponentInChildren<Animator>();
+            int endStateHash = Animator.StringToHash(string.Format("Base Layer.{0}", m_DamageEndState));
+            AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
+            if (info.nameHash == endStateHash)
+                return true;
+
+            return false;
         }
     }
 }
