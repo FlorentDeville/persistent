@@ -26,7 +26,6 @@ public partial class GameMaster : MonoBehaviour
     private CombatUI_CanvasActions m_ActionsMenu;
 
     public GameObject m_UIDamageText;
-    public GameObject m_UIGameOverText;
 
     public CombatUI_Effect m_UIEffects;
 
@@ -130,7 +129,7 @@ public partial class GameMaster : MonoBehaviour
         }
 
         m_UIDamageText.SetActive(false);
-        m_UIGameOverText.SetActive(false);
+        m_UIEffects.HideGameOverEffect();
         m_UIEffects.HideVictoryEffect();
 	}
 	

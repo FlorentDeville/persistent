@@ -19,15 +19,15 @@ public partial class GameMaster : MonoBehaviour
         public override void OnEnter()
         {
             m_StartTime = Time.fixedTime;
-            m_Behavior.m_UIGameOverText.SetActive(true);
+            m_Behavior.m_UIEffects.ShowGameOverEffect();
         }
 
         public override void OnExecute()
         {
             if (m_StartTime + m_Duration < Time.fixedTime)
             {
-                m_Behavior.m_UIGameOverText.SetActive(false);
-                m_Runner.SetCurrentState((int)GameMasterState.Terminate, "victory screen over");
+                m_Behavior.m_UIEffects.HideGameOverEffect();
+                m_Runner.SetCurrentState((int)GameMasterState.Terminate, "game over screen over");
             }
         }
     }

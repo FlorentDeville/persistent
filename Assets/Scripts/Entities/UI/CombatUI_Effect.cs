@@ -8,15 +8,19 @@ namespace Assets.Scripts.Entities.UI
     public class CombatUI_Effect : MonoBehaviour
     {
         [SerializeField]
-        [Header("Display Attack Name")]
+        [Header("Show Attack Name")]
         private GameObject m_ShowAttackControl;
 
         [SerializeField]
         private string m_TriggerShowAttack;
 
         [SerializeField]
-        [Header("Victory Effect")]
+        [Header("Victory")]
         private GameObject m_Victory;
+
+        [SerializeField]
+        [Header("Game Over")]
+        private GameObject m_GameOver;
 
         void Awake()
         {
@@ -42,6 +46,16 @@ namespace Assets.Scripts.Entities.UI
         public void HideVictoryEffect()
         {
             m_Victory.SetActive(false);
+        }
+
+        public void ShowGameOverEffect()
+        {
+            m_GameOver.SetActive(true);
+        }
+
+        public void HideGameOverEffect()
+        {
+            m_GameOver.SetActive(false);
         }
     }
 }
