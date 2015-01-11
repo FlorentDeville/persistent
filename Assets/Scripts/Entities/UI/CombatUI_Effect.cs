@@ -89,6 +89,8 @@ namespace Assets.Scripts.Entities.UI
         public bool IsDamageEffectOver()
         {
             Animator anim = m_DamageWrapper.GetComponentInChildren<Animator>();
+            if (anim == null)
+                return true;
             int endStateHash = Animator.StringToHash(m_DamageEndState);
             AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
             if (info.nameHash == endStateHash)
